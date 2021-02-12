@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing parameters</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+  </head>
+  <body>
+    <div class="block">
+      <form action="params" method="POST">
+        <h2>Form 1</h2>
+        <p>A textbox and a checkbox</p>
+        Name: <input type="text" name="name"/><br/>
+        Enrolled for JSP course? <input type="checkbox" name="enrolled"/><br/>
+        <input type="submit" value="Submit"/>
+      </form>
+    </div>
+
+    <div class="block">
+      <form action="params" method="POST">
+        <h2>Form 2</h2>
+        <p>Some checkboxes</p>
+        <input type="checkbox" name="check_one" value="true"/> check_one value=true<br/>
+        <input type="checkbox" name="check_two"/> check_two <br/>
+        <input type="checkbox" name="check_three" value="three" checked="checked"/> check_three value=three<br/>
+        Favorite colors (multiple values per parameter):<br/>
+        <input type="checkbox" name="color" value="blue"/> color value=blue<br/>
+        <input type="checkbox" name="color" value="green"/> color value=green<br/>
+        <input type="checkbox" name="color" value="red"/> color value=red<br/>
+        <input type="submit" value="Submit"/>
+      </form>
+    </div>
+
+    <div class="block">
+      <form action="params" method="POST">
+        <h2>Form 3</h2>
+        <p>Some textboxes</p>
+        One <input type="text" name="one"/><br/>
+        Two <input type="text" name="two"/><br/>
+        Three <input type="text" name="three"/><br/>
+        <input type="submit" value="Submit"/>
+      </form>
+    </div>
+
+    <div class="block">
+      <form action="params" method="POST">
+        <h2>Form 4</h2>
+        <p>Select a color</p>
+        Red <input type="radio" name="color" value="Red"/><br/>
+        Green <input type="radio" name="color" value="Green"/><br/>
+        Blue <input type="radio" name="color" value="Blue"/><br/>
+        <input type="hidden" name="hidden_one" value="hidden_value_one">
+        <input type="hidden" name="hidden_two" value="hidden_value_two">
+        <input type="hidden" name="hidden_three">
+        <input type="submit" value="Submit"/>
+      </form>
+    </div>
+    <p>
+      <a href="index.html">Go back</a>
+    </p>
+  </body>
+</html>

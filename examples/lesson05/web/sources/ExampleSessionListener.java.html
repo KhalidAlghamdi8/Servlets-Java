@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ExampleSessionListener.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson05\src\java\com\examples\lesson05\listeners\ExampleSessionListener.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson05.listeners;
+
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebListener;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSession;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSessionEvent;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSessionListener;
+
+@WebListener()
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ExampleSessionListener</span> <span class="keyword-directive">implements</span> HttpSessionListener {
+</span>
+<span class="info" title="tt-created">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">sessionCreated</span>(HttpSessionEvent se) {
+    HttpSession session = se.getSession();
+    session.setAttribute(<span class="character">&quot;</span><span class="character">sessionValue</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">Started!</span><span class="character">&quot;</span>);
+    session.setAttribute(<span class="character">&quot;</span><span class="character">valueBound</span><span class="character">&quot;</span>, <span class="keyword-directive">new</span> ExampleSessionBindingListener());
+  }</span>
+
+<span class="info" title="tt-destroyed">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">sessionDestroyed</span>(HttpSessionEvent se) {
+  }</span>
+}
+
+    </pre>
+    <div id="tt-created">
+      This method is called when a session is created<br>
+      In this example as soon as the session is created the attributes sessionValue and valueBound are set.<br>
+      The valueBound attribute value is a ExampleSessionBindingListener Object (which happens to be a listener as well).<br>
+      This demonstrates how objects can be set to a session before the session is even used.
+    </div>
+    <div id="tt-destroyed">
+      This method is called when a session is destroyed (by expiration or by invalidation)<br>
+      It is usually used for logging or cleanup purposes.
+    </div>
+    <div id="tt-overview">
+      The HttpSessionListener is a Web Application life-cycle Listener.<br>
+      It allows you to run some code when a session is created or destroyed.<br>
+      Its a great place to set attributes in the session that might be used by other Servlets and
+      ensure they have their value set (prevent null pointer problems)<br>
+      This listener is configured by adding the @WebListener annotation. Alternatively
+      you can add the listener element to the web.xml:
+      <pre>
+  &lt;listener&gt;
+    &lt;listener-class&gt;LISTENER CLASS FULLY QUALIFIED NAME&lt;/listener-class&gt;
+  &lt;/listener&gt;
+      </pre>
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

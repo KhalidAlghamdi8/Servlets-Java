@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>helloContinousAsync.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST9 {color: #0000e6; background-color: #e3f2e1}
+      .ST4 {font-weight: bold}
+      .ST10 {color: #009900; background-color: #e3f2e1}
+      .ST8 {color: #009900}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST11 {background-color: #e3f2e1; font-weight: bold}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST7 {color: #0000e6}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST13 {color: #ce7b00; background-color: #e3f2e1}
+      .ST6 {color: #628fb5}
+      .ST12 {background-color: #eceba3}
+      .ST14 {color: #007c00; background-color: #e3f2e1; font-weight: bold}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson10\web\helloContinousAsync.jsp</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span>
+<span class="ST6">&lt;!DOCTYPE</span> <span class="ST6">html</span><span class="ST6">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">meta</span> <span class="ST8">http-equiv</span><span class="ST8">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST8">content</span><span class="ST8">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">title</span><span class="ST7">&gt;</span>Hello Async!<span class="ST7">&lt;/</span><span class="ST7">title</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">body</span> <span class="ST8">onload</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">startHello</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">script</span> <span class="ST8">type</span><span class="ST8">=</span><span class="attribute-value">&quot;text/javascript&quot;</span><span class="ST7">&gt;</span>
+      <span class="ST9">var</span> <span class="ST10">requestPending</span> <span class="scriptlet-delimiter">=</span> <span class="ST9">false</span><span class="scriptlet-delimiter">;</span>
+      <span class="ST9">function</span> <span class="ST11">startHello</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">{</span>
+<span class="info" title="tt-continuous">        <span class="ST9">if</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">!</span><span class="ST10">requestPending</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">{</span>
+          <span class="ST10">requestPending</span><span class="scriptlet-delimiter">=</span><span class="ST9">true</span><span class="scriptlet-delimiter">;</span>
+          <span class="ST9">var</span> <span class="scriptlet-delimiter">xmlhttp</span> <span class="scriptlet-delimiter">=</span> <span class="scriptlet-delimiter">initRequest</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span>
+          <span class="ST9">var</span> <span class="ST12">url</span> <span class="scriptlet-delimiter">=</span> <span class="ST13">&quot;</span><span class="ST13">HelloAsyncServlet?var=</span><span class="ST13">&quot;</span><span class="scriptlet-delimiter">+</span><span class="ST9">new</span> <span class="scriptlet-delimiter">Date</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getTime</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span>
+          <span class="scriptlet-delimiter">xmlhttp</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">open</span><span class="scriptlet-delimiter">(</span><span class="ST13">&quot;</span><span class="ST13">GET</span><span class="ST13">&quot;</span><span class="scriptlet-delimiter">,</span> <span class="ST12">url</span><span class="scriptlet-delimiter">,</span> <span class="ST9">true</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span>
+          <span class="scriptlet-delimiter">xmlhttp</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">onreadystatechange</span><span class="scriptlet-delimiter">=</span><span class="ST9">function</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">{</span>
+            <span class="ST9">if</span> <span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">xmlhttp</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">readyState</span><span class="scriptlet-delimiter">==</span><span class="scriptlet-delimiter">4</span> <span class="scriptlet-delimiter">&amp;&amp;</span> <span class="scriptlet-delimiter">xmlhttp</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">status</span><span class="scriptlet-delimiter">==</span><span class="scriptlet-delimiter">200</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">{</span>
+              <span class="ST10">document</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getElementById</span><span class="scriptlet-delimiter">(</span><span class="ST13">&quot;</span><span class="ST13">asyncText</span><span class="ST13">&quot;</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">innerHTML</span> <span class="scriptlet-delimiter">+=</span> <span class="scriptlet-delimiter">xmlhttp</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">responseText</span><span class="scriptlet-delimiter">;</span>
+              <span class="ST10">requestPending</span><span class="scriptlet-delimiter">=</span><span class="ST9">false</span><span class="scriptlet-delimiter">;</span>
+              <span class="scriptlet-delimiter">setTimeout</span><span class="scriptlet-delimiter">(</span><span class="ST10">startHello</span><span class="scriptlet-delimiter">,</span> <span class="scriptlet-delimiter">100</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span>
+            <span class="scriptlet-delimiter">}</span>
+          <span class="scriptlet-delimiter">}</span>
+          <span class="scriptlet-delimiter">xmlhttp</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">send</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span>
+        <span class="scriptlet-delimiter">}</span></span>
+      <span class="scriptlet-delimiter">}</span>
+      
+      <span class="ST9">function</span> <span class="ST11">initRequest</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">{</span>
+        <span class="ST9">if</span> <span class="scriptlet-delimiter">(</span><span class="ST10">window</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">XMLHttpRequest</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">{</span>
+          <span class="ST9">if</span> <span class="scriptlet-delimiter">(</span><span class="ST10">navigator</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">userAgent</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">indexOf</span><span class="scriptlet-delimiter">(</span><span class="ST13">&#39;</span><span class="ST13">MSIE</span><span class="ST13">&#39;</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">!=</span> <span class="scriptlet-delimiter">-</span><span class="scriptlet-delimiter">1</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">{</span>
+            <span class="ST10">isIE</span> <span class="scriptlet-delimiter">=</span> <span class="ST9">true</span><span class="scriptlet-delimiter">;</span>
+          <span class="scriptlet-delimiter">}</span>
+          <span class="ST9">return</span> <span class="ST9">new</span> <span class="scriptlet-delimiter">XMLHttpRequest</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span>
+        <span class="scriptlet-delimiter">}</span> <span class="ST9">else</span> <span class="ST9">if</span> <span class="scriptlet-delimiter">(</span><span class="ST10">window</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">ActiveXObject</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">{</span>
+          <span class="ST10">isIE</span> <span class="scriptlet-delimiter">=</span> <span class="ST9">true</span><span class="scriptlet-delimiter">;</span>
+          <span class="ST9">return</span> <span class="ST9">new</span> <span class="scriptlet-delimiter">ActiveXObject</span><span class="scriptlet-delimiter">(</span><span class="ST13">&quot;</span><span class="ST13">Microsoft.XMLHTTP</span><span class="ST13">&quot;</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span>
+        <span class="scriptlet-delimiter">}</span>
+      <span class="scriptlet-delimiter">}</span>
+    <span class="ST7">&lt;/</span><span class="ST7">script</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h1</span><span class="ST7">&gt;</span>Hello <span class="ST7">&lt;</span><span class="ST7">span</span> <span class="ST8">id</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST14">asyncText</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">span</span><span class="ST7">&gt;</span>!<span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/index.jsp&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;homeUrl&quot;</span> <span class="ST4">/&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">homeUrl</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>Go Home<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+<span class="ST7">&lt;/</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+</span>
+    </pre>
+    <div id="tt-overview">
+      This page makes continuous requests to the servlet.<br>
+      The code is similar to the helloAsync.jsp file with the
+      addition of the continuity code. Can you spot the difference?
+    </div>
+    <div id="tt-continuous">
+      To achieve constant requests, the code uses the setTimeout(); statement. This
+      executes the given function after a given number of time, in milliseconds.<br>
+      Additionally, the requestPending variable prevents the page from making
+      simultaneous calls.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

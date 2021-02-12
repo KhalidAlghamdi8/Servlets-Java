@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      You are building a dating web site. The client's date of birth is collected along with lots of other information. The Person class has a derived method, getAge():int, which returns the person's age calculated from the date of birth and today's date.  In one of your JSPs you need to print a special message to clients within the age group of 25 through 35.
+      Which two EL code snippets will return true for this condition?      
+    </TEXT>
+    <ANSWER ISCORRECT="false">${client.age in [25,35]}</ANSWER>
+    <ANSWER ISCORRECT="false">${client.age between [25,35]}</ANSWER>
+    <ANSWER ISCORRECT="false">${client.age between 25 and 35}</ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[${client.age <= 35 && client.age >= 25}]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true">${client.age le 35 and client.age ge 25}</ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[${not client.age > 35 && client.age < 25}]]>
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which JSP standard action can be used to import content from a resource called foo.jsp?
+    </TEXT>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:import file="foo.jsp" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:import page="foo.jsp" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[ <jsp:include page="foo.jsp" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:include file="foo.jsp" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:import>foo.jsp</jsp:import> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:include>foo.jsp</jsp:include> ]]>
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Given the element from the web application deployment descriptor:
+      <TEXT CODE="true">
+<![CDATA[ 
+<jsp-property-group>
+  <url-pattern>/main/page1.jsp</url-pattern>
+  <scripting-invalid>true</scripting-invalid>
+</jsp-property-group>
+]]>
+      </TEXT>
+      and given that /main/page1.jsp contains:
+      <TEXT CODE="true">
+<![CDATA[ 
+<% int i = 12; %>
+<b><%= i %></b>
+]]>
+      </TEXT>
+      What is the result?
+    </TEXT>
+    <ANSWER ISCORRECT="false"><![CDATA[ <b></b> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <b>12</b> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true">The JSP fails to execute.</ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <% int i = 12 %>
+<b><%= i %></b>
+  ]]>
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      A web application allows the HTML title banner to be set using a servlet context initialization parameter called titleStr. 
+      Which properly set the title in this scenario?
+    </TEXT>
+    <ANSWER ISCORRECT="false"><![CDATA[ <title>${titleStr}</title> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[ <title>${initParam.titleStr}</title> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <title>${params[0].titleStr}</title> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <title>${paramValues.titleStr}</title> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[ <title>${initParam['titleStr']}</title> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <title>${servletParams.titleStr}</title> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <title>${request.get("titleStr")}</title> ]]>
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Given:
+      <TEXT CODE="true">
+<![CDATA[
+11. <%
+12.   request.setAttribute("vals", new String[]{"1","2","3","4"});
+13.   request.setAttribute("index", "2");
+14. %>
+15. <%-- insert code here --%>
+]]>
+      </TEXT>
+      Which EL expressions, inserted at line 15, are valid and evaluate to "3"?
+    </TEXT>
+    <ANSWER ISCORRECT="false">${vals.2}</ANSWER>
+    <ANSWER ISCORRECT="true">${vals["2"]}</ANSWER>
+    <ANSWER ISCORRECT="false">${vals.index} </ANSWER>
+    <ANSWER ISCORRECT="true">${vals[index]}</ANSWER>
+    <ANSWER ISCORRECT="false">${vals}[index]</ANSWER>
+    <ANSWER ISCORRECT="false">${vals.(vals.index)}</ANSWER>
+    <ANSWER ISCORRECT="true">${vals[vals[index-1]]} </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      You are building a web application with a scheduling component.  On the JSP, you need to show the current date, the date of the previous week, and the date of the next week. To help you present this information, you have created the following EL functions in the 'd' namespace:
+      •   name: curDate; signature: java.util.Date currentDate()
+      •   name: addWeek; signature: java.util.Date addWeek(java.util.Date, int)
+      •   name: dateString; signature: java.util.String getDateString(java.util.Date)
+      Which EL code snippet will generate the string for the previous week?
+    </TEXT>
+    <ANSWER ISCORRECT="false">${d:dateString(addWeek(curDate(), -1))}</ANSWER>
+    <ANSWER ISCORRECT="false">${d:dateString[addWeek[curDate[], -1]]}</ANSWER>
+    <ANSWER ISCORRECT="false">${d:dateString[d:addWeek[d:curDate[], -1]]}</ANSWER>
+    <ANSWER ISCORRECT="true">${d:dateString(d:addWeek(d:curDate(), -1))}</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      You need to create a JavaBean object that is used only within the current JSP page. It must NOT be accessible to any other page including those that this page might import.
+      Which JSP standard action can accomplish this goal?
+    </TEXT>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:useBean id="pageBean" type="com.example.MyBean" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[ <jsp:useBean id="pageBean" class="com.example.MyBean" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:makeBean id="pageBean" type="com.example.MyBean" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:makeBean id="pageBean" class="com.example.MyBean" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:useBean name="pageBean" class="com.example.MyBean" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:makeBean name="pageBean" class="com.example.MyBean" /> ]]>
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Given a web application in which the cookie userName is expected to contain the name of the user. 
+      Which EL expression evaluates to that user name? 
+    </TEXT>
+    <ANSWER ISCORRECT="false">${userName}</ANSWER>
+    <ANSWER ISCORRECT="true">${cookie.userName}</ANSWER>
+    <ANSWER ISCORRECT="false">${cookie.user.name}</ANSWER>
+    <ANSWER ISCORRECT="false">${cookies.userName[0]}</ANSWER>
+    <ANSWER ISCORRECT="false">${cookies.userName}[1]</ANSWER>
+    <ANSWER ISCORRECT="false">${cookies.get('userName')}</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      The deployment descriptor for a web application defines a context initialization parameter with the name "foo".
+      Which EL expression can be used to retrieve the value of this parameter?
+    </TEXT>
+    <ANSWER ISCORRECT="false">${foo}</ANSWER>
+    <ANSWER ISCORRECT="true">${initParam.foo}</ANSWER>
+    <ANSWER ISCORRECT="false">${param.foo}</ANSWER>
+    <ANSWER ISCORRECT="false">${servletContext.getInitParam("foo")}</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      A controller has put a JavaBean into the application scope identified by the key "theBean". The JavaBean class is defined like this
+      <TEXT CODE="true">
+        package web;
+        public class MyBean {
+        public String getName() {...}
+        public String address() {...}
+        public boolean isOurCustomer() {...}
+        }
+      </TEXT>
+      Which would support using the bean in the JSP? 
+    </TEXT>
+    <ANSWER ISCORRECT="true"><![CDATA[ <jsp:useBean id="theBean" class="web.MyBean" scope="application" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:useBean id="theBean" class="web.MyBean" scope="servletContext" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:useBean name="theBean" class="MyBean" scope="servletContext" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:useBean name="theBean" type="web.MyBean" scope="application" /> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <jsp:useBean name="theBean" /> ]]>
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      A developer wants to make a name attribute available to all servlets associated with a particular user, across multiple requests from that user, from the same browser instance.
+      Which provide this capability from within a tag handler?
+    </TEXT>
+    <ANSWER ISCORRECT="false">pageContext.setAttribute("name", theValue);</ANSWER>
+    <ANSWER ISCORRECT="false">pageContext.setAttribute("name", getSession());</ANSWER>
+    <ANSWER ISCORRECT="false">pageContext.getRequest().setAttribute("name", theValue);</ANSWER>
+    <ANSWER ISCORRECT="true">pageContext.getSession().setAttribute("name", theValue);</ANSWER>
+    <ANSWER ISCORRECT="false">pageContext.setAttribute("name", theValue, PageContext.PAGE_SCOPE);</ANSWER>
+    <ANSWER ISCORRECT="true">pageContext.setAttribute("name", theValue, PageContext.SESSION_SCOPE);</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      When an application server first encounters a JSP page, it does which of the following? 
+    </TEXT>
+    <ANSWER ISCORRECT="true">Compiles the page into a servlet </ANSWER>
+    <ANSWER ISCORRECT="false">Converts the page to HTML and displays the output</ANSWER>
+    <ANSWER ISCORRECT="false">Does nothing</ANSWER>
+    <ANSWER ISCORRECT="false">Runs the page through an interpreter</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which bracket syntax is used to define a scriptlet? 
+    </TEXT>
+    <ANSWER ISCORRECT="true"><![CDATA[ <% ... %> ]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <%= ... %> ]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <%! ... %> ]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <%@ ... %> ]]></ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      To import the classes in the java.text package in a JSP, what would you add to the JSP?
+    </TEXT>
+    <ANSWER ISCORRECT="true"><![CDATA[ <%@ page import="java.text.* " %> ]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <%@ page include="java.text.* " %> ]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <%@ page import "java.text.* %> ]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <%@ page "java.text.* %> ]]></ANSWER>
+  </QUESTION>
+
+</POLL>

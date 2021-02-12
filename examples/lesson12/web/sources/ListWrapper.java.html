@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>ListWrapper.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST0 {font-weight: bold}
+.comment {color: #969696}
+.ST1 {color: #009900}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\model\ListWrapper.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.model;
+
+<span class="keyword-directive">import</span> java.util.ArrayList;
+<span class="keyword-directive">import</span> java.util.Iterator;
+<span class="keyword-directive">import</span> java.util.List;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ListWrapper</span>&lt;T&gt; <span class="keyword-directive">implements</span> Iterable&lt;T&gt; {
+
+  <span class="keyword-directive">protected</span> List&lt;T&gt; <span class="ST1">wrappedList</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">ListWrapper</span>() {
+    <span class="ST1">wrappedList</span> = <span class="keyword-directive">new</span> ArrayList&lt;T&gt;();
+  }
+
+  <span class="keyword-directive">public</span> <span class="ST0">ListWrapper</span>(List&lt;T&gt; wrappedList) {
+    <span class="keyword-directive">this</span>.<span class="ST1">wrappedList</span> = wrappedList;
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> Iterator&lt;T&gt; <span class="ST0">iterator</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">wrappedList</span>.iterator();
+  }
+
+<span class="comment">//  @Override</span>
+  <span class="keyword-directive">public</span> <span class="keyword-directive">boolean</span> <span class="ST0">add</span>(T e) {
+    <span class="keyword-directive">return</span> <span class="ST1">wrappedList</span>.add(e);
+  }
+
+<span class="comment">//  @Override</span>
+  <span class="keyword-directive">public</span> T <span class="ST0">get</span>(<span class="keyword-directive">int</span> index) {
+    <span class="keyword-directive">return</span> <span class="ST1">wrappedList</span>.get(index);
+  }
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public int size() {</span>
+<span class="comment">//    return wrappedList.size();</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public boolean isEmpty() {</span>
+<span class="comment">//    return wrappedList.isEmpty();</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public boolean contains(Object o) {</span>
+<span class="comment">//    return wrappedList.contains(o);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public Object[] toArray() {</span>
+<span class="comment">//    return wrappedList.toArray();</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public &lt;T&gt; T[] toArray(T[] a) {</span>
+<span class="comment">//    return wrappedList.toArray(a);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public boolean remove(Object o) {</span>
+<span class="comment">//    return wrappedList.remove(o);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public boolean containsAll(Collection&lt;?&gt; c) {</span>
+<span class="comment">//    return wrappedList.containsAll(c);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public boolean addAll(Collection&lt;? extends T&gt; c) {</span>
+<span class="comment">//    return wrappedList.addAll(c);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public boolean addAll(int index, Collection&lt;? extends T&gt; c) {</span>
+<span class="comment">//    return wrappedList.addAll(index, c);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public boolean removeAll(Collection&lt;?&gt; c) {</span>
+<span class="comment">//    return wrappedList.removeAll(c);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public boolean retainAll(Collection&lt;?&gt; c) {</span>
+<span class="comment">//    return wrappedList.retainAll(c);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public void clear() {</span>
+<span class="comment">//    wrappedList.clear();</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public T set(int index, T element) {</span>
+<span class="comment">//    return wrappedList.set(index, element);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public void add(int index, T element) {</span>
+<span class="comment">//    wrappedList.add(index, element);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public T remove(int index) {</span>
+<span class="comment">//    return wrappedList.remove(index);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public int indexOf(Object o) {</span>
+<span class="comment">//    return wrappedList.indexOf(o);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public int lastIndexOf(Object o) {</span>
+<span class="comment">//    return wrappedList.lastIndexOf(o);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public ListIterator&lt;T&gt; listIterator() {</span>
+<span class="comment">//    return wrappedList.listIterator();</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public ListIterator&lt;T&gt; listIterator(int index) {</span>
+<span class="comment">//    return wrappedList.listIterator(index);</span>
+<span class="comment">//  }</span>
+<span class="comment">//</span>
+<span class="comment">//  @Override</span>
+<span class="comment">//  public List&lt;T&gt; subList(int fromIndex, int toIndex) {</span>
+<span class="comment">//    return wrappedList.subList(fromIndex, toIndex);</span>
+<span class="comment">//  }</span>
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

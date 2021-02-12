@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Setup.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.ST2 {font-family: Monospaced; font-style: italic}
+.ST0 {font-family: Monospaced; font-weight: bold}
+.ST3 {color: #ce7b00; font-family: Monospaced; font-weight: bold}
+.character {color: #ce7b00}
+.ST1 {color: #009900; font-family: Monospaced; font-style: italic}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\services\setup\Setup.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.services.setup;
+
+<span class="keyword-directive">import</span> java.io.BufferedReader;
+<span class="keyword-directive">import</span> java.io.InputStream;
+<span class="keyword-directive">import</span> java.io.InputStreamReader;
+<span class="keyword-directive">import</span> java.sql.Connection;
+<span class="keyword-directive">import</span> java.sql.DriverManager;
+<span class="keyword-directive">import</span> java.sql.SQLException;
+<span class="keyword-directive">import</span> java.sql.Statement;
+<span class="keyword-directive">import</span> javax.naming.Context;
+<span class="keyword-directive">import</span> javax.naming.InitialContext;
+<span class="keyword-directive">import</span> javax.sql.DataSource;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">Setup</span> {
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST1">URL</span> = <span class="character">&quot;</span><span class="character">jdbc:derby://localhost:1527/QuizDB</span><span class="character">&quot;</span>;
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST1">USER</span> = <span class="character">&quot;</span><span class="character">oracle</span><span class="character">&quot;</span>;
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST1">PASS</span> = <span class="character">&quot;</span><span class="character">welcome1</span><span class="character">&quot;</span>;
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST1">DBSCRIPT</span> = <span class="character">&quot;</span><span class="character">databaseSetup.sql</span><span class="character">&quot;</span>;
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setupJDNI</span>() <span class="keyword-directive">throws</span> Exception {
+    Context ctx = <span class="keyword-directive">new</span> InitialContext();
+    DataSource ds = (DataSource) ctx.lookup(<span class="character">&quot;</span><span class="character">jdbc/QuizDB</span><span class="character">&quot;</span>);
+    Connection connection = ds.getConnection();
+    <span class="keyword-directive">try</span> {
+      setup(connection);
+    } <span class="keyword-directive">finally</span> {
+      <span class="keyword-directive">try</span> {
+        connection.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+    }
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setupJDBC</span>() <span class="keyword-directive">throws</span> Exception {
+    Class.<span class="ST2">forName</span>(<span class="character">&quot;</span><span class="character">org.apache.derby.jdbc.ClientDriver</span><span class="character">&quot;</span>).newInstance();
+    Connection connection = <span class="keyword-directive">null</span>;
+    <span class="keyword-directive">try</span> {
+      connection = DriverManager.<span class="ST2">getConnection</span>(<span class="ST1">URL</span>, <span class="ST1">USER</span>, <span class="ST1">PASS</span>);
+      setup(connection);
+    } <span class="keyword-directive">catch</span> (Exception e) {
+      <span class="keyword-directive">throw</span> e;
+    } <span class="keyword-directive">finally</span> {
+      <span class="keyword-directive">try</span> {
+        connection.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+    }
+  }
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> <span class="ST0">setup</span>(Connection connection) <span class="keyword-directive">throws</span> Exception {
+    Statement statement = <span class="keyword-directive">null</span>;
+    InputStream inputSql = <span class="keyword-directive">null</span>;
+    InputStreamReader inputStreamReader = <span class="keyword-directive">null</span>;
+    BufferedReader reader = <span class="keyword-directive">null</span>;
+    <span class="keyword-directive">try</span> {
+      statement = connection.createStatement();
+      inputSql = getClass().getResourceAsStream(<span class="ST1">DBSCRIPT</span>);
+      inputStreamReader = <span class="keyword-directive">new</span> InputStreamReader(inputSql, <span class="character">&quot;</span><span class="character">UTF-8</span><span class="character">&quot;</span>);
+      reader = <span class="keyword-directive">new</span> BufferedReader(inputStreamReader);
+      String temporaryStatement = <span class="character">&quot;&quot;</span>;
+      String line;
+      <span class="keyword-directive">while</span> ((line = reader.readLine()) != <span class="keyword-directive">null</span>) {
+        <span class="keyword-directive">if</span> (!line.startsWith(<span class="character">&quot;</span><span class="character">#</span><span class="character">&quot;</span>)) {
+          temporaryStatement += line + <span class="character">&quot;</span><span class="ST3">\n</span><span class="character">&quot;</span>;
+          <span class="keyword-directive">if</span> (line.indexOf(<span class="character">&#39;</span><span class="character">;</span><span class="character">&#39;</span>) &gt;= 0) {
+            temporaryStatement = temporaryStatement.substring(0, temporaryStatement.indexOf(<span class="character">&#39;</span><span class="character">;</span><span class="character">&#39;</span>)).trim();
+            System.<span class="ST1">out</span>.println(<span class="character">&quot;</span><span class="ST3">\n</span><span class="ST3">\n</span><span class="character">Executing:  </span><span class="character">&quot;</span> + temporaryStatement);
+            <span class="keyword-directive">try</span> {
+              statement.executeUpdate(temporaryStatement);
+            } <span class="keyword-directive">catch</span> (SQLException sqlEx) {
+              System.<span class="ST1">err</span>.println(sqlEx.getMessage());
+            }
+            temporaryStatement = <span class="character">&quot;&quot;</span>;
+          }
+        }
+      }
+      connection.commit();
+    } <span class="keyword-directive">catch</span> (Exception e) {
+      <span class="keyword-directive">throw</span> e;
+    } <span class="keyword-directive">finally</span> {
+      <span class="keyword-directive">try</span> {
+        reader.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+      <span class="keyword-directive">try</span> {
+        inputStreamReader.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+      <span class="keyword-directive">try</span> {
+        inputSql.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+      <span class="keyword-directive">try</span> {
+        statement.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+    }
+  }
+}
+
+</pre></body>
+</html>

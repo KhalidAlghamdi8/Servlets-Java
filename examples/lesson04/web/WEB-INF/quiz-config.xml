@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quizzes>
+  <quiz>
+    <name>Lesson 04</name>
+    <description>Forms and Servlets</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz.xml</source>
+    </sources>
+  </quiz>
+</quizzes>

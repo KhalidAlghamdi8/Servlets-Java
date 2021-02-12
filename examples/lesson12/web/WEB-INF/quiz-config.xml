@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quizzes>
+  <quiz>
+    <name>Lesson 01</name>
+    <description>Introduction</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz01.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 02</name>
+    <description>Web Application Essentials</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz02.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 03</name>
+    <description>Developing Servlets</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz03.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 04</name>
+    <description>Forms and Servlets</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz04.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 05</name>
+    <description>Web Application Configuration</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz05.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 06</name>
+    <description>Model View Controller</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz06.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 07</name>
+    <description>Java Server Pages</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz07.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 08</name>
+    <description>JSP Custom Tags</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz08.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 09</name>
+    <description>Servlet Filters</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz09.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 10</name>
+    <description>More Servlet Features</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz10.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 11</name>
+    <description>Security</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz11.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Lesson 12</name>
+    <description>Enterprise Integration and Patterns</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz.xml</source>
+    </sources>
+  </quiz>
+  <quiz>
+    <name>Mock Exam</name>
+    <description>All the quizzes.</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz.xml</source>
+      <source>/WEB-INF/quiz/quiz01.xml</source>
+      <source>/WEB-INF/quiz/quiz02.xml</source>
+      <source>/WEB-INF/quiz/quiz03.xml</source>
+      <source>/WEB-INF/quiz/quiz04.xml</source>
+      <source>/WEB-INF/quiz/quiz05.xml</source>
+      <source>/WEB-INF/quiz/quiz06.xml</source>
+      <source>/WEB-INF/quiz/quiz07.xml</source>
+      <source>/WEB-INF/quiz/quiz08.xml</source>
+      <source>/WEB-INF/quiz/quiz09.xml</source>
+      <source>/WEB-INF/quiz/quiz10.xml</source>
+      <source>/WEB-INF/quiz/quiz11.xml</source>
+    </sources>
+  </quiz>
+  
+</quizzes>

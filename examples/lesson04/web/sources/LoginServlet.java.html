@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>LoginServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css"> 
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson04\src\java\com\examples\lesson04\LoginServlet.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-about">
+<span class="keyword-directive">package</span> com.examples.lesson04;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSession;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">LoginServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/login.do</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">LoginServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+</span>  
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+<span class="info" title="tt-getParameter">    String username = request.getParameter(<span class="character">&quot;</span><span class="character">username</span><span class="character">&quot;</span>);
+    String password = request.getParameter(<span class="character">&quot;</span><span class="character">password</span><span class="character">&quot;</span>);
+    String role = request.getParameter(<span class="character">&quot;</span><span class="character">role</span><span class="character">&quot;</span>);</span>
+    
+<span class="info" title="tt-if">    <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">123456</span><span class="character">&quot;</span>.equals(password)) {</span>
+<span class="info" title="tt-success">      HttpSession session = request.getSession();
+      session.setAttribute(<span class="character">&quot;</span><span class="character">user_name</span><span class="character">&quot;</span>, username);
+      session.setAttribute(<span class="character">&quot;</span><span class="character">user_role</span><span class="character">&quot;</span>, role);
+      response.sendRedirect(<span class="character">&quot;</span><span class="character">greet</span><span class="character">&quot;</span>);</span>
+    } <span class="keyword-directive">else</span> {
+<span class="info" title="tt-fail">      response.sendRedirect(<span class="character">&quot;</span><span class="character">loginFailed.html</span><span class="character">&quot;</span>);</span>
+    }
+  }
+  
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+  
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+}
+
+    </pre>
+    <div id="tt-about">
+      This servlet handles the login logic exclusively.<br>
+      The servlet validates the input from the form. If the login succeeds, the login
+      credentials are stored in the session. Finally, the browser is redirected to the 
+      greet servlet.<br>
+      If the login fails, the browser is redirected to an HTML page displaying an error message.
+    </div>
+    <div id="tt-getParameter">
+      Get the parameters from the form.
+    </div>
+    <div id="tt-if">
+      Password is validated by comparing the password to the string "123456".
+    </div>
+    <div id="tt-success">
+      Set the parameters to the session and then redirect the browser to the
+      greeting servlet.
+    </div>
+    <div id="tt-fail">
+      If the login fails the browser is redirected to a login failed HTML.
+    </div>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>lifecycle.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST8 {color: #0000e6; background-color: #e3f2e1}
+      .ST6 {color: #009900}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST10 {background-color: #e3f2e1; font-weight: bold}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST5 {color: #0000e6}
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST11 {color: #ce7b00; background-color: #e3f2e1}
+      .ST4 {color: #628fb5}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .ST9 {color: #009900; background-color: #eceba3}
+      .attribute-value {color: #ce7b00}
+      .ST7 {color: #969696; background-color: #e3f2e1}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\web\lifecycle.jsp</td></tr></table>
+    <pre>
+<span class="ST0">&lt;%@</span><span class="ST1">page</span> <span class="ST2">contentType</span><span class="ST0">=</span><span class="ST3">&quot;text/html&quot;</span> <span class="ST2">pageEncoding</span><span class="ST0">=</span><span class="ST3">&quot;UTF-8&quot;</span><span class="ST0">%&gt;</span>
+<span class="ST4">&lt;!DOCTYPE</span> <span class="ST4">html</span><span class="ST4">&gt;</span>
+<span class="ST5">&lt;</span><span class="ST5">html</span><span class="ST5">&gt;</span>
+  <span class="ST5">&lt;</span><span class="ST5">head</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">meta</span> <span class="ST6">http-equiv</span><span class="ST6">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST6">content</span><span class="ST6">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">link</span> <span class="ST6">rel</span><span class="ST6">=</span><span class="attribute-value">&quot;stylesheet&quot;</span> <span class="ST6">href</span><span class="ST6">=</span><span class="attribute-value">&quot;res/styles.css&quot;</span> <span class="ST6">type</span><span class="ST6">=</span><span class="attribute-value">&quot;text/css&quot;</span><span class="ST5">/&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">title</span><span class="ST5">&gt;</span><span class="scriptlet-delimiter">&lt;%=</span> <span class="scriptlet-delimiter">title</span><span class="scriptlet-delimiter">%&gt;</span><span class="ST5">&lt;/</span><span class="ST5">title</span><span class="ST5">&gt;</span>
+  <span class="ST5">&lt;/</span><span class="ST5">head</span><span class="ST5">&gt;</span>
+<span class="info" title="tt-fields">  <span class="scriptlet-delimiter">&lt;%!</span>    <span class="ST7">//</span>
+    <span class="ST8">private</span> <span class="scriptlet-delimiter">String</span> <span class="ST9">title</span><span class="scriptlet-delimiter">;</span></span>
+
+<span class="info" title="tt-init">    <span class="ST8">public</span> <span class="ST8">void</span> <span class="ST10">jspInit</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">{</span>
+<span class="info" title="tt-initParam">      <span class="ST9">title</span> <span class="scriptlet-delimiter">=</span> <span class="scriptlet-delimiter">getServletConfig</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getInitParameter</span><span class="scriptlet-delimiter">(</span><span class="ST11">&quot;</span><span class="ST11">jsp-name</span><span class="ST11">&quot;</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span></span>
+    <span class="scriptlet-delimiter">}</span></span>
+
+<span class="info" title="tt-destroy">    <span class="ST8">public</span> <span class="ST8">void</span> <span class="ST10">jspDestroy</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">{</span>
+      <span class="ST9">title</span> <span class="scriptlet-delimiter">=</span> <span class="ST8">null</span><span class="scriptlet-delimiter">;</span>
+    <span class="scriptlet-delimiter">}</span></span>
+  <span class="scriptlet-delimiter">%&gt;</span>
+  <span class="ST5">&lt;</span><span class="ST5">body</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">a</span> <span class="ST6">href</span><span class="ST6">=</span><span class="attribute-value">&quot;index.html&quot;</span><span class="ST5">&gt;</span>Go home<span class="ST5">&lt;/</span><span class="ST5">a</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h1</span><span class="ST5">&gt;</span><span class="scriptlet-delimiter">&lt;%=</span> <span class="ST9">title</span><span class="scriptlet-delimiter">%&gt;</span><span class="ST5">&lt;/</span><span class="ST5">h1</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>REMEMBRER: JSPs are converted to Servlets. The entire lifecycle is:<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h2</span><span class="ST5">&gt;</span>Translation<span class="ST5">&lt;/</span><span class="ST5">h2</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>The JSP is converted into a servlet. Scriptlets are added, html output is converted to
+      jspWriter.print statements and custom tag and expression code is added.<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h2</span><span class="ST5">&gt;</span>Compilation<span class="ST5">&lt;/</span><span class="ST5">h2</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>The generated servlet is compiled into a java class.<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h2</span><span class="ST5">&gt;</span>Load<span class="ST5">&lt;/</span><span class="ST5">h2</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>The generated java class is loaded in the container.<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h2</span><span class="ST5">&gt;</span>Instantiation.<span class="ST5">&lt;/</span><span class="ST5">h2</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>As with servlets the container manages the instances of the JSP servlet class.<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h2</span><span class="ST5">&gt;</span>Initialization<span class="ST5">&lt;/</span><span class="ST5">h2</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>The JSP servlet class is initialized calling the jspInit() method<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h2</span><span class="ST5">&gt;</span>Service<span class="ST5">&lt;/</span><span class="ST5">h2</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>The JSP servlet will call the _jspService() method when the JSP resource is requested.<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h2</span><span class="ST5">&gt;</span>Destruction<span class="ST5">&lt;/</span><span class="ST5">h2</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>Similar to the servlet&#39;s destroy method this method will be called when the instance of this JSP servlet class will be destroyed.<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">a</span> <span class="ST6">href</span><span class="ST6">=</span><span class="attribute-value">&quot;index.html&quot;</span><span class="ST5">&gt;</span>Go home<span class="ST5">&lt;/</span><span class="ST5">a</span><span class="ST5">&gt;</span>
+  <span class="ST5">&lt;/</span><span class="ST5">body</span><span class="ST5">&gt;</span>  
+<span class="ST5">&lt;/</span><span class="ST5">html</span><span class="ST5">&gt;</span>
+
+    </pre>
+    <div id="tt-fields">Note that to override and add instance variables, a JSP declaration tag &lt;% must be used.</div>
+    <div id="tt-init">The jspInit method is executed after instantiating the JSP servlet. Initialization code, like instance variables, may be used in this call.</div>
+    <div id="tt-initParam">Initialization parameters in JSP are declared in the web.xml file. See the web.xml file source code to find out how to set initialization parameters for JSP.</div>
+    <div id="tt-destroy">The jspDestroy method is invoked when the servlet is will be disposed of. This might be caused by the server shutting down or the application being undeployed or stopped. It is a good place to include clean up code.</div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

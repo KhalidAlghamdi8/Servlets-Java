@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>AddToCartServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css"> 
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson04\src\java\com\examples\lesson04\AddToCartServlet.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson04;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.util.HashMap;
+<span class="keyword-directive">import</span> java.util.Map;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSession;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">AddToCartServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/addToCart.do</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">AddToCartServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+<span class="info" title="tt-about">  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {</span>
+<span class="info" title="tt-requestParameter">    String requestItem = request.getParameter(<span class="character">&quot;</span><span class="character">item</span><span class="character">&quot;</span>);</span>
+<span class="info" title="tt-session">    HttpSession session = request.getSession();
+    Map&lt;String, ShopItem&gt; shoppingCart = (Map&lt;String, ShopItem&gt;) session.getAttribute(<span class="character">&quot;</span><span class="character">shoppingCart</span><span class="character">&quot;</span>);</span>
+<span class="info" title="tt-nullCheck">    <span class="keyword-directive">if</span> (shoppingCart == <span class="keyword-directive">null</span>) {
+      shoppingCart = <span class="keyword-directive">new</span> HashMap&lt;String, ShopItem&gt;();
+      session.setAttribute(<span class="character">&quot;</span><span class="character">shoppingCart</span><span class="character">&quot;</span>, shoppingCart);
+    }</span>
+    ShopItem item = shoppingCart.get(requestItem);
+<span class="info" title="tt-nullCheck2">    <span class="keyword-directive">if</span> (item == <span class="keyword-directive">null</span>) {
+      item = <span class="keyword-directive">new</span> ShopItem();
+      item.setName(requestItem);
+      shoppingCart.put(requestItem, item);
+    }</span>
+<span class="info" title="tt-addQty">    item.setQuantity(item.getQuantity() + 1);</span>
+<span class="info" title="tt-redirect">    response.sendRedirect(<span class="character">&quot;</span><span class="character">viewShoppingCart</span><span class="character">&quot;</span>);</span>
+  }
+}
+
+    </pre>
+    <div id="tt-about">This servlet does the logic behind creating a shopping cart and adding items to it.<br>
+    The shopping cart is a simple map where items are stored.<br>
+    </div>
+    <div id="tt-requestParameter">Get the selected item from the request parameters.</div>
+    <div id="tt-session">Next, get the session and the current shopping cart.</div>
+    <div id="tt-nullCheck">Since the shopping cart might be null, it must be initialized and stored in the session.</div>
+    <div id="tt-nullCheck2">Get the ShopItem from the shopping cart. Since this might be null, you must do another null check and store the newly created item if needed.</div>
+    <div id="tt-addQty">Add to the quantity in the item list. Since this item is already in the shopping cart, and the shopping cart is in the session, changes to it will be persisted automatically.</div>
+    <div id="tt-redirect">Finally, redirect the browser to the view shopping cart servlet.</div>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>shopListTagFiles.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST4 {font-weight: bold}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST6 {color: #0000e6}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\web\shopListTagFiles.jsp</td></tr></table>
+    <pre>
+<span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span>
+<span class="info" title="tt-templateTagLib"><span class="ST4">&lt;%@</span><span class="ST5"> taglib</span> <span class="attribute-name">prefix</span><span class="ST4">=</span><span class="attribute-value">&quot;template&quot;</span> <span class="attribute-name">tagdir</span><span class="ST4">=</span><span class="attribute-value">&quot;/WEB-INF/tags&quot;</span> <span class="ST4">%&gt;</span></span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span>
+<span class="info" title="tt-templateHeader"><span class="ST4">&lt;</span><span class="ST5">template:templateHeader</span> <span class="attribute-name">title</span><span class="ST4">=</span><span class="attribute-value">&quot;Shopping list&quot;</span><span class="ST4">/&gt;</span></span>
+
+<span class="ST6">&lt;</span><span class="ST6">table</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;</span><span class="ST6">thead</span><span class="ST6">&gt;</span>
+    <span class="ST6">&lt;</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+      <span class="ST6">&lt;</span><span class="ST6">th</span><span class="ST6">&gt;</span>Item<span class="ST6">&lt;/</span><span class="ST6">th</span><span class="ST6">&gt;</span>
+      <span class="ST6">&lt;</span><span class="ST6">th</span><span class="ST6">&gt;</span>Quantity<span class="ST6">&lt;/</span><span class="ST6">th</span><span class="ST6">&gt;</span>
+    <span class="ST6">&lt;/</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;/</span><span class="ST6">thead</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;</span><span class="ST6">tbody</span><span class="ST6">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">c:forEach</span> <span class="attribute-name">items</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">sessionScope</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">shopList</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">items</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;item&quot;</span> <span class="attribute-name">varStatus</span><span class="ST4">=</span><span class="attribute-value">&quot;status&quot;</span><span class="ST4">&gt;</span>
+      <span class="ST6">&lt;</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+        <span class="ST6">&lt;</span><span class="ST6">td</span><span class="ST6">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">name</span><span class="scriptlet-delimiter">}</span><span class="ST6">&lt;/</span><span class="ST6">td</span><span class="ST6">&gt;</span>
+        <span class="ST6">&lt;</span><span class="ST6">td</span><span class="ST6">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">count</span><span class="scriptlet-delimiter">}</span><span class="ST6">&lt;/</span><span class="ST6">td</span><span class="ST6">&gt;</span>
+      <span class="ST6">&lt;/</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+    <span class="ST4">&lt;/</span><span class="ST5">c:forEach</span><span class="ST4">&gt;</span>
+  <span class="ST6">&lt;/</span><span class="ST6">tbody</span><span class="ST6">&gt;</span>
+<span class="ST6">&lt;/</span><span class="ST6">table</span><span class="ST6">&gt;</span>
+
+<span class="info" title="tt-templateFooter"><span class="ST4">&lt;</span><span class="ST5">template:templateFooter</span><span class="ST4">&gt;</span>
+  Using JSP tag files!
+<span class="ST4">&lt;/</span><span class="ST5">template:templateFooter</span><span class="ST4">&gt;</span></span>
+    </pre>
+    <div id="tt-templateTagLib">
+      When using custom tag files the taglib directive must be added. The difference with
+      other taglib directives is that instead of using the URI attribute, the tagdir attribute is used.<br>
+      This is a path where the tag files are. Tag files are special JSP files stored in the 
+      WEB-INF/tags folder (or any subfolder there) and inside JAR files under the META-INF/tags folder.
+    </div>
+    <div id="tt-templateHeader">
+      To use tag files, use the name of the tag file with the prefix just as with any other custom tag.<br>
+      Like other tags, file tags may have attributes and body.<br>
+      The header tag does not have a body and allows one attribute named 'title'
+    </div>
+    <div id="tt-templateFooter">
+      The footer tag allows a body but has no attributes.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

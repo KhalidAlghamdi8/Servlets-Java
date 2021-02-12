@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 07</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+    <link rel="stylesheet" href="res/code.css" type="text/css">
+    <script src="res/jquery.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <script src="res/jquery.js" type="text/javascript"></script>
+    <script src="res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="res/tooltip.js" type="text/javascript"></script>
+    <a onclick="$('#cheatSheet').toggle();" href="#" style="text-align: right; display: block; width: 100%; background-color: #ddddff">Hide/Show&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <table>
+      <tr>
+        <td style="text-align: left; vertical-align: top">
+          <h1>Lesson 7 - Java Server Pages - Examples</h1>
+          <h2>Hello JSP!</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Example Link</th>
+                <th>Source code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul>
+                    <li><a href="HelloServlet?name=servlet">/HelloServlet?name=servlet</a></li>
+                    <li><a href="HelloServlet?name=john">/HelloServlet?name=john</a></li>
+                    <li><a href="HelloServlet">/HelloServlet</a></li>
+                  </ul>
+                </td>
+                <td><a href="sources/HelloServlet.java.html">com.examples.lesson07.servlets.HelloServlet</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li><a href="helloJspScriptlet.jsp?name=jsp">/helloJspScriptlet.jsp?name=servlet</a></li>
+                    <li><a href="helloJspScriptlet.jsp?name=john">/helloJspScriptlet.jsp?name=john</a></li>
+                    <li><a href="helloJspScriptlet.jsp">/helloJspScriptlet.jsp</a></li>
+                  </ul>
+                </td>
+                <td><a href="sources/helloJspScriptlet.jsp.html">helloJspScriptlet.jsp</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li><a href="helloJsp.jsp?name=servlet">/helloJsp.jsp?name=servlet</a></li>
+                    <li><a href="helloJsp.jsp?name=john">/helloJsp.jsp?name=john</a></li>
+                    <li><a href="helloJsp.jsp">/helloJsp.jsp</a></li>
+                  </ul>
+                </td>
+                <td><a href="sources/helloJsp.jsp.html">helloJsp.jsp</a><br>
+                  <a href="sources/NameBean.java.html">com.examples.lesson07.bean.NameBean</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li><a href="helloJspScriptless.jsp?name=jsp-scriptless">/helloJspScriptless.jsp?name=servlet</a></li>
+                    <li><a href="helloJspScriptless.jsp?name=john">/helloJspScriptless.jsp?name=john</a></li>
+                    <li><a href="helloJspScriptless.jsp">/helloJspScriptless.jsp</a></li>
+                  </ul>
+                </td>
+                <td><a href="sources/helloJspScriptless.jsp.html">helloJspScriptless.jsp</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <h1>JSP lifecycle methods.</h1>
+          The following example demonstrates the lifecycle methods of a JSP.
+          <table>
+            <thead>
+              <tr>
+                <th>Example Link</th>
+                <th>Source code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2">
+                  <a href="lifecycle.jsp">lifecycle.jsp</a>
+                </td>
+                <td><a href="sources/lifecycle.jsp.html">lifecycle.jsp</a></td>
+              </tr>
+              <tr>
+                <td><a href="sources/web.xml.html">web.xml</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h1>JSP as error pages.</h1>
+          When handling exceptions or when you want to provide the user with
+          additional information:
+          <table>
+            <thead>
+              <tr>
+                <th>Example</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="ExceptionServlet">/ExceptionServlet</a></td>
+                <td><a href="sources/ExceptionServlet.java.html">com.examples.lesson07.servlets.ExceptionServlet</a></td>
+              </tr>
+              <tr>
+                <td><a href="ExceptionServlet">/ErrorServlet</a></td>
+                <td><a href="sources/ErrorServlet.java.html">com.examples.lesson07.servlets.ErrorServlet</a></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td><a href="sources/error.script.jsp.html">/error.script.jsp (with scriptlets)</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td><a href="sources/error.jsp.html">/error.jsp (No scriptlets)</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td><a href="sources/web.xml.html">/WEB-INF/web.xml</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>You may change which page to display (with or without scriptlets by
+          modifying the web.xml file)</p>
+
+          <h1>JSP a complete example.</h1>
+
+          <h2>Domain Model.</h2>
+          <p>In this example you have modeled a simple domain problem: A shopping site.</p>
+          <p>You are provided some classes that you must use to display data in your web pages using servlets, JSP or both.</p>
+          <h3>Domain Model classes</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Source code</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="sources/Product.java.html">com.examples.lesson07.model.Product</a></td>
+                <td>The product object, contains information about the product.</td>
+              </tr>
+              <tr>
+                <td><a href="sources/ProductCategory.java.html">com.examples.lesson07.model.ProductCategory</a></td>
+                <td>ProductCategory is a collection of products. It's used to group products.</td>
+              </tr>
+              <tr>
+                <td><a href="sources/ShoppingCart.java.html">com.examples.lesson07.model.ShoppingCart</a></td>
+                <td>The ShoppingCart class is used to track how many products are in your cart.</td>
+              </tr>
+              <tr>
+                <td><a href="sources/ProductServices.java.html">com.examples.lesson07.services.ProductServices</a></td>
+                <td>This is a service interface, it allows you to get all the ProductCategories</td>
+              </tr>
+              <tr>
+                <td><a href="sources/ProductServicesImpl.java.html">com.examples.lesson07.services.ProductServicesImpl</a></td>
+                <td>This is the implementation of the service interface.</td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>Using a Servlet as controller + view</h2>
+          <p>The following example uses the model classes and a Servlet as the view and the controller.</p>
+          <p>Note how the Servlet handles the request first adding or removing from the shopping cart and then displays the HTML of the page.</p>
+          <p>This is a bad idea because the HTML in the servlet is hard to maintain.</p>
+          <h3><a href="ShopServlet">/ShopServlet</a></h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Source code</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="sources/ShopServlet.java.html">com.examples.lesson07.servlets.ShopServlet</a></td>
+                <td>The complete servlet example using the model and dependency injection.</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h2>Using a JSP as controller + view</h2>
+          <p>The following example uses the model classes and a JSP page as the view and the controller.</p>
+          <p>Remember: JSP are servlets, they contain special tags that allows you to run Java code or obtain data from any web scope.</p>
+          <p>In this case the JSP uses Scriptlets, think of them as Java code inside HTML, note that while the HTML looks good the Java code inside can get hard to maintain.</p>
+          <h3><a href="shopJsp.jsp">/shopJsp.jsp</a></h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Source code</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="sources/shopJsp.jsp.html">shopJsp.jsp</a></td>
+                <td>The complete JSP example using the model.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Also note that Dependency Injection is not used, The use of CDI inside JSP is NOT ENCOURAGED and may not be supported.</p>
+
+          <h2>Using a Servlet as controller and JSP as view</h2>
+          <p>Using both technologies together may help you get the best of both. In this example you use the servlet to add or remove items and prepare the data for the JSP view.
+            The servlet does not have a single line of HTML.</p>
+          <p>The JSP uses Java Standard Tag Library (JSTL) tags and Expression Language (EL) to display the data stored in the request by the servlet.</p>
+          <p>Also note that the servlet takes all the processing of data and creates display objects for the JSP, this is a common practice for 
+            calculated data.</p>
+          <p>If you have to send a model object with additional data you may use this approach.</p>
+          <h3><a href="Shop">/Shop</a></h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Source code</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="sources/ShopServletController.java.html">com.examples.lesson07.servlets.ShopServletController</a></td>
+                <td>The controller servlet that adds and removes items and prepares the data for the view.</td>
+              </tr>
+              <tr>
+                <td><a href="sources/shopView.jsp.html">shopView.jsp</a></td>
+                <td>The JSP view using JSTL and EL.</td>
+              </tr>
+              <tr>
+                <td><a href="sources/ProductCategoryView.java.html">com.examples.lesson07.view.ProductCategoryView</a></td>
+                <td>This is a ProductCategory wrapper that uses a list of ProductView instead of Products.</td>
+              </tr>
+              <tr>
+                <td><a href="sources/ProductView.java.html">com.examples.lesson07.view.ProductView</a></td>
+                <td>This is a wrapper for the Product object that adds the quantity of ordered products.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Note that the view objects are created and populated in the Servlet.</p>
+        </td>
+        <td style="text-align: left; vertical-align: top" id="cheatSheet">
+          <h2>JSP CheatSheet!</h2>
+          <h3>JSP Scripting</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>What is it for?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>&lt;%&nbsp;%&gt;</td>
+                <td>Java scriptlet. Any valid Java code can be placed inside this tag.
+                  The following objects are available:
+                  <ul>
+                    <li><span class="info" title="tt-request"><b>request</b></span><div id="tt-request">The HttpServletRequest object for this call.</div></li>
+                    <li><span class="info" title="tt-response"><b>response</b></span><div id="tt-response"> The HttpServletResponse object for this call.</div></li>
+                    <li><span class="info" title="tt-out"><b>out</b></span><div id="tt-out"> The PrintWriter object from the response.</div></li>
+                    <li><span class="info" title="tt-session"><b>session</b></span><div id="tt-session"> The HttpSession object from the request.</div></li>
+                    <li><span class="info" title="tt-application"><b>application</b></span><div id="tt-application"> The ServletContext object for the application.</div></li>
+                    <li><span class="info" title="tt-config"><b>config</b></span><div id="tt-config"> The HttpServletRequest object for this call.</div></li>
+                    <li><span class="info" title="tt-pageContext"><b>pageContext</b></span><div id="tt-pageContext"> A PageContext object is a special scope that applies only for the current page 
+                        (it is not shared between included pages).</div></li>
+                  </ul></td>
+              </tr>
+              <tr>
+                <td>&lt;%!&nbsp;%&gt;</td>
+                <td>JSP declaration, used for:
+                  <ul>
+                    <li>Methods</li>
+                    <li>Constants</li>
+                    <li>Instance variables</li>
+                  </ul></td>
+              </tr>
+              <tr>
+                <td>&lt;%@&nbsp;%&gt;</td>
+                <td>JSP directive. A directive might be:<br>
+                  
+                  <ul>
+                    <li><span class="info" title="tt-page"><b>page</b></span><div id="tt-page">The page directive defines attributes for the page like the encoding or the content type.</div></li>
+                    <li><span class="info" title="tt-include"><b>include</b></span><div id="tt-include">The include directive includes the referred page at the point this directive its used.</div></li>
+                    <li><span class="info" title="tt-import"><b>import</b></span><div id="tt-import">The import directive adds an import statement to the compiled JSP.</div></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>&lt;%=&nbsp;%&gt;</td>
+                <td>JSP Expression:<br>
+                  The Java code inside must evaluate to a value and that will be printed in the page.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>JSP tags</h2>
+          <table>
+            <tr>
+              <th>&lt;jsp:useBean&gt;</th>
+            </tr>
+            <tr>
+              <td>This tag allows you to create or use a bean in a given scope.<br>
+                After using this tag, the bean is available as the name given in this tag.</td>
+            </tr>
+            <tr>
+              <th>&lt;jsp:setProperty&gt;</th>
+            </tr>
+            <tr>
+              <td>This tag allows you to set a value to a bean, this value can be a request parameter using the param attribute of this tag.
+                <br> The bean must be declared previously using the useBean tag.</td>
+            </tr>
+            <tr>
+              <th>&lt;jsp:getProperty&gt;</th>
+            </tr>
+            <tr>
+              <td>The get property tag prints the value of property inside a bean in the page.</td>
+            </tr>
+            <tr>
+              <th>&lt;jsp:include&gt;</th>
+            </tr>
+            <tr>
+              <td>This tag allows you to include a page at the point where the tag is. It is similar to use the &lt;%@include tag.</td>
+            </tr>
+          </table>
+          Instead of using the JSP scriptlet tags you can use JSP tags to enclose Java code.
+          <table>
+            <tr>
+              <th>&lt;jsp:scriptlet&gt;</th>
+            </tr>
+            <tr>
+              <td>This tag contains Java code just as the &lt;%&nbsp;%&gt; tag does.</td>
+            </tr>
+            <tr>
+              <th>&lt;jsp:declaration&gt;</th>
+            </tr>
+            <tr>
+              <td>This tag contains Java declarations for constants, instance variables or methods just as the &lt;%!&nbsp;%&gt; tag does.</td>
+            </tr>
+            <tr>
+              <th>&lt;jsp:expression&gt;</th>
+            </tr>
+            <tr>
+              <td>This tag contains Java expressions that evaluate to a value just as the &lt;%=&nbsp;%&gt; tag does.</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+
+
+
+    <h1><a href="quiz/list">Lesson 07 - Quiz</a></h1>
+    <ul>
+      <li><a href="quiz/list">Take Quiz</a></li>
+      <li><a href="quiz/score">Quiz Score</a></li>
+      <li><a href="quiz/reset">Reset Quiz</a></li>
+    </ul>
+  </body>
+</html>

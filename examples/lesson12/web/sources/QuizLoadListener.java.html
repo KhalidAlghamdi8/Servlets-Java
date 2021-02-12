@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>QuizLoadListener.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST2 {font-style: italic}
+.ST0 {font-weight: bold}
+.ST1 {color: #009900}
+.character {color: #ce7b00}
+.ST3 {color: #009900; font-style: italic}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\listeners\QuizLoadListener.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.listeners;
+
+<span class="keyword-directive">import</span> com.examples.lesson12.model.Quiz;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizCollection;
+<span class="keyword-directive">import</span> com.examples.lesson12.services.QuizXmlParser;
+<span class="keyword-directive">import</span> java.io.InputStream;
+<span class="keyword-directive">import</span> java.util.logging.Level;
+<span class="keyword-directive">import</span> java.util.logging.Logger;
+<span class="keyword-directive">import</span> javax.servlet.ServletContext;
+<span class="keyword-directive">import</span> javax.servlet.ServletContextEvent;
+<span class="keyword-directive">import</span> javax.servlet.ServletContextListener;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebListener;
+
+@WebListener()
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">QuizLoadListener</span> <span class="keyword-directive">implements</span> ServletContextListener {
+
+  <span class="keyword-directive">private</span> QuizXmlParser <span class="ST1">quizXmlParser</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">QuizLoadListener</span>() {
+    <span class="keyword-directive">try</span> {
+      <span class="ST1">quizXmlParser</span> = <span class="keyword-directive">new</span> QuizXmlParser();
+    } <span class="keyword-directive">catch</span> (Exception ex) {
+      Logger.<span class="ST2">getLogger</span>(QuizLoadListener.<span class="keyword-directive">class</span>.getName()).log(Level.<span class="ST3">SEVERE</span>, <span class="keyword-directive">null</span>, ex);
+    }
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">contextInitialized</span>(ServletContextEvent sce) {
+    ServletContext context = sce.getServletContext();
+    Iterable&lt;QuizConfig&gt; configs = QuizConfig.<span class="ST2">create</span>(context.getResourceAsStream(<span class="character">&quot;</span><span class="character">/WEB-INF/quiz-config.xml</span><span class="character">&quot;</span>));
+    QuizCollection quizzes = <span class="keyword-directive">new</span> QuizCollection();
+    <span class="keyword-directive">int</span> quizId = 1;
+    <span class="keyword-directive">for</span> (QuizConfig quizConfig : configs) {
+      Quiz quiz = <span class="keyword-directive">new</span> Quiz(quizId, quizConfig.getName());
+      quiz.setDescription(quizConfig.getDescription());
+      quiz.setHowManyToAsk(quizConfig.getQuestionCount());
+      <span class="keyword-directive">for</span> (String source : quizConfig.getSources()) {
+        <span class="keyword-directive">try</span> {
+          InputStream quizStream = context.getResourceAsStream(source);
+          <span class="ST1">quizXmlParser</span>.addQuestionsToQuiz(quiz, quizStream);
+        } <span class="keyword-directive">catch</span> (Exception ex) {
+          Logger.<span class="ST2">getLogger</span>(QuizLoadListener.<span class="keyword-directive">class</span>.getName()).log(Level.<span class="ST3">SEVERE</span>, <span class="character">&quot;</span><span class="character">ERROR IN: {0}</span><span class="character">&quot;</span>, source);
+          Logger.<span class="ST2">getLogger</span>(QuizLoadListener.<span class="keyword-directive">class</span>.getName()).log(Level.<span class="ST3">SEVERE</span>, <span class="keyword-directive">null</span>, ex);
+        }
+      }
+      quizzes.addQuiz(quiz);
+      quizId++;
+    }
+    context.setAttribute(<span class="character">&quot;</span><span class="character">quizzes</span><span class="character">&quot;</span>, quizzes);
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">contextDestroyed</span>(ServletContextEvent sce) {
+    ServletContext context = sce.getServletContext();
+    context.removeAttribute(<span class="character">&quot;</span><span class="character">quizzes</span><span class="character">&quot;</span>);
+  }
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

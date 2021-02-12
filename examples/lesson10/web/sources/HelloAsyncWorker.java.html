@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>HelloAsyncWorker.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST2 {font-style: italic}
+      .ST0 {font-weight: bold}
+      .comment {color: #969696}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .ST3 {color: #009900; font-style: italic}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson10\src\java\com\examples\lesson10\servlets\workers\HelloAsyncWorker.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson10.servlets.workers;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> java.util.logging.Level;
+<span class="keyword-directive">import</span> java.util.logging.Logger;
+<span class="keyword-directive">import</span> javax.servlet.AsyncContext;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="info" title="tt-runnable"><span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">HelloAsyncWorker</span> <span class="keyword-directive">implements</span> Runnable {</span>
+
+<span class="info" title="tt-constructor">  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> AsyncContext <span class="ST1">asyncContext</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">HelloAsyncWorker</span>(AsyncContext asyncContext) {
+    <span class="keyword-directive">this</span>.<span class="ST1">asyncContext</span> = asyncContext;
+  }</span>
+
+<span class="info" title="tt-run">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">run</span>() {
+<span class="info" title="tt-sleep">    <span class="keyword-directive">try</span> {
+      <span class="comment">//wait 2 seconds to process the request/response</span>
+      Thread.<span class="ST2">sleep</span>(2000);
+    } <span class="keyword-directive">catch</span> (InterruptedException ex) {
+      Logger.<span class="ST2">getLogger</span>(HelloAsyncWorker.<span class="keyword-directive">class</span>.getName()).log(Level.<span class="ST3">SEVERE</span>, <span class="keyword-directive">null</span>, ex);
+    }</span>
+
+<span class="info" title="tt-getResponse">    HttpServletResponse response = (HttpServletResponse) <span class="ST1">asyncContext</span>.getResponse();</span>
+
+    <span class="keyword-directive">try</span> {
+<span class="info" title="tt-print">      PrintWriter out = response.getWriter();
+      out.println(<span class="character">&quot;</span><span class="character"> World </span><span class="character">&quot;</span>);
+      out.close();</span>
+    } <span class="keyword-directive">catch</span> (IOException ex) {
+      Logger.<span class="ST2">getLogger</span>(HelloAsyncWorker.<span class="keyword-directive">class</span>.getName()).log(Level.<span class="ST3">SEVERE</span>, <span class="keyword-directive">null</span>, ex);
+    } <span class="keyword-directive">finally</span> {
+<span class="info" title="tt-complete">      <span class="ST1">asyncContext</span>.complete();</span>
+    }
+  }</span>
+}
+
+    </pre>
+    <div id="tt-runnable">
+      This class is a task that runs in a separate thread.<br>
+      Because of that, it needs to implement Runnable or Callable&lt;T&gt;.<br>
+      When implementing Runnable, the run method is executed.
+    </div>
+    <div id="tt-constructor">
+      A new task is constructed for every request that needs to be handled.
+      Because of this, the asyncContext may be stored inside this object.
+    </div>
+    <div id="tt-run">
+      The run() method is executed by the ExecutorService in a separate thread.
+    </div>
+    <div id="tt-sleep">
+      Sleep for 2 seconds to create a delay in the response.
+    </div>
+    <div id="tt-getResponse">
+      Obtain the response object from the asyncContext.<br>
+      The asyncContext object stores a ServletResponse -- cast it to a HttpServletResponse object to use
+      the methods specific for HTTP servlet responses.
+    </div>
+    <div id="tt-print">
+      Print as you would in a normal servlet. You may also redispatch the request to a view JSP that
+      renders the response.
+    </div>
+    <div id="tt-complete">
+      When the process finishes (either successfuly or failing), a call to asyncContext.complete() closes the
+      resources from the server to handle this request. Further writing to the response is not possible.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

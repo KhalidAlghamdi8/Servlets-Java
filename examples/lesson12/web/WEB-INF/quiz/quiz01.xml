@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION TYPE="mcone" TITLE="Which is true about CGI Programs">
+    <ANSWER ISCORRECT="false">They are run in different threads in the web server.</ANSWER>
+    <ANSWER ISCORRECT="false">Are embeded in the web server.</ANSWER>
+    <ANSWER ISCORRECT="true">They run in separate processes.</ANSWER>
+    <ANSWER ISCORRECT="true">They do not crash the web server process.</ANSWER>
+  </QUESTION>
+  <QUESTION TYPE="mcone" TITLE="Which is true about Java Servlets">
+    <ANSWER ISCORRECT="true">They are run in a single process.</ANSWER>
+    <ANSWER ISCORRECT="false">Are completely thread safe.</ANSWER>
+    <ANSWER ISCORRECT="false">Can be run on multiple processes.</ANSWER>
+    <ANSWER ISCORRECT="true">Have security and error handling features.</ANSWER>
+  </QUESTION>
+  <QUESTION TYPE="mcone" TITLE="What is the function of the HTTP protocol?">
+    <ANSWER ISCORRECT="true">Transfer data between a client and a server.</ANSWER>
+    <ANSWER ISCORRECT="false">Control Server Features.</ANSWER>
+    <ANSWER ISCORRECT="false">Mark up files.</ANSWER>
+    <ANSWER ISCORRECT="false">Optimize network communications between a client and a server.</ANSWER>
+  </QUESTION>
+  <QUESTION TYPE="mcone" TITLE="What is a characteristic of the HTTP protocol?">
+    <ANSWER ISCORRECT="true">Is a stateless protocol.</ANSWER>
+    <ANSWER ISCORRECT="false">Is a routing protocol.</ANSWER>
+    <ANSWER ISCORRECT="false">Is a network protocol.</ANSWER>
+    <ANSWER ISCORRECT="false">Is a stateful protocol.</ANSWER>
+  </QUESTION>
+</POLL>

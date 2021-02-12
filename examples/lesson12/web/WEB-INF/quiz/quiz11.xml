@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      Which java code snippet define roles "MANAGER" and "EMPLOYEE" in a given application?
+    </TEXT>
+    <ANSWER ISCORRECT="true">@DeclareRoles({ "MANAGER", "EMPLOYEE" })
+      public class MyServlet extends HttpServlet {
+    </ANSWER>
+    <ANSWER ISCORRECT="false">@SecurityRoles({ "MANAGER", "EMPLOYEE" })
+      public class MyServlet extends HttpServlet {
+    </ANSWER>
+    <ANSWER ISCORRECT="false">@DeclareRoles("MANAGER")
+      @DeclareRoles("EMPLOYEE")
+      public class MyServlet extends HttpServlet {
+    </ANSWER>
+    <ANSWER ISCORRECT="false">@DeclareRole("MANAGER")
+      @DeclareRole("EMPLOYEE")
+      public class MyServlet extends HttpServlet {
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which java code snippet checks whether the user is of the role "MANAGER"for a given HttpServletRequest, httpServletRequest?    
+    </TEXT>
+    <ANSWER ISCORRECT="true">httpServletRequest.isUserInRole("MANAGER");</ANSWER>
+    <ANSWER ISCORRECT="false">httpServletRequest.isCallerInRole("MANAGER");</ANSWER>
+    <ANSWER ISCORRECT="false">httpServletRequest.isPrincipalInRole("MANAGER");</ANSWER>
+    <ANSWER ISCORRECT="false">httpServletRequest.isAuthenticatedUserInRole("MANAGER");</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which of the following annotations can be used in a servlet class?
+    </TEXT>
+    <ANSWER ISCORRECT="true">@javax.annotation.Resource</ANSWER>
+    <ANSWER ISCORRECT="true">@javax.annotation.PreDestroy</ANSWER>
+    <ANSWER ISCORRECT="true">@javax.annotation.security.RunAs</ANSWER>
+    <ANSWER ISCORRECT="false">@javax.annotation.security.RolesAllowed</ANSWER>
+    <ANSWER ISCORRECT="true">@javax.servlet.annotation.WebServlet</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+<![CDATA[  
+      Which element of a web application deployment descriptor <web-resource-collection> element is used to specify a HTTP method to which the corresponding <security-constraint> will not apply?
+]]>    
+    </TEXT>
+    <ANSWER ISCORRECT="false"><![CDATA[ <exclude-http-method> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <neglect-http-method> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[ <http-method-omission> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <http-method-excluded> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <exceptional-http-method> ]]>
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which statements are true about the security-related tags in a valid Java EE deployment descriptor?
+    </TEXT>
+    <ANSWER ISCORRECT="false"><![CDATA[ Every <security-constraint> tag must have at least one <http-method> tag. ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[ A <security-constraint> tag can have many <web-resource-collection> tags. ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ A given <auth-constraint> tag can apply to only one <web-resource-collection> tag. ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ A given <web-resource-collection> tag can contain from zero to many <url-pattern> tags. ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[ It is possible to construct a valid <security-constraint> tag such that, for a given resource, no user roles can access that resource. ]]>
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which two are valid annotations so that only authenticated users of role "MANAGER" are permitted to access the http method POST?    
+    </TEXT>
+    <ANSWER ISCORRECT="false">@ServletSecurity(@HttpConstraint(value="POST", rolesAllowed={ "MANAGER" }))</ANSWER>
+    <ANSWER ISCORRECT="true">@ServletSecurity(httpMethodConstraints={ 
+      @HttpMethodConstraint(value="POST", rolesAllowed={ "MANAGER" }) })
+    </ANSWER>
+    <ANSWER ISCORRECT="false">@ServletSecurity(@HttpConstraint, httpMethodConstraints={
+      @HttpMethodConstraint(value="POST", rolesAllowed={ "MANAGER" }) })
+    </ANSWER>
+    <ANSWER ISCORRECT="true">@ServletSecurity(value=@HttpConstraint, httpMethodConstraints={
+      @HttpMethodConstraint(value="POST", rolesAllowed={ "MANAGER" }) })
+    </ANSWER>
+  </QUESTION>
+  
+  <QUESTION>
+    <TEXT>
+      Given the security constraint in a DD:
+      <TEXT CODE="true">
+<![CDATA[  
+101. <security-constraint>
+102.   <web-resource-collection>
+103.     <web-resource-name>Foo</web-resource-name>
+104.     <url-pattern>/Bar/Baz/*</url-pattern>
+105.     <http-method>POST</http-method>
+106.   </web-resource-collection>
+107.   <auth-constraint>
+108.     <role-name>DEVELOPER</role-name>
+109.   </auth-constraint>
+110. </security-constraint>
+]]>
+      </TEXT>
+      And given that "MANAGER" is a valid role-name, which are true for this security constraint?
+    </TEXT>
+    <ANSWER ISCORRECT="true">MANAGER can do a GET on resources in the /Bar/Baz directory.</ANSWER>
+    <ANSWER ISCORRECT="false">MANAGER can do a POST on any resource in the /Bar/Baz directory.</ANSWER>
+    <ANSWER ISCORRECT="true">MANAGER can do a TRACE on any resource in the /Bar/Baz directory. </ANSWER>
+    <ANSWER ISCORRECT="true">DEVELOPER can do a GET on resources in the /Bar/Baz directory.</ANSWER>
+    <ANSWER ISCORRECT="false">DEVELOPER can do only a POST on resources in the /Bar/Baz directory.</ANSWER>
+    <ANSWER ISCORRECT="true">DEVELOPER can do a TRACE on any resource in the /Bar/Baz directory.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which java code snippet in a servlet validates the provided username and password?    
+    </TEXT>
+    <ANSWER ISCORRECT="false">login(username, password);</ANSWER>
+    <ANSWER ISCORRECT="false">authenticate(username, password);</ANSWER>
+    <ANSWER ISCORRECT="true">httpServletRequest.login(username, password);</ANSWER>
+    <ANSWER ISCORRECT="false">httpServletRequest.authenticate(username, password);</ANSWER>
+    <ANSWER ISCORRECT="false">httpServletRequest.getServletContext().login(username, password);</ANSWER>
+    <ANSWER ISCORRECT="false">httpServletRequest.getServletContext().authenticate(username, password);</ANSWER>
+  </QUESTION>
+
+</POLL>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      Which EL expression returns true if no session has been established with the current client?
+    </TEXT>
+    <ANSWER ISCORRECT="true">${not(pageContext.session)}</ANSWER>
+    <ANSWER ISCORRECT="false">${not(requestScope.session)}</ANSWER>
+    <ANSWER ISCORRECT="false">${requestScope.sessions.this}</ANSWER>
+    <ANSWER ISCORRECT="false">${sessionScope.empty}</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Given an HttpServletRequest request and an HttpServletResponse response
+      <TEXT CODE="true">
+41. HttpSession session = null;
+42. // insert code here
+43. if(session == null) {
+44.   // do something if session does not exist
+45. } else {
+46.   // do something if session exists
+47. }
+      </TEXT>
+      To implement the design intent, which statement must be inserted at line 42?
+    </TEXT>
+    <ANSWER ISCORRECT="true">session = request.getSession(false);</ANSWER>
+    <ANSWER ISCORRECT="false">session = response.getSession();</ANSWER>
+    <ANSWER ISCORRECT="false">session = request.getSession();</ANSWER>
+    <ANSWER ISCORRECT="false">session = request.getSession(true);</ANSWER>
+    <ANSWER ISCORRECT="false">session = request.getSession("jsessionid");</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Users of your web application have requested that they should be able to set the duration of their sessions. So for example, one user might want a webapp to stay connected for an hour rather than the webapp's default of fifteen minutes; another user might want to stay connected for a whole day.
+      Furthermore, you have a special login servlet that performs user authentication and retrieves the User object from the database. You want to augment this code to set up the user's specified session duration.
+      Which code snippet in the login servlet will accomplish this goal?
+    </TEXT>
+    <ANSWER ISCORRECT="true">
+      User user = // retrieve the User object from the database
+      session.setMaxInactiveInterval(user.getSessionDuration());
+    </ANSWER>
+    <ANSWER ISCORRECT="false">
+      User user = // retrieve the User object from the database
+      session.setDurationInterval(user.getSessionDuration());
+    </ANSWER>
+    <ANSWER ISCORRECT="false">
+      User user = // retrieve the User object from the database
+      session.setMaxDuration(user.getSessionDuration());
+    </ANSWER>
+    <ANSWER ISCORRECT="false">
+      User user = // retrieve the User object from the database
+      session.setInactiveInterval(user.getSessionDuration());
+    </ANSWER>
+    <ANSWER ISCORRECT="false">
+      User user = // retrieve the User object from the database
+      session.setDuration(user.getSessionDuration());
+    </ANSWER>
+    <ANSWER ISCORRECT="false">
+      User user = // retrieve the User object from the database
+      session.setMaxDurationInterval(user.getSessionDuration());
+    </ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which Java expression can be used to check whether the web container is currently configured to track sessions via URL rewriting?
+    </TEXT>
+    <ANSWER ISCORRECT="true">servletContext.getEffectiveSessionTrackingModes().contains(SessionTrackingMode.URL)</ANSWER>
+    <ANSWER ISCORRECT="false">servletContext.getSessionCookieConfig().isHttpOnly()</ANSWER>
+    <ANSWER ISCORRECT="false">servletContext.getSessionCookieConfig().isSecure()</ANSWER>
+    <ANSWER ISCORRECT="false">servletContext.getDefaultSessionTrackingModes().contains(SessionTrackingMode.URL)</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      A web application uses a cookie to track a client as it navigates through the pages that constitute the application.
+      Which code snippet can be used by the web application to reduce the chance of a cross-site scripting attack by setting some property of the cookie before returning it to the client?  
+    </TEXT>
+    <ANSWER ISCORRECT="true">cookie.setHttpOnly(true)</ANSWER>
+    <ANSWER ISCORRECT="false">cookie.setMaxAge(3600)</ANSWER>
+    <ANSWER ISCORRECT="false">cookie.setPath("/")</ANSWER>
+    <ANSWER ISCORRECT="false">cookie.setSecure(true)</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      You are creating a web form with this HTML:
+      <TEXT CODE="true"><![CDATA[
+11. <form action="sendOrder.jsp">
+12.    <input type="text" name="creditCard">
+13.    <input type="text" name="expirationDate">
+14.    <input type="submit">
+15. </form>
+]]>
+      </TEXT>
+      Which HTTP method is used when sending this request from the browser?
+    </TEXT>
+    <ANSWER ISCORRECT="true">GET</ANSWER>
+    <ANSWER ISCORRECT="false">POST</ANSWER>
+    <ANSWER ISCORRECT="false">PUT</ANSWER>
+    <ANSWER ISCORRECT="false">SEND</ANSWER>
+    <ANSWER ISCORRECT="false">FORM</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Given an HttpServletRequest request and HttpServletResponse response, which sets a cookie "username" with the value "joe" in a servlet?
+    </TEXT>
+    <ANSWER ISCORRECT="false">request.addCookie("username", "joe")</ANSWER>
+    <ANSWER ISCORRECT="false">request.setCookie("username", "joe")</ANSWER>
+    <ANSWER ISCORRECT="false">response.addCookie("username", "joe")</ANSWER>
+    <ANSWER ISCORRECT="false">request.addHeader(new Cookie("username", "joe"))</ANSWER>
+    <ANSWER ISCORRECT="false">request.addCookie(new Cookie("username", "joe"))</ANSWER>
+    <ANSWER ISCORRECT="true">response.addCookie(new Cookie("username", "joe"))</ANSWER>
+    <ANSWER ISCORRECT="false">response.addHeader(new Cookie("username", "joe"))</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Given the definition of MyServlet:
+      <TEXT CODE="true">
+11. public class MyServlet extends HttpServlet {
+12.   public void service(HttpServletRequest request,
+13.                       HttpServletResponse response) 
+14.            throws ServletException, IOException {     
+15.     HttpSession session = request.getSession();
+16      session.setAttribute("myAttribute","myAttributeValue");
+17.     session.invalidate();
+18.     response.getWriter().println("value=" + 
+19.                     session.getAttribute("myAttribute"));
+20.   }
+21. }
+      </TEXT>
+      What is the result when a request is sent to MyServlet?
+    </TEXT>
+    <ANSWER ISCORRECT="true">An IllegalStateException is thrown at runtime.</ANSWER>
+    <ANSWER ISCORRECT="false">An InvalidSessionException is thrown at runtime.</ANSWER>
+    <ANSWER ISCORRECT="false">The string "value=null" appears in the response stream.</ANSWER>
+    <ANSWER ISCORRECT="false">The string "value=myAttributeValue" appears in the response stream.</ANSWER>
+  </QUESTION>
+  
+  <QUESTION TYPE="mcone" TITLE="When accessing a page using your web browser address bar what HTTP method is used?">
+    <ANSWER ISCORRECT="true">GET</ANSWER>
+    <ANSWER ISCORRECT="false">POST</ANSWER>
+    <ANSWER ISCORRECT="false">PUT</ANSWER>
+    <ANSWER ISCORRECT="false">DELETE</ANSWER>
+    <ANSWER ISCORRECT="false">TRACE</ANSWER>
+    <ANSWER ISCORRECT="false">OPTIONS</ANSWER>
+    <ANSWER ISCORRECT="false">HEAD</ANSWER>
+    <ANSWER ISCORRECT="false">CONNECT</ANSWER>
+  </QUESTION>
+  
+  <QUESTION TYPE="mcone" TITLE="What HttpServlet methods do you use to get parameters?">
+    <ANSWER ISCORRECT="true">request.getParameter</ANSWER>
+    <ANSWER ISCORRECT="true">request.getParameterValues</ANSWER>
+    <ANSWER ISCORRECT="false">request.getAttribute</ANSWER>
+    <ANSWER ISCORRECT="false">request.getAttributeValues</ANSWER>
+    <ANSWER ISCORRECT="false">request.getHeader</ANSWER>
+  </QUESTION>
+
+</POLL>

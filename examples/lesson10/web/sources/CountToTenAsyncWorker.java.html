@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>CountToTenAsyncWorker.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST3 {font-style: italic}
+      .ST0 {font-weight: bold}
+      .ST4 {color: #ce7b00; font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .ST2 {color: #009900; font-style: italic}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson10\src\java\com\examples\lesson10\servlets\workers\CountToTenAsyncWorker.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson10.servlets.workers;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> java.util.logging.Level;
+<span class="keyword-directive">import</span> java.util.logging.Logger;
+<span class="keyword-directive">import</span> javax.servlet.AsyncContext;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">CountToTenAsyncWorker</span> <span class="keyword-directive">implements</span> Runnable {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> AsyncContext <span class="ST1">asyncContext</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">CountToTenAsyncWorker</span>(AsyncContext asyncContext) {
+    <span class="keyword-directive">this</span>.<span class="ST1">asyncContext</span> = asyncContext;
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">run</span>() {
+    <span class="keyword-directive">try</span> {
+      <span class="keyword-directive">for</span> (<span class="keyword-directive">int</span> i = 1; i &lt; 11; i++) {
+        System.<span class="ST2">out</span>.println(<span class="character">&quot;</span><span class="character">Counting: </span><span class="character">&quot;</span> + i);
+        PrintWriter writer = <span class="ST1">asyncContext</span>.getResponse().getWriter();
+        writer.write(Integer.<span class="ST3">toString</span>(i) + <span class="character">&quot;</span><span class="ST4">\n</span><span class="character">&quot;</span>);
+        writer.flush();
+        Thread.<span class="ST3">sleep</span>(1000);
+      }
+    } <span class="keyword-directive">catch</span> (IOException ex) {
+      Logger.<span class="ST3">getLogger</span>(CountToTenAsyncWorker.<span class="keyword-directive">class</span>.getName()).log(Level.<span class="ST2">SEVERE</span>, <span class="keyword-directive">null</span>, ex);
+    } <span class="keyword-directive">catch</span> (InterruptedException ex) {
+      Logger.<span class="ST3">getLogger</span>(CountToTenAsyncWorker.<span class="keyword-directive">class</span>.getName()).log(Level.<span class="ST2">SEVERE</span>, <span class="keyword-directive">null</span>, ex);
+    } <span class="keyword-directive">finally</span> {
+      <span class="ST1">asyncContext</span>.complete();
+    }
+  }
+}</span>
+
+    </pre>
+    <div id="tt-overview">
+      This is a runnable class that counts to ten and then completes the asyncContext.<br>
+      To enable streaming, the writer is flushed every time a number is written.<br>
+      <pre>PrintWriter writer = <span class="ST1">asyncContext</span>.getResponse().getWriter();
+writer.write(Integer.<span class="ST3">toString</span>(i) + <span class="character">&quot;</span><span class="ST4">\n</span><span class="character">&quot;</span>);
+writer.flush();</pre>
+      Note that the writer is not closed and the asyncContext is completed instead.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

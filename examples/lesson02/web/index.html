@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+    <style type="text/css">
+      ul{border-left: solid 1px #999999;}
+    </style>
+  </head>
+  <body>
+    <script src="res/jquery.js" type="text/javascript"></script>
+    <script src="res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="res/tooltip.js" type="text/javascript"></script>
+    <h1>Lesson 02 - Web Application Essentials - Examples.</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Source code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="HelloServlet">/HelloServlet</a></td>
+          <td><a href="sources/HelloServlet.java.html">com.examples.lesson02.HelloServlet</a></td>
+        </tr>
+        <tr>
+          <td><a href="helloJsp.jsp">/helloJsp.jsp</a></td>
+          <td><a href="sources/helloJsp.jsp.html">/helloJsp.jsp</a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><b>Simple servlet/jsp example.</b></td>
+        </tr>
+        <tr>
+          <td rowspan="2"><a href="MyServlet">/MyServlet</a></td>
+          <td><a href="sources/MyServlet.java.html">com.examples.lesson02.MyServlet</a></td>
+        </tr>
+        <tr>
+          <td><a href="sources/myJsp.jsp.html">/myJsp.jsp</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <h2>WAR file (Web Application folder) Structure</h2>
+    <p>Here is a review of the structure of a deployed Web Application as a WAR file.</p>
+    <p>A WAR file is a zipped file with the files and folders required for your Web Application to work.</p>
+    <ul>
+      <li><span class="info" title="tt-webApp"><img src="icons/webProject.gif">webApp.war</span>
+        <div id="tt-webApp">1</div><br>
+        <div class="info" title="tt-webInf">
+          <ul>
+            <li><img src="icons/configFolder.gif">WEB-INF
+              <ul>
+                <li><span class="info" title="tt-classes"><img src="icons/packageFolder.gif">classes</span><br>
+                  <div class="info" title="tt-classes">
+                    <ul>
+                      <li><img src="icons/package.gif">Java Packages as folders
+                        <ul>
+                          <li><img src="icons/classFile.gif">Java Class files</li>
+                          <li><img src="icons/classFile.gif">Java Servlets</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <div id="tt-classes">The classes folder contains the compiled Java classes for the application.</div>
+                </li>
+                <li><span class="info" title="tt-lib"><img src="icons/libFolder.gif">lib</span><br>
+                  <div class="info" title="tt-lib">
+                    <ul>
+                      <li><img src="icons/jarFile.gif">java jar files</li>
+                    </ul>
+                  </div>
+                  <div id="tt-lib">The lib folder contains Java jar libraries. Classes inside jar files will be available in the application later in this course.</div>
+                </li>
+                <li><span class="info" title="tt-private"><img src="icons/libFolder.gif">other private folders</span><br>
+                  <div class="info" title="tt-private">
+                    <ul>
+                      <li><img src="icons/file.gif">private files</li>
+                    </ul>
+                  </div>
+                  <div id="tt-private">
+                    You can have more folders or files inside the web.xml folder. Files inside this folder are not available directly from a web browser.<br>
+                    Trying to access any resource inside this folder from a web browser (using http://localhost/WEB-INF/url), will trigger a HTTP 404 error response.<br>
+                    The files inside WEB-INF are available for Java classes usually for configuring the application.</div>
+                </li>
+                <li><span class="info" title="tt-webxml"><img src="icons/configFile.gif">web.xml</span>
+                  <div id="tt-webxml">
+                    The web.xml file is the main configuration file for the web Application.<br>
+                    This file is not required if using annotations to configure web components, but you are likely to find it useful since some configuration options are 
+                    only setup in this file.
+                  </div></li>
+                <li><span class="info" title="tt-weblogic"><img src="icons/xmlFile.gif">weblogic.xml</span>
+                  <div id="tt-weblogic">
+                    The weblogic.xml file is a server-specific configuration file. <br>
+                    As in with Oracle's WebLogic Server configuration, you can find server-specific configurations for other servers.<br>
+                    These files are likely named differently, allowing you to have multiple configurations depending on the target server.
+                  </div></li>
+                <li><span class="info" title="tt-otherConfig"><img src="icons/configFile.gif">other config files</span>
+                  <div id="tt-otherConfig">
+                    The WEB-INF folder usually stores more configuration files for either segments of the application or other frameworks<br>
+                    Some example files:
+                    <ul>
+                      <li>beans.xml : Configures Contexts and Dependency Injection</li>
+                      <li>faces-config.xml : for Java Server Faces Configuration</li>
+                    </ul>
+                  </div></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div id="tt-webInf">
+          The WEB-INF folder is a private configuration folder that cannot be accessed by browsers using a URL address.<br>
+          The contents of this folder are used by the server and Java classes for configuration purposes. <br>
+          They can also be used for private resources, like localized string files and secured web pages.
+        </div><br>
+
+        <div class="info" title="tt-metaInf">
+          <ul>
+            <li><img src="icons/configFolder.gif">META-INF
+              <ul>
+                <li><img src="icons/file.gif">MANIFEST.MF</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div id="tt-metaInf">
+          The META-INF folder is another private folder that contains the JAR manifest file and metadata information for the bundle.<br>
+          Some frameworks may use this folder to store configurations.
+        </div><br>
+
+        <div class="info" title="tt-webFolder">
+          <ul>
+            <li><img src="icons/folder.gif">images
+              <ul>
+                <li><img src="icons/imageFile.gif">image1.gif</li>
+                <li><img src="icons/imageFile.gif">image2.jpg</li>
+              </ul>
+            </li>
+            <li><img src="icons/folder.gif">styles
+              <ul>
+                <li><img src="icons/cssFile.gif">style.css</li>
+                <li><img src="icons/imageFile.gif">background.jpg</li>
+              </ul>
+            </li>
+            <li><img src="icons/folder.gif">adminPages
+              <ul>
+                <li><img src="icons/webFile.gif">index.html</li>
+                <li><img src="icons/jspFile.gif">admin.jsp</li>
+                <li><img src="icons/imageFile.gif">logo.jpg</li>
+              </ul>
+            </li>
+            <li><img src="icons/folder.gif">resources
+              <ul>
+                <li><img src="icons/jsFile.gif">scripts.js</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div id="tt-webFolder">
+          Files inside a WAR file are accessible by a web browser.<br>
+          The exceptions to this are the META-INF and WEB-INF folders.<br>
+          To keep a web application organized, you can use folders to store resources just as you would normally do in a web site.<br>
+          It is a good idea to keep application resources organized.
+        </div><br>
+        <div class="info" title="tt-webFiles">
+          <ul>
+            <li><img src="icons/cssFile.gif">homeStyles.css</li>
+            <li><img src="icons/imageFile.gif">topBg.jpg</li>
+            <li><img src="icons/webFile.gif">index.html</li>
+            <li><img src="icons/jspFile.gif">detailView.jsp</li>
+            <li><img src="icons/imageFile.gif">item.jpg</li>
+          </ul>
+        </div><div id="tt-webFiles">
+          Files inside the WAR file are accessible by a web browser.<br>
+          You can have all kind of files inside a WAR file and they will be usually sent to the browser.<br>
+          The exception to this rule are JSP files, which are dynamic files that may contain Java code that will be executed
+          in the server.
+        </div>
+      </li>
+    </ul>
+    <p>What about servlets?</p>
+    <p>Servlets are Java classes that are mapped to a resource that most of the time is not a "direct access file".<br>
+      For example: A HelloServlet class that is mapped to the /Hello resource. This means that when the browser goes to the URL:
+      "http://www.MySite.com/MyApplication/Hello", the HelloServlet class is executed. In the WAR file, the "Hello" file might not even exist.<br>
+      If there is not a mapping Servlet for a resource, then the Server tries to serve the file with the resource name instead (alias mapping).</p>
+    <h2>Web Application Context Path</h2>
+    <p>A Java web server can have multiple applications running inside. Each application is mapped to a context path.</p>
+    <p>The context path is the part of the URL between the root of an application and a server address. See the following examples:</p>
+    <ul>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/shoppingApplication</span><span class="info" title="tt-resource">/index.html</span></li>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/shoppingApplication</span><span class="info" title="tt-resource">/images/background.jpg</span></li>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/shoppingApplication</span><span class="info" title="tt-resource">/style/normal/styles.css</span></li>
+    </ul>
+    <div id="tt-protocol">This is the protocol: http</div>
+    <div id="tt-server">This is the server name</div>
+    <div id="tt-contextPath">This is the context path for the application</div>
+    <div id="tt-resource">This is the resource requested</div>
+    <p>
+      Context Paths are configured in the server. Any application may specify the Context Path as part of its configuration attributes.<br>
+      It is possible to have a / Context Path, this is commonly used when there is only one application running in a server.
+    </p>
+    <ul>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/</span><span class="info" title="tt-resource">index.html</span></li>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/</span><span class="info" title="tt-resource">images/background.jpg</span></li>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/</span><span class="info" title="tt-resource">style/normal/styles.css</span></li>
+    </ul>
+    <p>
+      Remember to be organized with your Context Paths and applications that are deployed to your server, since you may end up having scenarios like the following:
+    </p>
+    <ul>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/</span><span class="info" title="tt-resource">index.html</span></li>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/adminApplication</span><span class="info" title="tt-resource">/index.html</span></li>
+      <li><span class="info" title="tt-protocol">http://</span><span class="info" title="tt-server">www.myServer.com</span><span class="info" title="tt-contextPath">/searchApplication</span><span class="info" title="tt-resource">/index.html</span></li>
+    </ul>
+    <p>You can obtain the Context Path for an application from a Servlet using </p><pre>getServletContext().getContextPath()</pre>
+    <h1><a href="quiz/list">Lesson 02 - Quiz</a></h1>
+    <ul>
+      <li><a href="quiz/list">Take Quiz</a></li>
+      <li><a href="quiz/score">Quiz Score</a></li>
+      <li><a href="quiz/reset">Reset Quiz</a></li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+  <jsp-descriptor>
+    <keepgenerated>true</keepgenerated>
+    <debug>true</debug>
+  </jsp-descriptor>
+  <context-root>/lesson11</context-root>
+  <security-role-assignment>
+    <role-name>quizUser</role-name>
+    <principal-name>quizUser</principal-name>
+  </security-role-assignment>
+  <security-role-assignment>
+    <role-name>quizAdmin</role-name>
+    <principal-name>quizAdmin</principal-name>
+  </security-role-assignment>
+  <security-role-assignment>
+    <role-name>quizInstructor</role-name>
+    <principal-name>quizInstructor</principal-name>
+  </security-role-assignment>
+</weblogic-web-app>

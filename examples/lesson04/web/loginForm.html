@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Log in</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+  </head>
+  <body>
+    <h1>Log in</h1>
+    <form action="login.do" method="POST">
+      <table>
+        <tr>
+          <td>Username:</td>
+          <td><input type="text" name="username"/></td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td><input type="password" name="password"/></td>
+        </tr>
+        <tr>
+          <td>Role:</td>
+          <td>
+            <select name="role">
+              <option value="student">Student</option>
+              <option value="instructor">Instructor</option>
+              <option value="adm">Administrator</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="submit" value="Log in">
+          </td>
+        </tr>
+      </table>
+    </form>
+    <p>
+      <a href="index.html">Go back</a>
+    </p>
+  </body>
+</html>

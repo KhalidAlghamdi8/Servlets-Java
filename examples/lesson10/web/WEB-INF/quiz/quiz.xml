@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      ServletRegistration. Dynamic can be used to configure:
+    </TEXT>
+    <ANSWER ISCORRECT="false">Filter mappings</ANSWER>
+    <ANSWER ISCORRECT="true">add init params</ANSWER>
+    <ANSWER ISCORRECT="true">set asyncSupported to true</ANSWER>
+    <ANSWER ISCORRECT="false">add Listeners</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      The jquery_1_3_2.jar file contains the JQuery Ajax framework in its META-INF/resources directory.
+      Where should the jar file be placed inside a web application to ensure that the resources it contains are accessible by clients?
+    </TEXT>
+    <ANSWER ISCORRECT="false">WEB-INF/classes</ANSWER>
+    <ANSWER ISCORRECT="false">WEB-INF/jar</ANSWER>
+    <ANSWER ISCORRECT="true">WEB-INF/lib</ANSWER>
+    <ANSWER ISCORRECT="false">WEB-INF/resources</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which is true of asynchronous servlet processing?
+    </TEXT>
+    <ANSWER ISCORRECT="true">Filters can be applied to the request and response.</ANSWER>
+    <ANSWER ISCORRECT="false">More threads are needed than in an equivalent design using only synchronous processing.</ANSWER>
+    <ANSWER ISCORRECT="false">Forwarding can be performed only to other asynchronous servlets.</ANSWER>
+    <ANSWER ISCORRECT="false">The response to the HTTP request is sent immediately after the completion of the servlet.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which are true about Asynchronous Listeners?
+    </TEXT>
+    <ANSWER ISCORRECT="true">They must implement the javax.servlet.AsyncListener interface.</ANSWER>
+    <ANSWER ISCORRECT="false">Thread safety is assured if a Listener is reused.</ANSWER>
+    <ANSWER ISCORRECT="false">They will be notified when the response writes to the stream.</ANSWER>
+    <ANSWER ISCORRECT="false">They must be annotated by the @WebListener annotation.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Asynchronous Servlets can be used for:
+    </TEXT>
+    <ANSWER ISCORRECT="true">Streaming data like video or audio.</ANSWER>
+    <ANSWER ISCORRECT="true">Rendering a page or a part of it.</ANSWER>
+    <ANSWER ISCORRECT="true">Render the response of long processes or web-services.</ANSWER>
+    <ANSWER ISCORRECT="false">Prevent the Web Container from creating more threads.</ANSWER>
+  </QUESTION>
+  
+  <QUESTION>
+    <TEXT>
+      Asynchronous Servlets can be configured with:
+    </TEXT>
+    <ANSWER ISCORRECT="true">AsyncSupported @WebServlet annotation attribute.</ANSWER>
+    <ANSWER ISCORRECT="true"><![CDATA[The <async-supported>true</async-supported> inside the <servlet> element in the web.xml deployment descriptor.]]></ANSWER>
+    <ANSWER ISCORRECT="false">Using the @AsyncServlet annotation.</ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[The <async-supported>true</async-supported> inside the <servlet> element in the weblogic.xml server configuration file.]]></ANSWER>
+  </QUESTION>
+  
+  
+</POLL>

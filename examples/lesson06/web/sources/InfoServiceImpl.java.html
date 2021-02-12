@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>InfoServiceImpl.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST1 {font-style: italic}
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson06\src\java\com\examples\lesson06\services\InfoServiceImpl.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson06.services;
+
+<span class="keyword-directive">import</span> java.text.SimpleDateFormat;
+<span class="keyword-directive">import</span> java.util.Date;
+<span class="keyword-directive">import</span> javax.enterprise.context.ApplicationScoped;</span>
+
+<span class="info" title="tt-applicationScoped">@ApplicationScoped</span>
+<span class="info" title="tt-overview"><span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">InfoServiceImpl</span> <span class="keyword-directive">implements</span> InfoBean {</span>
+
+<span class="info" title="tt-bizLogic">  @Override
+  <span class="keyword-directive">public</span> String <span class="ST0">calculateServerName</span>() {
+    <span class="keyword-directive">return</span> <span class="character">&quot;</span><span class="character">TEST SERVER</span><span class="character">&quot;</span>;
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> String <span class="ST0">calculateServerMemory</span>() {
+    <span class="keyword-directive">return</span> formatBytes(Runtime.<span class="ST1">getRuntime</span>().maxMemory());
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> String <span class="ST0">calculateServerFreeMemory</span>() {
+    <span class="keyword-directive">return</span> formatBytes(Runtime.<span class="ST1">getRuntime</span>().freeMemory());
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> String <span class="ST0">calculateServerCores</span>() {
+    <span class="keyword-directive">return</span> Integer.<span class="ST1">toString</span>(Runtime.<span class="ST1">getRuntime</span>().availableProcessors());
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> String <span class="ST0">calculateServerTime</span>() {
+    <span class="keyword-directive">return</span> <span class="keyword-directive">new</span> SimpleDateFormat().format(<span class="keyword-directive">new</span> Date());
+  }
+
+  <span class="keyword-directive">private</span> String <span class="ST0">formatBytes</span>(<span class="keyword-directive">long</span> bytes) {
+    <span class="keyword-directive">if</span> (bytes &lt; 1024) {
+      <span class="keyword-directive">return</span> bytes + <span class="character">&quot;</span><span class="character">B</span><span class="character">&quot;</span>;
+    }
+    <span class="keyword-directive">if</span> (bytes &lt; 1024 * 1024) {
+      <span class="keyword-directive">return</span> (bytes / 1024) + <span class="character">&quot;</span><span class="character">KB</span><span class="character">&quot;</span>;
+    }
+    <span class="keyword-directive">return</span> (bytes / (1024 * 1024)) + <span class="character">&quot;</span><span class="character">MB</span><span class="character">&quot;</span>;
+  }</span>
+}
+
+    </pre>
+    <div id="tt-overview">
+      This is the implementation of the InfoService interface.
+    </div>
+    <div id="tt-applicationScoped">
+      The applicationScoped annotation tells the Server that it should instantiate this bean
+      and make it avaliable to all the injecting objects.<br>
+      This annotation also specifies the scope of the variable. ApplicationScope objects
+      are instantiated only once per application meaning the same object is shared by every object
+      in the application.
+    </div>
+    <div id="tt-bizLogic">
+      The implementation is a simple JavaBeans object.<br>
+      You can refer to CDI and JavaBeans documentation for additional features and 
+      annotations available to configure beans.<br>
+      Some available annotations you may use are:<br>
+      <ul>
+        <li>@Inject: Injects another bean.</li>
+        <li>@PostContruct: Executes the method after the constructor and injection occurs.</li>
+        <li>@PreDestroy: Executes the method before the object is disposed (goes out of scope)</li>
+      </ul>
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

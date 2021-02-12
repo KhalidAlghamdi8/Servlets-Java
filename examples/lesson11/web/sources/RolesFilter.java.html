@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>RolesFilter.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson11\src\java\com\examples\lesson11\filters\RolesFilter.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson11.filters;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> javax.servlet.Filter;
+<span class="keyword-directive">import</span> javax.servlet.FilterChain;
+<span class="keyword-directive">import</span> javax.servlet.FilterConfig;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.ServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.ServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebFilter;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="info" title="tt-overview">
+@WebFilter(filterName = <span class="character">&quot;</span><span class="character">RolesFilter</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/*</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">RolesFilter</span> <span class="keyword-directive">implements</span> Filter {
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">doFilter</span>(ServletRequest request, ServletResponse response,
+          FilterChain chain)
+          <span class="keyword-directive">throws</span> IOException, ServletException {
+    <span class="keyword-directive">if</span> (request <span class="keyword-directive">instanceof</span> HttpServletRequest) {
+      HttpServletRequest httpRequest = (HttpServletRequest) request;
+      String roles = <span class="character">&quot;&quot;</span>;
+      <span class="keyword-directive">if</span> (httpRequest.isUserInRole(<span class="character">&quot;</span><span class="character">quizUser</span><span class="character">&quot;</span>)) {
+        roles += roles.length() == 0 ? <span class="character">&quot;&quot;</span> : <span class="character">&quot;</span><span class="character">, </span><span class="character">&quot;</span>;
+        roles += <span class="character">&quot;</span><span class="character">quizUser</span><span class="character">&quot;</span>;
+      }
+      <span class="keyword-directive">if</span> (httpRequest.isUserInRole(<span class="character">&quot;</span><span class="character">quizAdmin</span><span class="character">&quot;</span>)) {
+        roles += roles.length() == 0 ? <span class="character">&quot;&quot;</span> : <span class="character">&quot;</span><span class="character">, </span><span class="character">&quot;</span>;
+        roles += <span class="character">&quot;</span><span class="character">quizAdmin</span><span class="character">&quot;</span>;
+      }
+      <span class="keyword-directive">if</span> (httpRequest.isUserInRole(<span class="character">&quot;</span><span class="character">quizInstructor</span><span class="character">&quot;</span>)) {
+        roles += roles.length() == 0 ? <span class="character">&quot;&quot;</span> : <span class="character">&quot;</span><span class="character">, </span><span class="character">&quot;</span>;
+        roles += <span class="character">&quot;</span><span class="character">quizInstructor</span><span class="character">&quot;</span>;
+      }
+      httpRequest.setAttribute(<span class="character">&quot;</span><span class="character">userRoles</span><span class="character">&quot;</span>, roles);
+      <span class="info" title="tt-getRemoteUser">httpRequest.setAttribute(<span class="character">&quot;</span><span class="character">userName</span><span class="character">&quot;</span>, httpRequest.getRemoteUser());</span>
+    }
+    chain.doFilter(request, response);
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">init</span>(FilterConfig filterConfig) <span class="keyword-directive">throws</span> ServletException {
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">destroy</span>() {
+  }
+}</span>
+
+    </pre>
+    <div id="tt-overview">
+      This filter is applied to all the resources (urlPatterns = {<span class="character">&quot;</span><span class="character">/*</span><span class="character">&quot;</span>}).
+      It uses the Servlet 3.0 security methods to get the username and roles
+      and sets them to the userRoles and userName request attributes.
+    </div>
+    <div id="tt-getRemoteUser">
+      <b>request.getRemoteUser()</b><br>
+      Returns the login of the user making this request if the user has been authenticated, 
+      or null if the user has not been authenticated. Whether the user name is sent with each 
+      subsequent request depends on the browser and type of authentication. Same as the value 
+      of the CGI variable REMOTE_USER.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

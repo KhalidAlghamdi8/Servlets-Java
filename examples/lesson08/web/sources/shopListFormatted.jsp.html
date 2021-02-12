@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>shopListFormatted.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST4 {font-weight: bold}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST6 {color: #0000e6}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\web\shopListFormatted.jsp</td></tr></table>
+    <pre>
+<span class="info" title="tt-fmttaglib"><span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;fmt&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/fmt</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span></span>
+<span class="ST4">&lt;%@</span><span class="ST5"> taglib</span> <span class="attribute-name">prefix</span><span class="ST4">=</span><span class="attribute-value">&quot;c&quot;</span> <span class="attribute-name">uri</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="attribute-value">http://java.sun.com/jsp/jstl/core</span><span class="attribute-value">&quot;</span> <span class="ST4">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span>
+<span class="info" title="tt-setLocale"><span class="ST4">&lt;</span><span class="ST5">fmt:setLocale</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">param</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">lang</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span></span>
+<span class="info" title="tt-setBundle"><span class="info" title="tt-setBundle"><span class="ST4">&lt;</span><span class="ST5">fmt:setBundle</span> <span class="attribute-name">basename</span><span class="ST4">=</span><span class="attribute-value">&quot;com.examples.lesson08.i18n.shopList&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;messages&quot;</span><span class="ST4">/&gt;</span></span></span>
+
+<span class="ST6">&lt;</span><span class="ST6">h4</span><span class="ST6">&gt;</span><span class="ST4">&lt;</span><span class="ST5">fmt:message</span> <span class="attribute-name">bundle</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">messages</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">key</span><span class="ST4">=</span><span class="attribute-value">&quot;madeWith&quot;</span><span class="ST4">/&gt;</span><span class="ST6">&lt;/</span><span class="ST6">h4</span><span class="ST6">&gt;</span>
+
+<span class="info" title="tt-messageTitle"><span class="ST4">&lt;</span><span class="ST5">fmt:message</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;title&quot;</span> <span class="attribute-name">bundle</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">messages</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">key</span><span class="ST4">=</span><span class="attribute-value">&quot;title&quot;</span><span class="ST4">/&gt;</span></span>
+<span class="ST4">&lt;</span><span class="ST5">jsp:include</span> <span class="attribute-name">page</span><span class="ST4">=</span><span class="attribute-value">&quot;templateHeader.jsp&quot;</span><span class="ST4">&gt;</span>
+  <span class="ST4">&lt;</span><span class="ST5">jsp:param</span> <span class="attribute-name">name</span><span class="ST4">=</span><span class="attribute-value">&quot;title&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">title</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span>
+<span class="ST4">&lt;/</span><span class="ST5">jsp:include</span><span class="ST4">&gt;</span>
+<span class="ST6">&lt;</span><span class="ST6">table</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;</span><span class="ST6">thead</span><span class="ST6">&gt;</span>
+    <span class="ST6">&lt;</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+<span class="info" title="tt-messageItem">      <span class="ST6">&lt;</span><span class="ST6">th</span><span class="ST6">&gt;</span><span class="ST4">&lt;</span><span class="ST5">fmt:message</span> <span class="attribute-name">bundle</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">messages</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">key</span><span class="ST4">=</span><span class="attribute-value">&quot;item&quot;</span><span class="ST4">/&gt;</span><span class="ST6">&lt;/</span><span class="ST6">th</span><span class="ST6">&gt;</span></span>
+<span class="info" title="tt-messageQuantity">      <span class="ST6">&lt;</span><span class="ST6">th</span><span class="ST6">&gt;</span><span class="ST4">&lt;</span><span class="ST5">fmt:message</span> <span class="attribute-name">bundle</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">messages</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">key</span><span class="ST4">=</span><span class="attribute-value">&quot;quantity&quot;</span><span class="ST4">/&gt;</span><span class="ST6">&lt;/</span><span class="ST6">th</span><span class="ST6">&gt;</span></span>
+    <span class="ST6">&lt;/</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;/</span><span class="ST6">thead</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;</span><span class="ST6">tbody</span><span class="ST6">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">c:forEach</span> <span class="attribute-name">items</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">sessionScope</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">shopList</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">items</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;item&quot;</span> <span class="attribute-name">varStatus</span><span class="ST4">=</span><span class="attribute-value">&quot;status&quot;</span><span class="ST4">&gt;</span>
+      <span class="ST4">&lt;</span><span class="ST5">c:set</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;itemCount&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">itemCount</span> <span class="scriptlet-delimiter">+</span> <span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">count</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span>
+      <span class="ST6">&lt;</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+        <span class="ST6">&lt;</span><span class="ST6">td</span><span class="ST6">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">name</span><span class="scriptlet-delimiter">}</span><span class="ST6">&lt;/</span><span class="ST6">td</span><span class="ST6">&gt;</span>
+        <span class="ST6">&lt;</span><span class="ST6">td</span><span class="ST6">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">count</span><span class="scriptlet-delimiter">}</span><span class="ST6">&lt;/</span><span class="ST6">td</span><span class="ST6">&gt;</span>
+      <span class="ST6">&lt;/</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+    <span class="ST4">&lt;/</span><span class="ST5">c:forEach</span><span class="ST4">&gt;</span>
+  <span class="ST6">&lt;/</span><span class="ST6">tbody</span><span class="ST6">&gt;</span>
+<span class="ST6">&lt;/</span><span class="ST6">table</span><span class="ST6">&gt;</span>
+<span class="info" title="tt-messageCount"><span class="ST4">&lt;</span><span class="ST5">fmt:message</span> <span class="attribute-name">bundle</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">messages</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">key</span><span class="ST4">=</span><span class="attribute-value">&quot;count&quot;</span><span class="ST4">&gt;</span>
+  <span class="ST4">&lt;</span><span class="ST5">fmt:param</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">itemCount</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span>
+<span class="ST4">&lt;/</span><span class="ST5">fmt:message</span><span class="ST4">&gt;</span></span>
+<span class="ST6">&lt;</span><span class="ST6">br</span><span class="ST6">&gt;</span>
+<span class="ST4">&lt;</span><span class="ST5">jsp:useBean</span> <span class="attribute-name">id</span><span class="ST4">=</span><span class="attribute-value">&quot;</span>now<span class="attribute-value">&quot;</span> <span class="attribute-name">class</span><span class="ST4">=</span><span class="attribute-value">&quot;</span>java.util.Date<span class="attribute-value">&quot;</span> <span class="ST4">/&gt;</span>
+<span class="ST4">&lt;</span><span class="ST5">c:import</span> <span class="attribute-name">url</span><span class="ST4">=</span><span class="attribute-value">&quot;templateFooter.jsp&quot;</span><span class="ST4">&gt;</span>
+  <span class="ST4">&lt;</span><span class="ST5">c:param</span> <span class="attribute-name">name</span><span class="ST4">=</span><span class="attribute-value">&quot;footerNote&quot;</span><span class="ST4">&gt;</span>
+<span class="info" title="tt-messageToday">    <span class="ST4">&lt;</span><span class="ST5">fmt:message</span> <span class="attribute-name">bundle</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">messages</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">key</span><span class="ST4">=</span><span class="attribute-value">&quot;today&quot;</span><span class="ST4">&gt;</span>
+      <span class="ST4">&lt;</span><span class="ST5">fmt:param</span><span class="ST4">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">fmt:formatDate</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">now</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span>
+      <span class="ST4">&lt;/</span><span class="ST5">fmt:param</span><span class="ST4">&gt;</span>
+    <span class="ST4">&lt;/</span><span class="ST5">fmt:message</span><span class="ST4">&gt;</span></span>
+  <span class="ST4">&lt;/</span><span class="ST5">c:param</span><span class="ST4">&gt;</span>
+<span class="ST4">&lt;/</span><span class="ST5">c:import</span><span class="ST4">&gt;</span>
+    </pre>
+    <div id="tt-fmttaglib">
+      The FMT library contains tags that aid in formatting data and using localization in JSP files.
+    </div>
+    <div id="tt-setLocale">
+      The setLocale tag sets the language for the messages.<br>
+      In Java, localization is commonly implemented with properties file.<br>
+      These files are stored inside packages. The file name for the properties file contain the
+      language code as a suffix.<br>
+    </div>
+    <div id="tt-setBundle">
+      The setBundle tag specified in the path is the basename attribute, just like in
+      a Java class.<br>
+      In this case, the properties file that is loaded is /com/examples/lesson08/i18n/shopList_LANG.properties, where LANG
+      is replaced with the language code set by the setLocale tag.<br>
+      The resource bundle is loaded in a variable available in the page using Expression Language.
+    </div>
+    <div id="tt-messageTitle">
+      The message tag prints the message from the bundle variable. Note that
+      you can not use only Expression Language to display messages from a bundle variable.
+      This tag displays the title message.
+    </div>
+    <div id="tt-messageItem">
+      This tag displays the Item table header.
+    </div>
+    <div id="tt-messageQuantity">
+      This tag displays the Quantity table header.
+    </div>
+    <div id="tt-messageCount">
+      This is a message that uses a parameter. Parameters are frequently
+      used for complex messages. In this case, the message expects the 
+      number of items in the shopping list.<br>
+      Parameters are sent in order and they are used in bundle files by index using 
+      {#} braces.
+    </div>
+    <div id="tt-messageToday">
+      Message tags may be used inside other tags. In this case, the page imports the footer page
+      and sends a parameter that comes from the message bundle.<br>
+      See that the message also receives a parameter.<br>
+      The message expects a date, but since dates may be also localized, the date must also be formatted.<br>
+      Note that formatting of raw values is possible with FMT tags as well.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

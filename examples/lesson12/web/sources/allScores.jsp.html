@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>allScores.jsp</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST4 {font-weight: bold}
+.scriptlet-delimiter {background-color: #e3f2e1}
+.ST8 {color: #009900}
+.ST3 {color: #ce7b00; background-color: #e9eff8}
+.ST7 {color: #0000e6}
+.ST5 {color: #0000e6; font-weight: bold}
+.attribute-name {color: #009b00}
+.ST0 {background-color: #e9eff8; font-weight: bold}
+.ST6 {color: #628fb5}
+.ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+.ST9 {color: #0000ff; background-color: #e3f2e1}
+.attribute-value {color: #ce7b00}
+.ST2 {color: #009b00; background-color: #e9eff8}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\web\instructor\allScores.jsp</td></tr></table>
+<pre>
+<span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5"> taglib</span> <span class="attribute-name">prefix</span><span class="ST4">=</span><span class="attribute-value">&quot;template&quot;</span> <span class="attribute-name">tagdir</span><span class="ST4">=</span><span class="attribute-value">&quot;/WEB-INF/tags&quot;</span> <span class="ST4">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span>
+<span class="ST6">&lt;!DOCTYPE</span> <span class="ST6">html</span><span class="ST6">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">template:head</span> <span class="attribute-name">title</span><span class="ST4">=</span><span class="attribute-value">&quot;Scores&quot;</span><span class="ST4">/&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">template:header</span> <span class="attribute-name">title</span><span class="ST4">=</span><span class="attribute-value">&quot;Scores&quot;</span><span class="ST4">/&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">c:forEach</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;quizResult&quot;</span> <span class="attribute-name">items</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">quizResults</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">h4</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">quizResult</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">name</span><span class="scriptlet-delimiter">}</span> by: <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">quizResult</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">user</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">h4</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST4">&lt;</span><span class="ST5">c:forEach</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;result&quot;</span> <span class="attribute-name">items</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">quizResult</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">askedQuestions</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">&gt;</span>
+            <span class="ST4">&lt;</span><span class="ST5">c:set</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;color&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="attribute-value">#FF3333&quot;</span><span class="ST4">/&gt;</span>
+            <span class="ST4">&lt;</span><span class="ST5">c:if</span> <span class="attribute-name">test</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">result</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">correct</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">&gt;</span>
+              <span class="ST4">&lt;</span><span class="ST5">c:set</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;color&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="attribute-value">#33FF33&quot;</span><span class="ST4">/&gt;</span>
+            <span class="ST4">&lt;/</span><span class="ST5">c:if</span><span class="ST4">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span> <span class="ST8">style</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST9">background-color</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">color</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">result</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">questionId</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST4">&lt;/</span><span class="ST5">c:forEach</span><span class="ST4">&gt;</span>
+        <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;/</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+    <span class="ST4">&lt;/</span><span class="ST5">c:forEach</span><span class="ST4">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">template:footer</span><span class="ST4">/&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+<span class="ST7">&lt;/</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>RandomNumberListener.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson10\src\java\com\examples\lesson10\servlets\RandomNumberListener.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview">
+<span class="keyword-directive">package</span> com.examples.lesson10.servlets;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> javax.servlet.AsyncEvent;
+<span class="keyword-directive">import</span> javax.servlet.AsyncListener;
+
+<span class="keyword-directive">class</span> <span class="ST0">RandomNumberListener</span> <span class="keyword-directive">implements</span> AsyncListener {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> RandomNumberWorker <span class="ST1">randomNumberWorker</span>;
+
+  <span class="ST0">RandomNumberListener</span>(RandomNumberWorker randomNumberWorker) {
+    <span class="keyword-directive">this</span>.<span class="ST1">randomNumberWorker</span> = randomNumberWorker;
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">onComplete</span>(AsyncEvent event) <span class="keyword-directive">throws</span> IOException {
+    <span class="ST1">randomNumberWorker</span>.remove(event.getAsyncContext());
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">onTimeout</span>(AsyncEvent event) <span class="keyword-directive">throws</span> IOException {
+    <span class="ST1">randomNumberWorker</span>.remove(event.getAsyncContext());
+    event.getAsyncContext().complete();
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">onError</span>(AsyncEvent event) <span class="keyword-directive">throws</span> IOException {
+    <span class="ST1">randomNumberWorker</span>.remove(event.getAsyncContext());
+    event.getAsyncContext().complete();
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">onStartAsync</span>(AsyncEvent event) <span class="keyword-directive">throws</span> IOException {
+  }
+}
+</span>
+    </pre>
+    <div id="tt-overview">
+      This listener is created and uses the worker being to generate random numbers. 
+      The purpose of this listener is to remove the
+      asyncContext from the worker when the context is completed.
+      It also prevents the worker from failing due to a request error.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

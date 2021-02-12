@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ViewShoppingCartServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css"> 
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #ce7b00; font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson04\src\java\com\examples\lesson04\ViewShoppingCartServlet.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson04;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> java.util.Map;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSession;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">ViewShoppingCartServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/viewShoppingCart</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ViewShoppingCartServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();
+    out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Your shopping cart&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;link rel=</span><span class="ST1">\&quot;</span><span class="character">stylesheet</span><span class="ST1">\&quot;</span><span class="character"> href=</span><span class="ST1">\&quot;</span><span class="character">res/styles.css</span><span class="ST1">\&quot;</span><span class="character"> type=</span><span class="ST1">\&quot;</span><span class="character">text/css</span><span class="ST1">\&quot;</span><span class="character">/&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Shopping cart&lt;/h1&gt;</span><span class="character">&quot;</span>);
+
+<span class="info" title="tt-getSession">    HttpSession session = request.getSession();
+    Map&lt;String, ShopItem&gt; shoppingCart = (Map&lt;String, ShopItem&gt;) session.getAttribute(<span class="character">&quot;</span><span class="character">shoppingCart</span><span class="character">&quot;</span>);</span>
+<span class="info" title="tt-if">    <span class="keyword-directive">if</span> (shoppingCart == <span class="keyword-directive">null</span> || shoppingCart.isEmpty()) {</span>
+      out.println(<span class="character">&quot;</span><span class="character">&lt;h2&gt;Your cart is empty.&lt;/h2&gt;</span><span class="character">&quot;</span>);
+    } <span class="keyword-directive">else</span> {
+      out.println(<span class="character">&quot;</span><span class="character">&lt;ul&gt;</span><span class="character">&quot;</span>);
+<span class="info" title="tt-for">      <span class="keyword-directive">for</span> (ShopItem item : shoppingCart.values()) {
+        out.println(<span class="character">&quot;</span><span class="character">&lt;li&gt;</span><span class="character">&quot;</span> + item.getQuantity() + <span class="character">&quot;</span><span class="character">&lt;b&gt;: </span><span class="character">&quot;</span> + item.getName() + <span class="character">&quot;</span><span class="character">&lt;/b&gt;&lt;/li&gt;</span><span class="character">&quot;</span>);
+      }</span>
+      out.println(<span class="character">&quot;</span><span class="character">&lt;/ul&gt;</span><span class="character">&quot;</span>);
+    }
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST1">\&quot;</span><span class="character">shop.html</span><span class="ST1">\&quot;</span><span class="character">&gt;Go Back&lt;/a&gt; </span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST1">\&quot;</span><span class="character">index.html</span><span class="ST1">\&quot;</span><span class="character">&gt;Go Home&lt;/a&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);
+  }
+}
+
+    </pre>
+    <div id="tt-getSession">
+      Use request.getSession to get the current session.<br>
+      From the session, use getAttribute to get objects stored in it and
+      setAttribute to store objects in it.
+      <br>
+      Remember that objects stored in the session must be cast when you use getAttribute.
+    </div>
+    <div id="tt-if">
+      Objects in the session might be empty so it is always a good idea to check it to prevent
+      NullPointerException problems.
+    </div>
+    <div id="tt-for">
+      After getting the ShopItems in the session, they can be printed them normally.
+    </div>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+</body>
+</html>

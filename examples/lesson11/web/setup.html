@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+    <script src="res/jquery.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <p>To setup the authentication realm and create users follow these instructions:</p>
+    <h2>Setting up the user groups.</h2>
+    <ul>
+      <li><a href="http://localhost:7001/console/login/LoginForm.jsp" target="console">Login into weblogic admin console</a></li>
+      <li>Use login: "weblogic" and password "welcome1"</li>
+      <li>Click on the "Security Realms" link on the left sidebar.</li>
+      <li>Click on the "myrealm" Realm in the table.</li>
+      <li>Click on the "Users & Groups" tab.</li>
+      <li>Click the "Groups" sub-tab.</li>
+      <li>create the following groups if they do not exist by clicking the "New" button.</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Group</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>quizAdmin</td>
+          <td>Administrator, can delete and create quizzes.</td>
+        </tr>
+        <tr>
+          <td>quizUser</td>
+          <td>A registered user may answer quizzes.</td>
+        </tr>
+        <tr>
+          <td>quizInstructor</td>
+          <td>An instructor may review scores.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Use DefaultAuthenticator as the Provider for all of them.</p>
+    <h2>Creating users.</h2>
+    <ul>
+      <li>Now click on the Users sub-tab.</li>
+      <li>Click on the "New" button</li>
+      <li>Set the name: quizAdministrator</li>
+      <li>Provider: DefaultAuthenticator</li>
+      <li>Password: quiz123123</li>
+      <li>Confirm the password: quiz123123</li>
+      <li>Click "OK"</li>
+      <li>Click on the newly created user: quizAdministrator</li>
+      <li>Click on the "groups" tab.</li>
+      <li>Select quizAdmin from the list on the left and click the single blue right arrow.</li>
+      <li>Click the "Save" button.</li>
+      <li>On the top "navigation crumb bar" click on Users and Groups to go back to the list of users</li>
+    </ul>
+    <p>Repeat the above process to add the following users.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Password</th>
+          <th>Groups</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>quizAdministrator</td>
+          <td>quiz123123</td>
+          <td>quizAdmin</td>
+        </tr>
+        <tr>
+          <td>student</td>
+          <td>student123</td>
+          <td>quizUser</td>
+        </tr>
+        <tr>
+          <td>instructor</td>
+          <td>in123123</td>
+          <td>quizInstructor</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </body>
+</html>

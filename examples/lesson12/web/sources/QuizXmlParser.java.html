@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>QuizXmlParser.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST2 {font-style: italic}
+.ST0 {font-weight: bold}
+.ST1 {color: #009900}
+.character {color: #ce7b00}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\services\QuizXmlParser.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.services;
+
+<span class="keyword-directive">import</span> com.examples.lesson12.model.*;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.InputStream;
+<span class="keyword-directive">import</span> javax.xml.parsers.ParserConfigurationException;
+<span class="keyword-directive">import</span> javax.xml.parsers.SAXParser;
+<span class="keyword-directive">import</span> javax.xml.parsers.SAXParserFactory;
+<span class="keyword-directive">import</span> org.xml.sax.Attributes;
+<span class="keyword-directive">import</span> org.xml.sax.SAXException;
+<span class="keyword-directive">import</span> org.xml.sax.SAXParseException;
+<span class="keyword-directive">import</span> org.xml.sax.ext.DefaultHandler2;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">QuizXmlParser</span> {
+
+  <span class="keyword-directive">private</span> SAXParser <span class="ST1">saxParser</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">QuizXmlParser</span>() <span class="keyword-directive">throws</span> SAXException, ParserConfigurationException {
+    SAXParserFactory saxParserFactory = SAXParserFactory.<span class="ST2">newInstance</span>();
+    <span class="keyword-directive">this</span>.<span class="ST1">saxParser</span> = saxParserFactory.newSAXParser();
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">addQuestionsToQuiz</span>(Quiz quiz, InputStream inputStream) <span class="keyword-directive">throws</span> SAXException, IOException {
+    <span class="ST1">saxParser</span>.parse(inputStream, <span class="keyword-directive">new</span> QuestionFinder(quiz));
+  }
+
+  <span class="keyword-directive">class</span> <span class="ST0">QuestionFinder</span> <span class="keyword-directive">extends</span> DefaultHandler2 {
+
+    <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> Quiz <span class="ST1">quiz</span>;
+    <span class="keyword-directive">private</span> Question <span class="ST1">question</span>;
+    <span class="keyword-directive">private</span> Answer <span class="ST1">answer</span>;
+    <span class="keyword-directive">private</span> StringBuilder <span class="ST1">textBuilder</span> = <span class="keyword-directive">new</span> StringBuilder();
+    <span class="keyword-directive">private</span> Text <span class="ST1">text</span> = <span class="keyword-directive">new</span> Text(<span class="character">&quot;&quot;</span>, <span class="keyword-directive">false</span>);
+
+    <span class="keyword-directive">private</span> <span class="ST0">QuestionFinder</span>(Quiz quiz) {
+      <span class="keyword-directive">this</span>.<span class="ST1">quiz</span> = quiz;
+    }
+
+    @Override
+    <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">startElement</span>(String uri, String localName, String qName, Attributes attributes) <span class="keyword-directive">throws</span> SAXException {
+      flushText();
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">QUESTION</span><span class="character">&quot;</span>.equals(qName)) {
+        <span class="keyword-directive">this</span>.<span class="ST1">question</span> = <span class="ST1">quiz</span>.addQuestion(attributes.getValue(<span class="character">&quot;</span><span class="character">TITLE</span><span class="character">&quot;</span>));
+      }
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">ANSWER</span><span class="character">&quot;</span>.equals(qName)) {
+        <span class="keyword-directive">boolean</span> correct = <span class="character">&quot;</span><span class="character">true</span><span class="character">&quot;</span>.equalsIgnoreCase(attributes.getValue(<span class="character">&quot;</span><span class="character">ISCORRECT</span><span class="character">&quot;</span>));
+        <span class="keyword-directive">this</span>.<span class="ST1">answer</span> = <span class="ST1">question</span>.addAnswer(correct);
+      }
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">TEXT</span><span class="character">&quot;</span>.equals(qName)) {
+        <span class="keyword-directive">boolean</span> code = <span class="character">&quot;</span><span class="character">true</span><span class="character">&quot;</span>.equals(attributes.getValue(<span class="character">&quot;</span><span class="character">CODE</span><span class="character">&quot;</span>));
+        <span class="ST1">text</span>.setCode(code);
+      }
+    }
+
+    @Override
+    <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">endElement</span>(String uri, String localName, String qName) <span class="keyword-directive">throws</span> SAXException {
+      flushText();
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">QUESTION</span><span class="character">&quot;</span>.equals(qName)) {
+        <span class="ST1">question</span> = <span class="keyword-directive">null</span>;
+      }
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">ANSWER</span><span class="character">&quot;</span>.equals(qName)) {
+        <span class="keyword-directive">this</span>.<span class="ST1">answer</span> = <span class="keyword-directive">null</span>;
+      }
+    }
+
+    <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> <span class="ST0">flushText</span>() {
+      <span class="ST1">text</span>.setText(<span class="ST1">textBuilder</span>.toString());
+
+      <span class="keyword-directive">if</span> (!<span class="ST1">text</span>.isEmpty()) {
+        <span class="keyword-directive">if</span> (<span class="ST1">answer</span> != <span class="keyword-directive">null</span>) {
+          <span class="ST1">answer</span>.add(<span class="ST1">text</span>);
+        } <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (<span class="ST1">question</span> != <span class="keyword-directive">null</span>) {
+          <span class="ST1">question</span>.add(<span class="ST1">text</span>);
+        }
+      }
+
+      <span class="ST1">text</span> = <span class="keyword-directive">new</span> Text();
+      <span class="ST1">textBuilder</span> = <span class="keyword-directive">new</span> StringBuilder();
+    }
+
+    @Override
+    <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">characters</span>(<span class="keyword-directive">char</span>[] ch, <span class="keyword-directive">int</span> start, <span class="keyword-directive">int</span> length) <span class="keyword-directive">throws</span> SAXException {
+      <span class="ST1">textBuilder</span>.append(ch, start, length);
+    }
+
+    @Override
+    <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">error</span>(SAXParseException e) <span class="keyword-directive">throws</span> SAXException {
+      <span class="keyword-directive">if</span> (<span class="ST1">quiz</span> != <span class="keyword-directive">null</span>) {
+        <span class="ST1">quiz</span>.setError(<span class="keyword-directive">true</span>);
+      }
+    }
+  }
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

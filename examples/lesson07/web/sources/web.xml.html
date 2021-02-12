@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>web.xml</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .xml-attribute {color: #009900}
+      .xml-value {color: #ce7b00}
+      .ST0 {color: #00007c; font-weight: bold}
+      .xml-tag {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\web\WEB-INF\web.xml</td></tr></table>
+    <pre>
+<span class="ST0">&lt;?</span><span class="ST0">xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+<span class="xml-tag">&lt;web-app</span> <span class="xml-attribute">xmlns</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">xmlns:xsi</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://www.w3.org/2001/XMLSchema-instance</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">xsi:schemaLocation</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span> <span class="xml-value">http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">version</span>=<span class="xml-value">&quot;3.0&quot;</span><span class="xml-tag">&gt;</span>
+<span class="info" title="tt-jspConfig">  <span class="xml-tag">&lt;servlet</span><span class="xml-tag">&gt;</span>  
+    <span class="xml-tag">&lt;servlet-name</span><span class="xml-tag">&gt;</span>lifecycle<span class="xml-tag">&lt;/servlet-name</span><span class="xml-tag">&gt;</span>  
+    <span class="xml-tag">&lt;jsp-file</span><span class="xml-tag">&gt;</span>/lifecycle.jsp<span class="xml-tag">&lt;/jsp-file</span><span class="xml-tag">&gt;</span>  
+    <span class="xml-tag">&lt;init-param</span><span class="xml-tag">&gt;</span>  
+      <span class="xml-tag">&lt;param-name</span><span class="xml-tag">&gt;</span>jsp-name<span class="xml-tag">&lt;/param-name</span><span class="xml-tag">&gt;</span>  
+      <span class="xml-tag">&lt;param-value</span><span class="xml-tag">&gt;</span>JSP Lifecycle!<span class="xml-tag">&lt;/param-value</span><span class="xml-tag">&gt;</span>  
+    <span class="xml-tag">&lt;/init-param</span><span class="xml-tag">&gt;</span>  
+  <span class="xml-tag">&lt;/servlet</span><span class="xml-tag">&gt;</span>  </span>
+
+  <span class="xml-tag">&lt;error-page</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;error-code</span><span class="xml-tag">&gt;</span>406<span class="xml-tag">&lt;/error-code</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;location</span><span class="xml-tag">&gt;</span>/error.jsp<span class="xml-tag">&lt;/location</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/error-page</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;error-page</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;exception-type</span><span class="xml-tag">&gt;</span>javax.servlet.ServletException<span class="xml-tag">&lt;/exception-type</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;location</span><span class="xml-tag">&gt;</span>/error.jsp<span class="xml-tag">&lt;/location</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/error-page</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;error-page</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;error-code</span><span class="xml-tag">&gt;</span>404<span class="xml-tag">&lt;/error-code</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;location</span><span class="xml-tag">&gt;</span>/error.jsp<span class="xml-tag">&lt;/location</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/error-page</span><span class="xml-tag">&gt;</span>
+
+<span class="xml-tag">&lt;/web-app</span><span class="xml-tag">&gt;</span>
+
+    </pre>
+    <div id="tt-jspConfig">To set up initialization parameters for JSP you have to use the web.xml file.<br>
+      Note that you use:
+      <pre><span class="xml-tag">&lt;jsp-file</span><span class="xml-tag">&gt;</span>/lifecycle.jsp<span class="xml-tag">&lt;/jsp-file</span><span class="xml-tag">&gt;</span></pre>
+      to specify that the servlet refers to a JSP file.<br>
+      Then specify the initialization parameters as with any other servlet. In this case the parameter "jsp-name" is set to "JSP Lifecycle"
+      <pre>
+<span class="xml-tag">&lt;init-param</span><span class="xml-tag">&gt;</span>  
+  <span class="xml-tag">&lt;param-name</span><span class="xml-tag">&gt;</span>jsp-name<span class="xml-tag">&lt;/param-name</span><span class="xml-tag">&gt;</span>  
+  <span class="xml-tag">&lt;param-value</span><span class="xml-tag">&gt;</span>JSP Lifecycle!<span class="xml-tag">&lt;/param-value</span><span class="xml-tag">&gt;</span>  
+<span class="xml-tag">&lt;/init-param</span><span class="xml-tag">&gt;</span>
+      </pre>
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

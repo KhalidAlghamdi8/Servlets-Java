@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>shopListTemplated.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST7 {color: #0000e6; background-color: #e3f2e1}
+      .ST4 {font-weight: bold}
+      .ST9 {color: #009900}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST6 {color: #0000e6}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST8 {color: #ce7b00; background-color: #e3f2e1}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .ST10 {color: #0000ff; background-color: #e3f2e1}
+      .attribute-value {color: #ce7b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\web\shopListTemplated.jsp</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span></span>
+<span class="info" title="tt-include"><span class="ST4">&lt;</span><span class="ST5">jsp:include</span> <span class="attribute-name">page</span><span class="ST4">=</span><span class="attribute-value">&quot;templateHeader.jsp&quot;</span><span class="ST4">&gt;</span>
+<span class="info" title="tt-jspparam">  <span class="ST4">&lt;</span><span class="ST5">jsp:param</span> <span class="attribute-name">name</span><span class="ST4">=</span><span class="attribute-value">&quot;title&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;Shop List using templates&quot;</span><span class="ST4">/&gt;</span></span>
+<span class="ST4">&lt;/</span><span class="ST5">jsp:include</span><span class="ST4">&gt;</span></span>
+
+<span class="info" title="tt-jstlel"><span class="ST6">&lt;</span><span class="ST6">table</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;</span><span class="ST6">thead</span><span class="ST6">&gt;</span>
+    <span class="ST6">&lt;</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+      <span class="ST6">&lt;</span><span class="ST6">th</span><span class="ST6">&gt;</span>Item<span class="ST6">&lt;/</span><span class="ST6">th</span><span class="ST6">&gt;</span>
+      <span class="ST6">&lt;</span><span class="ST6">th</span><span class="ST6">&gt;</span>Qty<span class="ST6">&lt;/</span><span class="ST6">th</span><span class="ST6">&gt;</span>
+    <span class="ST6">&lt;/</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;/</span><span class="ST6">thead</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;</span><span class="ST6">tbody</span><span class="ST6">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">c:forEach</span> <span class="attribute-name">items</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">sessionScope</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">shopList</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">items</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;item&quot;</span> <span class="attribute-name">varStatus</span><span class="ST4">=</span><span class="attribute-value">&quot;status&quot;</span><span class="ST4">&gt;</span>
+      <span class="ST4">&lt;</span><span class="ST5">c:choose</span><span class="ST4">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:when</span> <span class="attribute-name">test</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">category</span> <span class="ST7">eq</span> <span class="ST8">&#39;food&#39;</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">&gt;</span>
+          <span class="ST4">&lt;</span><span class="ST5">c:set</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;rowColor&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">status</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">count</span> <span class="ST7">mod</span> <span class="scriptlet-delimiter">2</span><span class="scriptlet-delimiter">)</span> <span class="ST7">eq</span> <span class="scriptlet-delimiter">0</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">?</span><span class="ST8">&#39;#f0ebb8&#39;</span><span class="scriptlet-delimiter">:</span><span class="ST8">&#39;#ded890&#39;</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST4">&lt;/</span><span class="ST5">c:when</span><span class="ST4">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:when</span> <span class="attribute-name">test</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">category</span> <span class="ST7">eq</span> <span class="ST8">&#39;electronics&#39;</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">&gt;</span>
+          <span class="ST4">&lt;</span><span class="ST5">c:set</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;rowColor&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">status</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">count</span> <span class="ST7">mod</span> <span class="scriptlet-delimiter">2</span><span class="scriptlet-delimiter">)</span> <span class="ST7">eq</span> <span class="scriptlet-delimiter">0</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">?</span><span class="ST8">&#39;#b7c0e8&#39;</span><span class="scriptlet-delimiter">:</span><span class="ST8">&#39;#9093de&#39;</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST4">&lt;/</span><span class="ST5">c:when</span><span class="ST4">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:when</span> <span class="attribute-name">test</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">category</span> <span class="ST7">eq</span> <span class="ST8">&#39;cleaning&#39;</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">&gt;</span>
+          <span class="ST4">&lt;</span><span class="ST5">c:set</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;rowColor&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">status</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">count</span> <span class="ST7">mod</span> <span class="scriptlet-delimiter">2</span><span class="scriptlet-delimiter">)</span> <span class="ST7">eq</span> <span class="scriptlet-delimiter">0</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">?</span><span class="ST8">&#39;#b7e8b9&#39;</span><span class="scriptlet-delimiter">:</span><span class="ST8">&#39;#90de93&#39;</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST4">&lt;/</span><span class="ST5">c:when</span><span class="ST4">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:otherwise</span><span class="ST4">&gt;</span>
+          <span class="ST4">&lt;</span><span class="ST5">c:set</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;rowColor&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">status</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">count</span> <span class="ST7">mod</span> <span class="scriptlet-delimiter">2</span><span class="scriptlet-delimiter">)</span> <span class="ST7">eq</span> <span class="scriptlet-delimiter">0</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">?</span><span class="ST8">&#39;#ffffff&#39;</span><span class="scriptlet-delimiter">:</span><span class="ST8">&#39;#f0f0f0&#39;</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST4">&lt;/</span><span class="ST5">c:otherwise</span><span class="ST4">&gt;</span>
+      <span class="ST4">&lt;/</span><span class="ST5">c:choose</span><span class="ST4">&gt;</span>
+      <span class="ST6">&lt;</span><span class="ST6">tr</span> <span class="ST9">style</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="ST10">background-color</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">rowColor</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST6">&gt;</span>
+        <span class="ST6">&lt;</span><span class="ST6">td</span> <span class="ST9">style</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="ST10">background-color</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">rowColor</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST6">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">name</span><span class="scriptlet-delimiter">}</span><span class="ST6">&lt;/</span><span class="ST6">td</span><span class="ST6">&gt;</span>
+        <span class="ST6">&lt;</span><span class="ST6">td</span> <span class="ST9">style</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="ST10">background-color</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">rowColor</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST6">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">item</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">count</span><span class="scriptlet-delimiter">}</span><span class="ST6">&lt;/</span><span class="ST6">td</span><span class="ST6">&gt;</span>
+      <span class="ST6">&lt;/</span><span class="ST6">tr</span><span class="ST6">&gt;</span>
+    <span class="ST4">&lt;/</span><span class="ST5">c:forEach</span><span class="ST4">&gt;</span>
+  <span class="ST6">&lt;/</span><span class="ST6">tbody</span><span class="ST6">&gt;</span>
+<span class="ST6">&lt;/</span><span class="ST6">table</span><span class="ST6">&gt;</span></span>
+
+<span class="info" title="tt-import"><span class="ST4">&lt;</span><span class="ST5">c:import</span> <span class="attribute-name">url</span><span class="ST4">=</span><span class="attribute-value">&quot;templateFooter.jsp&quot;</span><span class="ST4">&gt;</span>
+<span class="info" title="tt-cparam">  <span class="ST4">&lt;</span><span class="ST5">c:param</span> <span class="attribute-name">name</span><span class="ST4">=</span><span class="attribute-value">&quot;footerNote&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;Made with JSP&quot;</span><span class="ST4">/&gt;</span></span>
+<span class="ST4">&lt;/</span><span class="ST5">c:import</span><span class="ST4">&gt;</span></span>
+    </pre>
+    <div id="tt-overview">
+      When using JSP JSTL and Expression Language, you must include JSP directives to enable the tag libraries and JSP features.
+    </div>
+    <div id="tt-include">
+      the jsp:include tag includes a resource from the web application where the tag is located. In this case, the header fragment of this page is included.
+    </div>
+    <div id="tt-jspparam">
+      To send parameters to the included page, use jsp:param tags. 
+    </div>
+    <div id="tt-jstlel">
+      This block of JSP and HTML code is very similar to the shopListView.jsp file. In fact, since templated headers and footers are included, only the table code is needed in this file.<br>
+      For simplicity, this file does not include the forms.
+    </div>
+    <div id="tt-import">
+      The c:import works similar to the jsp:include with the additional feature that you may import external resources (from other applications by URL).
+    </div>
+    <div id="tt-cparam">
+      Similar to the jsp:param tag, to send parameters to the imported page/resource, use the c:param tag
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>persistence.xml</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.xml-attribute {color: #009900}
+.xml-value {color: #ce7b00}
+.ST0 {color: #00007c; font-family: Monospaced; font-weight: bold}
+.xml-tag {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\conf\persistence.xml</td></tr></table>
+<pre>
+<span class="ST0">&lt;?</span><span class="ST0">xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<span class="xml-tag">&lt;persistence</span> <span class="xml-attribute">version</span>=<span class="xml-value">&quot;2.0&quot;</span> <span class="xml-attribute">xmlns</span>=<span class="xml-value">&quot;http://java.sun.com/xml/ns/persistence&quot;</span> <span class="xml-attribute">xmlns:xsi</span>=<span class="xml-value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="xml-attribute">xsi:schemaLocation</span>=<span class="xml-value">&quot;http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd&quot;</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;persistence-unit</span> <span class="xml-attribute">name</span>=<span class="xml-value">&quot;QuizPU&quot;</span> <span class="xml-attribute">transaction-type</span>=<span class="xml-value">&quot;JTA&quot;</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;jta-data-source</span><span class="xml-tag">&gt;</span>jdbc/QuizDB<span class="xml-tag">&lt;/jta-data-source</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;properties</span><span class="xml-tag">/&gt;</span>
+    <span class="xml-tag">&lt;exclude-unlisted-classes</span><span class="xml-tag">&gt;</span>false<span class="xml-tag">&lt;/exclude-unlisted-classes</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/persistence-unit</span><span class="xml-tag">&gt;</span>
+<span class="xml-tag">&lt;/persistence</span><span class="xml-tag">&gt;</span>
+
+</pre></body>
+</html>

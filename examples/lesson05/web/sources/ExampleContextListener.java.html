@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ExampleContextListener.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson05\src\java\com\examples\lesson05\listeners\ExampleContextListener.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson05.listeners;
+
+<span class="keyword-directive">import</span> javax.servlet.ServletContextEvent;
+<span class="keyword-directive">import</span> javax.servlet.ServletContextListener;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebListener;
+
+@WebListener()
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ExampleContextListener</span> <span class="keyword-directive">implements</span> ServletContextListener {
+</span>
+<span class="info" title="tt-created">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">contextInitialized</span>(ServletContextEvent sce) {
+    sce.getServletContext().setAttribute(<span class="character">&quot;</span><span class="character">listenerValue</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">Context Listener Value</span><span class="character">&quot;</span>);
+  }</span>
+
+<span class="info" title="tt-destroyed">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">contextDestroyed</span>(ServletContextEvent sce) {
+  }</span>
+}
+
+    </pre>
+    <div id="tt-created">
+      This method is called when the web application starts. It is a convenient place to set
+      context attributes. This method is often used to create database connections and initialize
+      any frameworks used.
+    </div>
+    <div id="tt-destroyed">
+      This method is called when the application is going to be stopped or undeployed. It is
+      also called when the server is going to shut down. It is commonly used to close open
+      connections and terminate any left over threads that might be started by the application.
+    </div>
+    <div id="tt-overview">
+      The ServletContextListener is a web application life-cycle listener.<br>
+      This listener is configured by adding the @WebListener annotation. Alternatively,
+      you can add the listener element to the web.xml file:
+      <pre>
+  &lt;listener&gt;
+    &lt;listener-class&gt;LISTENER CLASS FULLY QUALIFIED NAME&lt;/listener-class&gt;
+  &lt;/listener&gt;
+      </pre>
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

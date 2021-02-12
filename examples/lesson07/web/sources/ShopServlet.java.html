@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ShopServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST3 {font-style: italic}
+      .ST0 {font-weight: bold}
+      .ST2 {color: #ce7b00; font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\src\java\com\examples\lesson07\servlets\ShopServlet.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson07.servlets;
+
+<span class="keyword-directive">import</span> com.examples.lesson07.model.Product;
+<span class="keyword-directive">import</span> com.examples.lesson07.model.ProductCategory;
+<span class="keyword-directive">import</span> com.examples.lesson07.model.ShoppingCart;
+<span class="keyword-directive">import</span> com.examples.lesson07.services.ProductServices;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> java.util.List;
+<span class="keyword-directive">import</span> javax.inject.Inject;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSession;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">ShopServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/ShopServlet</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ShopServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+<span class="info" title="tt-inject">  @Inject
+  <span class="keyword-directive">private</span> ProductServices <span class="ST1">productServices</span>;</span>
+
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+<span class="info" title="tt-getBasic">    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();
+    HttpSession session = request.getSession();</span>
+<span class="info" title="tt-getShoppingCart">    ShoppingCart shoppingCart = getShoppingCart(session);</span>
+
+<span class="info" title="tt-addRemove">    addOrRemoveItems(shoppingCart, request);</span>
+
+<span class="info" title="tt-uglyHtml">    out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Shop&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;link rel=</span><span class="ST2">\&quot;</span><span class="character">stylesheet</span><span class="ST2">\&quot;</span><span class="character"> href=</span><span class="ST2">\&quot;</span><span class="character">res/styles.css</span><span class="ST2">\&quot;</span><span class="character"> type=</span><span class="ST2">\&quot;</span><span class="character">text/css</span><span class="ST2">\&quot;</span><span class="character">/&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Shop List&lt;/h1&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;table&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;thead&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;+&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;-&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;Product&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;Price&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;Qty&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;Total&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/thead&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tbody&gt;</span><span class="character">&quot;</span>);</span>
+<span class="info" title="tt-iteration">    List&lt;ProductCategory&gt; allProductsByCategory = <span class="ST1">productServices</span>.getAllProductsByCategory();
+    <span class="keyword-directive">for</span> (ProductCategory category : allProductsByCategory) {
+      out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">&lt;td colspan=</span><span class="ST2">\&quot;</span><span class="character">6</span><span class="ST2">\&quot;</span><span class="character">&gt;</span><span class="character">&quot;</span> + category.getName() + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+      <span class="keyword-directive">for</span> (Product product : category.getProducts()) {
+        out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+        out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;[&lt;a href=</span><span class="ST2">\&quot;</span><span class="character">ShopServlet?action=add&amp;productId=</span><span class="character">&quot;</span> + product.getId() + <span class="character">&quot;</span><span class="ST2">\&quot;</span><span class="character">&gt;+&lt;/a&gt;]&lt;/td&gt;</span><span class="character">&quot;</span>);
+        out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;[&lt;a href=</span><span class="ST2">\&quot;</span><span class="character">ShopServlet?action=remove&amp;productId=</span><span class="character">&quot;</span> + product.getId() + <span class="character">&quot;</span><span class="ST2">\&quot;</span><span class="character">&gt;-&lt;/a&gt;]&lt;/td&gt;</span><span class="character">&quot;</span>);
+        out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + product.getName() + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+        out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + product.getPrice() + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+<span class="info" title="tt-compositeGet">        <span class="keyword-directive">int</span> quantity = shoppingCart.getQuantity(product.getId());
+        out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + quantity + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+        <span class="keyword-directive">double</span> totalPrice = product.getPrice() * quantity;
+        out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + totalPrice + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+        out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);</span>
+      }
+    }</span>
+<span class="info" title="tt-uglyHtml">    out.println(<span class="character">&quot;</span><span class="character">&lt;/tbody&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/table&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;br&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST2">\&quot;</span><span class="character">index.html</span><span class="ST2">\&quot;</span><span class="character">&gt;Go Home&lt;/a&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);
+</span>
+  }
+
+<span class="info" title="tt-getShoppingCartMethod">  <span class="keyword-directive">private</span> ShoppingCart <span class="ST0">getShoppingCart</span>(HttpSession session) {
+    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(<span class="character">&quot;</span><span class="character">shoppingCart</span><span class="character">&quot;</span>);
+    <span class="keyword-directive">if</span> (shoppingCart == <span class="keyword-directive">null</span>) {
+      shoppingCart = <span class="keyword-directive">new</span> ShoppingCart();
+      session.setAttribute(<span class="character">&quot;</span><span class="character">shoppingCart</span><span class="character">&quot;</span>, shoppingCart);
+    }
+    <span class="keyword-directive">return</span> shoppingCart;
+  }</span>
+
+<span class="info" title="tt-addRemoveMethod">  <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> <span class="ST0">addOrRemoveItems</span>(ShoppingCart shoppingCart, HttpServletRequest request) {
+    String action = request.getParameter(<span class="character">&quot;</span><span class="character">action</span><span class="character">&quot;</span>);
+    <span class="keyword-directive">try</span> {
+      <span class="keyword-directive">int</span> productId = Integer.<span class="ST3">parseInt</span>(request.getParameter(<span class="character">&quot;</span><span class="character">productId</span><span class="character">&quot;</span>));
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">add</span><span class="character">&quot;</span>.equals(action)) {
+        shoppingCart.add(productId);
+      }
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">remove</span><span class="character">&quot;</span>.equals(action)) {
+        shoppingCart.remove(productId);
+      }
+    } <span class="keyword-directive">catch</span> (Exception e) {
+    }
+  }</span>
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+}
+
+    </pre>
+    <div id="tt-inject">
+      This injects the service into the Servlet. CDI resolves the dependency and injects a proper implementation of the required interface.
+      In this case the class com.examples.lesson07.services.ProductServicesImpl is the one injected.
+    </div>
+    <div id="tt-getBasic">
+      The method first gets all the required scope variables and output writer.
+    </div>
+    <div id="tt-getShoppingCart">
+      The shopping cart is obtained from the Session but since it might not exist the logic
+      behind a "null-safe" get is done in another method.
+    </div>
+    <div id="tt-addRemove">
+      The logic for adding or removing an item is done in another method that will modify the shopping cart accordingly
+    </div>
+    <div id="tt-getShoppingCartMethod">
+      This method will try to get the shopping cart from the session, if the shopping cart does not exist it will create one that will be stored in the session.
+    </div>
+    <div id="tt-addRemoveMethod">
+      This method gets the parameters from the request required for adding or removing an item as well as the id for the added or removed item.
+      After that the method will call the right method on the ShoppingCart object.
+    </div>
+    <div id="tt-uglyHtml">
+      This is HTML code. As you can see maintaining this code can become troublesome as it grows in size and complexity.
+    </div>
+    <div id="tt-iteration">
+      Here the method iterates over the categories and the products inside those categories to generate the table output.
+    </div>
+    <div id="tt-compositeGet">
+      In order to get the quantity ordered for a certain item and the total price the method gets the data from the shopping cart and from the product and joins it at the moment it is generating the output.
+      This makes the code hard to read and to maintain.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>SimpleServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson03\src\java\com\examples\lesson03\SimpleServlet.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson03;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="info" title="tt-annotation">@WebServlet(name = <span class="character">&quot;</span><span class="character">SimpleServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/servlets/SimpleServlet</span><span class="character">&quot;</span>})</span>
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">SimpleServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+<span class="info" title="tt-doGet">  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {</span>
+<span class="info" title="tt-out">    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();</span>
+
+<span class="info" title="tt-htmlOut">    out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Hello World Servlet&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;HELLO WORLD!&lt;/h1&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);</span>
+  }
+}
+
+    </pre>
+    <div id="tt-annotation">
+      The @WebServlet annotation defines the name of the servlet and the URL mapping(s) that are handled.
+    </div>
+    <div id="tt-doGet">
+      Servlets usually override 2 methods: doGet and doPost.<br>
+      When a browser navigates using the address bar or by clicking on a link it is
+      usually a GET request.<br>
+      POST is used often in HTML forms.<br>
+      This servlet just overrides the doGet method to display some output to the user when it is accessed by GET requests.
+    </div>
+    <div id="tt-htmlOut">
+      Some HTML output.
+    </div>
+    <div id="tt-out">
+      To print the response to the user you need to get the output PrintWriter object from
+      the HttpServletResponse object.
+    </div>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+  </body>
+</html>

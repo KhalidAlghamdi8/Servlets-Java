@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>WrappingFilter.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST0 {font-weight: bold}
+.character {color: #ce7b00}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson09\src\java\com\examples\lesson09\filters\WrappingFilter.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson09.filters;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> javax.servlet.Filter;
+<span class="keyword-directive">import</span> javax.servlet.FilterChain;
+<span class="keyword-directive">import</span> javax.servlet.FilterConfig;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.ServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.ServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebFilter;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequestWrapper;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponseWrapper;
+
+<span class="info" title="tt-mapping">@WebFilter(filterName = <span class="character">&quot;</span><span class="character">WrappingFilter</span><span class="character">&quot;</span>, servletNames = {<span class="character">&quot;</span><span class="character">FilteredServlet</span><span class="character">&quot;</span>})</span>
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">WrappingFilter</span> <span class="keyword-directive">implements</span> Filter {
+
+<span class="info" title="tt-doFilter">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">doFilter</span>(ServletRequest request, ServletResponse response,
+          FilterChain chain)
+          <span class="keyword-directive">throws</span> IOException, ServletException {
+
+    RequestWrapper wrappedRequest = <span class="keyword-directive">new</span> RequestWrapper((HttpServletRequest) request);
+    ResponseWrapper wrappedResponse = <span class="keyword-directive">new</span> ResponseWrapper((HttpServletResponse) response);
+
+    chain.doFilter(wrappedRequest, wrappedResponse);
+  }</span>
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">destroy</span>() {
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">init</span>(FilterConfig filterConfig) {
+  }
+<span class="info" title="tt-request">
+  <span class="keyword-directive">class</span> <span class="ST0">RequestWrapper</span> <span class="keyword-directive">extends</span> HttpServletRequestWrapper {
+
+    <span class="keyword-directive">public</span> <span class="ST0">RequestWrapper</span>(HttpServletRequest request) {
+      <span class="keyword-directive">super</span>(request);
+    }
+
+    @Override
+    <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setAttribute</span>(String name, Object o) {
+      <span class="keyword-directive">if</span> (o <span class="keyword-directive">instanceof</span> String) {
+        <span class="keyword-directive">super</span>.setAttribute(name, <span class="character">&quot;</span><span class="character">INTERCEPTED BY A FILTER</span><span class="character">&quot;</span>);
+      } <span class="keyword-directive">else</span> {
+        <span class="keyword-directive">super</span>.setAttribute(name, o);
+      }
+    }
+  }
+
+  <span class="keyword-directive">class</span> <span class="ST0">ResponseWrapper</span> <span class="keyword-directive">extends</span> HttpServletResponseWrapper {
+
+    <span class="keyword-directive">public</span> <span class="ST0">ResponseWrapper</span>(HttpServletResponse response) {
+      <span class="keyword-directive">super</span>(response);
+    }
+  }</span>
+}
+</pre>
+<div id="tt-doFilter">
+  The doFilter method calls the chain.doFilter method with a wrapped request and response.
+  <br>
+  The servlet API contains wrapper classes that can be extended to modify the functionality of some of its methods.
+</div>
+<div id="tt-request">
+  To create wrappers for the request and response objects (you may only wrap one),
+  the HttpServletRequestWrapper and HttpServletResponseWrapper classes can be extended.
+  Note how the request wrapper overrides the setAttribute method to modify the value set in the
+  wrapped request object.
+</div>
+<div id="tt-mapping">
+  This filter uses the servletNames attribute to map it to a specific servlet.<br>
+  Comment this line in the example source code to disable this filter.
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

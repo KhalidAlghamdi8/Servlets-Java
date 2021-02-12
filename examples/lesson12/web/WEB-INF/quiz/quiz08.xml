@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      Which two are true about the JSTL core iteration custom tags?
+    </TEXT>
+    <ANSWER ISCORRECT="true">It may iterate over arrays, collections, maps, and strings.</ANSWER>
+    <ANSWER ISCORRECT="false">The body of the tag may contain EL code, but not scripting code.</ANSWER>
+    <ANSWER ISCORRECT="true">When looping over collections, a loop status object may be used in the tag body.</ANSWER>
+    <ANSWER ISCORRECT="false">It may iterate over a map, but only the key of the mapping may be used in the tag body.</ANSWER>
+    <ANSWER ISCORRECT="false">When looping over integers (for example begin='1' end='10'), a loop status object may not be used in the tag body.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which JSTL code snippet can be used to import content from another web resource?      
+    </TEXT>
+    <ANSWER ISCORRECT="true"><![CDATA[ <c:import url="foo.jsp"/> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <c:import page="foo.jsp"/> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <c:include url="foo.jsp"/> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <c:include page="foo.jsp"/> ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false">Importing cannot be done in JSTL. A standard action must be used instead.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      In which directories, relative to a web application's root, may a tag library descriptor file reside when deployed directly into a web application?
+    </TEXT>
+    <ANSWER ISCORRECT="true">/WEB-INF</ANSWER>
+    <ANSWER ISCORRECT="false">/META-INF</ANSWER>
+    <ANSWER ISCORRECT="true">/WEB-INF/tlds</ANSWER>
+    <ANSWER ISCORRECT="false">/META-INF/tlds</ANSWER>
+    <ANSWER ISCORRECT="true">/WEB-INF/resources</ANSWER>
+    <ANSWER ISCORRECT="false">/META-INF/resources</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      You have deployed an application with a page accesible from the URL:
+    </TEXT>
+	<TEXT CODE="true">
+http://localhost:7001/myWebApp/info/about.jsp
+	</TEXT>
+	<TEXT>
+	You want to link to this page. What C:URL tag will give you the absolute URL for the page?
+	</TEXT>
+    <ANSWER ISCORRECT="true"><![CDATA[ <c:url value="/info/about.jsp"/> ]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <c:url value="myWebApp/info/about.jsp" />]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <c:url value="/myWebApp/info/about.jsp" />]]></ANSWER>
+    <ANSWER ISCORRECT="false"><![CDATA[ <c:url value="info/about.jsp" />]]></ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      What gets printed when the following JSTL code fragment is executed?
+    </TEXT>
+    <TEXT CODE="TRUE">
+<![CDATA[
+<c:forEach var="item" begin="0" end="5">
+${item},
+</c:forEach>
+]]>
+    </TEXT>
+    <ANSWER ISCORRECT="true">1,2,3,4,5,</ANSWER>
+    <ANSWER ISCORRECT="false">0,1,2,3,4,5,</ANSWER>
+    <ANSWER ISCORRECT="false">0,1,2,3,4,</ANSWER>
+    <ANSWER ISCORRECT="false">1,2,3,4,</ANSWER>
+    <ANSWER ISCORRECT="false">Compilation Error</ANSWER>
+    <ANSWER ISCORRECT="false">Runtime Exception</ANSWER>
+  </QUESTION>
+  
+  
+</POLL>

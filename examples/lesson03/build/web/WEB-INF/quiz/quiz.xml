@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      Given a header in an HTTP request:
+      X-Retries:4
+      Which two retrieve the value of the header from a given HttpServletRequest request?
+    </TEXT>
+    <ANSWER ISCORRECT="true">request.getHeader("X-Retries")</ANSWER>
+    <ANSWER ISCORRECT="true">request.getIntHeader("X-Retries")</ANSWER>
+    <ANSWER ISCORRECT="false">request.getRequestHeader("X-Retries")</ANSWER>
+    <ANSWER ISCORRECT="false">request.getHeaders("X-Retries").get(0)</ANSWER>
+    <ANSWER ISCORRECT="false">request.getRequestHeaders("X-Retries").get(0)</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      A developer chooses to avoid using SingleThreadModel but wants to ensure that data is updated in a thread-safe manner.
+      Which support this design goal?
+    </TEXT>
+    <ANSWER ISCORRECT="true">Store the data in a local variable. </ANSWER>
+    <ANSWER ISCORRECT="true">Store the data in the ServletRequest object.</ANSWER>
+    <ANSWER ISCORRECT="false">Store the data in an instance variable.</ANSWER>
+    <ANSWER ISCORRECT="false">Store the data in the HttpSession object.</ANSWER>
+    <ANSWER ISCORRECT="false">Store the data in the ServletContext object.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Who is responsible for the creation of the request and response objects once the request is received?
+    </TEXT>
+    <ANSWER ISCORRECT="true">Web container</ANSWER>
+    <ANSWER ISCORRECT="false">Application Server</ANSWER>
+    <ANSWER ISCORRECT="false">Servlet</ANSWER>
+    <ANSWER ISCORRECT="false">Web browser</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Typically, in which path do you place third-party or utility JAR files in a web application?
+    </TEXT>
+    <ANSWER ISCORRECT="true">/WEB-INF/lib/</ANSWER>
+    <ANSWER ISCORRECT="false">/META-INF/lib/</ANSWER>
+    <ANSWER ISCORRECT="false">Application's context root</ANSWER>
+    <ANSWER ISCORRECT="false">/META-INF/resources</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      For a given servlet definition, the first three steps (load class, create instance, call the init method) of the servlet life cycle only occur once.
+    </TEXT>
+    <ANSWER ISCORRECT="true">True</ANSWER>
+    <ANSWER ISCORRECT="false">False</ANSWER>
+  </QUESTION>
+</POLL>

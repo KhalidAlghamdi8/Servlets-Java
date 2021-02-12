@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>RequestDataFilter.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST2 {font-style: italic}
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson09\src\java\com\examples\lesson09\filters\RequestDataFilter.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson09.filters;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.text.SimpleDateFormat;
+<span class="keyword-directive">import</span> java.util.Date;
+<span class="keyword-directive">import</span> javax.servlet.Filter;
+<span class="keyword-directive">import</span> javax.servlet.FilterChain;
+<span class="keyword-directive">import</span> javax.servlet.FilterConfig;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.ServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.ServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebFilter;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebInitParam;
+
+<span class="info" title="tt-webfilter">@WebFilter(filterName = <span class="character">&quot;</span><span class="character">RequestDataFilter</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">*.jsp</span><span class="character">&quot;</span>},
+<span class="info" title="tt-initParams">initParams = {
+  @WebInitParam(name = <span class="character">&quot;</span><span class="character">server-name</span><span class="character">&quot;</span>, value = <span class="character">&quot;</span><span class="character">Example Server</span><span class="character">&quot;</span>)</span>
+})</span>
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">RequestDataFilter</span> <span class="keyword-directive">implements</span> Filter {
+
+  <span class="keyword-directive">private</span> String <span class="ST1">serverName</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">long</span> <span class="ST1">lastExecTime</span> = 0;
+
+<span class="info" title="tt-doFilter">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">doFilter</span>(ServletRequest request, ServletResponse response,
+          FilterChain chain)
+          <span class="keyword-directive">throws</span> IOException, ServletException {
+    Date now = <span class="keyword-directive">new</span> Date();
+
+<span class="info" title="tt-setAttributes">    request.setAttribute(<span class="character">&quot;</span><span class="character">server-name</span><span class="character">&quot;</span>, <span class="ST1">serverName</span>);
+    request.setAttribute(<span class="character">&quot;</span><span class="character">server-date</span><span class="character">&quot;</span>, <span class="keyword-directive">new</span> SimpleDateFormat(<span class="character">&quot;</span><span class="character">dd MMM yyyy</span><span class="character">&quot;</span>).format(now));
+    request.setAttribute(<span class="character">&quot;</span><span class="character">server-time</span><span class="character">&quot;</span>, <span class="keyword-directive">new</span> SimpleDateFormat(<span class="character">&quot;</span><span class="character">HH:mm:ss.SSS</span><span class="character">&quot;</span>).format(now));
+    request.setAttribute(<span class="character">&quot;</span><span class="character">server-lastExecTime</span><span class="character">&quot;</span>, <span class="ST1">lastExecTime</span>);</span>
+
+    <span class="keyword-directive">long</span> startTime = now.getTime();
+<span class="info" title="tt-chain">    chain.doFilter(request, response);</span>
+    <span class="ST1">lastExecTime</span> = System.<span class="ST2">currentTimeMillis</span>() - startTime;
+
+  }</span>
+
+<span class="info" title="tt-destroy">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">destroy</span>() {
+    <span class="ST1">serverName</span> = <span class="keyword-directive">null</span>;
+  }</span>
+
+<span class="info" title="tt-init">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">init</span>(FilterConfig filterConfig) {
+<span class="info" title="tt-filterConfig"><span class="ST1">serverName</span> = filterConfig.getInitParameter(<span class="character">&quot;</span><span class="character">server-name</span><span class="character">&quot;</span>);</span>
+  }
+}</span>
+
+    </pre>
+    <div id="tt-webfilter">
+      The WebfFilter annotation configures this filter to run on the web server.<br>
+      The urlPatterns parameter sets the resources that are filtered.<br>
+      Filters may contain init parameters and are set in the initParams parameter.
+    </div>
+    <div id="tt-initParams">
+      Init parameters are set with a list of WebInitParam annotations.
+    </div>
+    <div id="tt-doFilter">
+      The doFilter method is the core of a Filter class, it is executed for all the
+      intercepted requests.<br>
+      To invoke the servlet (or more filters if they apply), call the chain.doFilter method
+      after the filtered servlet (and any other filters) finish. The statement after the chain.doFilter
+      method executes.
+    </div>
+    <div id="tt-setAttributes">
+      This filter sets some attributes in the request so it is available to all the
+      filtered resources. JSP pages may print out these values.
+    </div>
+    <div id="tt-chain">
+      The chain.doFilter executes the resource or other filters, if they apply. When the 
+      execution finishes, control is returned to normal.
+    </div>
+    <div id="tt-destroy">
+      Filters have a destroy method where clean variables are cleaned and open resources (database connections, web services, threads, etc.)
+      are closed.
+    </div>
+    <div id="tt-init">
+      The init method is used for initializing the filter. The FilterConfig object is
+      available here. You may initialize any resource the filter needs.<br>
+      The FilterConfig object contains any initialization parameters and information about the server and the filter itself.
+    </div>
+    <div id="tt-filterConfig">
+      Any initialization parameter set in the WebFilter.initParams annotation
+      or on the web.xml Filter - InitParam XML element can be read from the filterConfig
+      object inside the init method.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

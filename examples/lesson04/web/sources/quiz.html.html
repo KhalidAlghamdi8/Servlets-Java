@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>quiz.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css"> 
+    <style type="text/css">
+      <!--
+      .highlight-caret-row {background-color: #e9eff8}
+      .ST0 {color: #628fb5; background-color: #e9eff8}
+      .argument {color: #009900}
+      .value {color: #ce7b00}
+      .tag {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson04\web\quiz.html</td></tr></table>
+    <pre>
+<span class="ST0">&lt;!DOCTYPE</span> <span class="ST0">html</span><span class="ST0">&gt;</span>
+<span class="tag">&lt;</span><span class="tag">html</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;</span><span class="tag">head</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;</span><span class="tag">title</span><span class="tag">&gt;</span>Quiz<span class="tag">&lt;/</span><span class="tag">title</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;</span><span class="tag">meta</span> <span class="argument">http-equiv</span><span class="argument">=</span><span class="value">&quot;Content-Type&quot;</span> <span class="argument">content</span><span class="argument">=</span><span class="value">&quot;text/html; charset=UTF-8&quot;</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;</span><span class="tag">link</span> <span class="argument">rel</span><span class="argument">=</span><span class="value">&quot;stylesheet&quot;</span> <span class="argument">href</span><span class="argument">=</span><span class="value">&quot;res/styles.css&quot;</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;text/css&quot;</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/</span><span class="tag">head</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;</span><span class="tag">body</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;</span><span class="tag">h1</span><span class="tag">&gt;</span>QUIZ TIME!<span class="tag">&lt;/</span><span class="tag">h1</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;</span><span class="tag">form</span> <span class="argument">action</span><span class="argument">=</span><span class="value">&quot;QuizServlet&quot;</span> <span class="argument">method</span><span class="argument">=</span><span class="value">&quot;POST&quot;</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;</span><span class="tag">h2</span><span class="tag">&gt;</span>Where can you declare a Servlet&#39;s Mapping?<span class="tag">&lt;/</span><span class="tag">h2</span><span class="tag">&gt;</span>
+<a class="info" title="tt-checkboxes">      <span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;comment&quot;</span><span class="tag">&gt;</span>In the servlet class using comments<span class="tag">&lt;</span><span class="tag">br</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;fragment&quot;</span><span class="tag">&gt;</span>web-fragment.xml<span class="tag">&lt;</span><span class="tag">br</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;annotation&quot;</span><span class="tag">&gt;</span>In the servlet class using annotations<span class="tag">&lt;</span><span class="tag">br</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;config&quot;</span><span class="tag">&gt;</span>application.config<span class="tag">&lt;</span><span class="tag">br</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;web&quot;</span><span class="tag">&gt;</span>web.xml<span class="tag">&lt;</span><span class="tag">br</span><span class="tag">&gt;</span></a>
+      Before hitting submit give me your name: <span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;text&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;name&quot;</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag">br</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;submit&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;Submit&quot;</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;/</span><span class="tag">form</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;</span><span class="tag">p</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;</span><span class="tag">a</span> <span class="argument">href</span><span class="argument">=</span><span class="value">&quot;index.html&quot;</span><span class="tag">&gt;</span>Go back<span class="tag">&lt;/</span><span class="tag">a</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;/</span><span class="tag">p</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/</span><span class="tag">body</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/</span><span class="tag">html</span><span class="tag">&gt;</span>
+
+    </pre>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+    <div id="tt-checkboxes">
+      The checkboxes in this form have the same name. This means that the servlet gets multiple values for the parameter.<br>
+      <pre><span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;comment&quot;</span><span class="tag">&gt;</span>
+<span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;fragment&quot;</span><span class="tag">&gt;</span>
+<span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;annotation&quot;</span><span class="tag">&gt;</span>
+<span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;config&quot;</span><span class="tag">&gt;</span>
+<span class="tag">&lt;</span><span class="tag">input</span> <span class="argument">type</span><span class="argument">=</span><span class="value">&quot;checkbox&quot;</span> <span class="argument">name</span><span class="argument">=</span><span class="value">&quot;answer&quot;</span> <span class="argument">value</span><span class="argument">=</span><span class="value">&quot;web&quot;</span><span class="tag">&gt;</span></pre>
+      To get the value for such parameter the servlet will need to call:
+      <pre>request.getParameterValues("answer");</pre>
+
+    </div>
+  </body>
+</html>

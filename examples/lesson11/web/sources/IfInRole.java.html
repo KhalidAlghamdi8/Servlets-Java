@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>IfInRole.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson11\src\java\com\examples\lesson11\tags\IfInRole.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson11.tags;
+
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.jsp.JspException;
+<span class="keyword-directive">import</span> javax.servlet.jsp.JspWriter;
+<span class="keyword-directive">import</span> javax.servlet.jsp.PageContext;
+<span class="keyword-directive">import</span> javax.servlet.jsp.tagext.JspFragment;
+<span class="keyword-directive">import</span> javax.servlet.jsp.tagext.SimpleTagSupport;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">IfInRole</span> <span class="keyword-directive">extends</span> SimpleTagSupport {
+</span>
+  <span class="keyword-directive">private</span> String <span class="ST1">role</span>;
+
+<span class="info" title="tt-doTag">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">doTag</span>() <span class="keyword-directive">throws</span> JspException {
+    <span class="keyword-directive">try</span> {
+      PageContext context = (PageContext) getJspContext();
+      HttpServletRequest request = (HttpServletRequest) context.getRequest();
+      <span class="keyword-directive">if</span> (request.isUserInRole(<span class="ST1">role</span>)) {
+        getJspBody().invoke(<span class="keyword-directive">null</span>);
+      }
+    } <span class="keyword-directive">catch</span> (Exception ex) {
+      <span class="keyword-directive">throw</span> <span class="keyword-directive">new</span> JspException(<span class="character">&quot;</span><span class="character">Error in IfInRole tag</span><span class="character">&quot;</span>, ex);
+    }
+  }</span>
+
+<span class="info" title="tt-setRole">  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setRole</span>(String role) {
+    <span class="keyword-directive">this</span>.<span class="ST1">role</span> = role;
+  }</span>
+}
+
+    </pre>
+    <div id="tt-overview">
+      This is a custom tag class, that extends the javax.servlet.jsp.tagext.SimpleTagSupport class.
+      For more examples of custom tags, see the lesson08 examples.
+    </div>
+    <div id="tt-doTag">
+      The doTag method is the core for this tag.
+      Notice that the the tag only checks if the user is in the
+      provided role. If it is, the body of the tag is invoked.
+    </div>
+    <div id="tt-setRole">
+      Use this method to set the role attribute from the tag.<br>
+      Every tag attribute must have a set method to work.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

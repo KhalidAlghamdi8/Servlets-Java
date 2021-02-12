@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>FullView.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST0 {font-weight: bold}
+.character {color: #ce7b00}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\servlets\FullView.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.servlets;
+
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizCollection;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> javax.servlet.ServletContext;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">quiz-FullView</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/admin/fullview</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">FullView</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    ServletContext context = getServletContext();
+    QuizCollection quizzes = (QuizCollection) context.getAttribute(<span class="character">&quot;</span><span class="character">quizzes</span><span class="character">&quot;</span>);
+    request.setAttribute(<span class="character">&quot;</span><span class="character">quizzes</span><span class="character">&quot;</span>, quizzes.getQuizes());
+    request.getRequestDispatcher(<span class="character">&quot;</span><span class="character">/admin/fullview.jsp</span><span class="character">&quot;</span>).forward(request, response);
+  }
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

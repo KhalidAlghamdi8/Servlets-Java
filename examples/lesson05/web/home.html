@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 05</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+  </head>
+  <body>
+    <h1>Lesson 05 - Web Application Configuration - Examples.</h1>
+    <h2>Servlet Configuration</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Launch example.</th>
+          <th>Example Name</th>
+          <th>Sources</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="AnnotationConfigServlet">/AnnotationConfigServlet</a></td>
+          <td>Configuring Servlets using annotations.</td>
+          <td><a href="sources/AnnotationConfigServlet.java.html">com.examples.lesson05.AnnotationConfigServlet</a></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2"><a href="XmlConfigServlet">/XmlConfigServlet</a></td>
+          <td rowspan="2">Configuring Servlets using web.xml</td>
+          <td><a href="sources/XmlConfigServlet.java.html">com.examples.lesson05.XmlConfigServlet</a></td>
+        </tr>
+        <tr>
+          <td>Servlet config: <a href="sources/XmlConfigServlet.web.xml.html">web.xml</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Scopes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Launch example.</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="ScopesServletTest?name=parameter">/ScopesServletTest?name=parameter</a></td>
+          <td><a href="sources/ScopesServletTest.java.html">com.examples.lesson04.ScopesServletTest</a></td>
+        </tr>
+    </table>
+
+    <h2>Listeners</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Description.</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ServletContext Attribute Listener</td>
+          <td><a href="sources/ExampleContextAttributeListener.java.html">com.examples.lesson04.listeners.ExampleContextAttributeListener</a></td>
+        </tr>
+        <tr>
+          <td>HttpSession Listener</td>
+          <td><a href="sources/ExampleSessionListener.java.html">com.examples.lesson04.listeners.ExampleSessionListener</a></td>
+        </tr>
+        <tr>
+          <td>Servlet Request Listener</td>
+          <td><a href="sources/ExampleRequestListener.java.html">com.examples.lesson04.listeners.ExampleRequestListener</a></td>
+        </tr>
+        <tr>
+          <td>Servlet Request Attribute Listener</td>
+          <td><a href="sources/ExampleRequestAttributeListener.java.html">com.examples.lesson04.listeners.ExampleRequestAttributeListener</a></td>
+        </tr>
+        <tr>
+          <td>HttpSession Binding Listener</td>
+          <td><a href="sources/ExampleSessionBindingListener.java.html">com.examples.lesson04.listeners.ExampleSessionBindingListener</a></td>
+        </tr>
+        <tr>
+          <td>HttpSession Attribute Listener</td>
+          <td><a href="sources/ExampleSessionAttributeListener.java.html">com.examples.lesson04.listeners.ExampleSessionAttributeListener</a></td>
+        </tr>
+        <tr>
+          <td>ServletContext Listener</td>
+          <td><a href="sources/ExampleContextListener.java.html">com.examples.lesson04.listeners.ExampleContextListener</a></td>
+        </tr>
+        <tr>
+          <td>HttpSession Activation Listener</td>
+          <td><a href="sources/ExampleActivationListener.java.html">com.examples.lesson04.listeners.ExampleActivationListener</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Using the Listeners above this applications sets some data in the request, session and application scopes.<br>
+      The following servlet displays such data:
+    </p>
+    <table>
+      <tr>
+        <td><a href="displayListenerData">/displayListenerData</a></td>
+        <td><a href="sources/DisplayListenerDataServlet.java.html">com.examples.lesson05.DisplayListenerDataServlet</a></td>
+      </tr>
+    </table>
+
+    <h2>Error pages.</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Sources</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="This.resource.does.not.exist">/This.resource.does.not.exist</a> (error 404)</td>
+          <td><a href="sources/error404.html">/errorPages/error404.html</a></td>
+        </tr>
+        <tr>
+          <td rowspan="2"><a href="ExceptionServlet">/ExceptionServlet</a> (error 500)</td>
+          <td><a href="sources/error500.html">/errorPages/error500.html</a></td>
+        </tr>
+        <tr>
+          <td><a href="sources/ExceptionServlet.java.html">com.examples.lesson05.ExceptionServlet</a></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2"><a href="ErrorServlet">/ErrorServlet</a> (error 406 NOT_ACCEPTABLE)</td>
+          <td><a href="sources/error500.html">/errorPages/error406.html</a></td>
+        </tr>
+        <tr>
+          <td><a href="sources/ErrorServlet.java.html">com.examples.lesson05.ErrorServlet</a></td>
+        </tr>
+
+        <tr>
+          <td>Web.xml error page config</td>
+          <td><a href="sources/web.xml.errors.html">/WEB-INF/web.xml</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Web.xml</h2>
+    <table>
+      <tr>
+        <td>This application's Web.xml</td>
+        <td>Complete: <a href="sources/web.xml.html">web.xml</a></td>
+      </tr>
+    </table>
+    <h1><a href="quiz/list">Lesson 05 - Quiz</a></h1>
+    <ul>
+      <li><a href="quiz/list">Take Quiz</a></li>
+      <li><a href="quiz/score">Quiz Score</a></li>
+      <li><a href="quiz/reset">Reset Quiz</a></li>
+    </ul>
+
+  </body>
+</html>

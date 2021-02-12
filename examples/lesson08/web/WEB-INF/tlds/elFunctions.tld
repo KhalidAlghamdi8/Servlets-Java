@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+  <tlib-version>1.0</tlib-version>
+  <short-name>elfunctions</short-name>
+  <uri>examples/lesson08/tlds/elFunctions</uri>
+  <function>
+    <name>now</name>
+    <function-class>com.examples.lesson08.elfunctions.Functions</function-class>
+    <function-signature>
+      java.util.Date now()
+    </function-signature>
+  </function>
+  
+  <function>
+    <name>date</name>
+    <function-class>com.examples.lesson08.elfunctions.Functions</function-class>
+    <function-signature>
+      java.util.Date date(int, int, int)
+    </function-signature>
+  </function>
+
+</taglib>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>DatabaseSetupCheckListener.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST2 {font-style: italic}
+.ST0 {font-weight: bold}
+.character {color: #ce7b00}
+.ST1 {color: #009900; font-style: italic}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\listeners\DatabaseSetupCheckListener.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.listeners;
+
+<span class="keyword-directive">import</span> java.sql.Connection;
+<span class="keyword-directive">import</span> java.sql.DriverManager;
+<span class="keyword-directive">import</span> java.sql.ResultSet;
+<span class="keyword-directive">import</span> java.sql.Statement;
+<span class="keyword-directive">import</span> javax.servlet.ServletContextEvent;
+<span class="keyword-directive">import</span> javax.servlet.ServletContextListener;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebListener;
+
+@WebListener
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">DatabaseSetupCheckListener</span> <span class="keyword-directive">implements</span> ServletContextListener {
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST1">URL</span> = <span class="character">&quot;</span><span class="character">jdbc:derby://localhost:1527/QuizDB</span><span class="character">&quot;</span>;
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST1">USER</span> = <span class="character">&quot;</span><span class="character">oracle</span><span class="character">&quot;</span>;
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST1">PASS</span> = <span class="character">&quot;</span><span class="character">welcome1</span><span class="character">&quot;</span>;
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">contextInitialized</span>(ServletContextEvent sce) {
+    sce.getServletContext().setAttribute(<span class="character">&quot;</span><span class="character">initialized</span><span class="character">&quot;</span>, validateInstallation());
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">contextDestroyed</span>(ServletContextEvent sce) {
+  }
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">boolean</span> <span class="ST0">validateInstallation</span>() {
+    Connection connection = <span class="keyword-directive">null</span>;
+    Statement statement = <span class="keyword-directive">null</span>;
+    ResultSet rs = <span class="keyword-directive">null</span>;
+    <span class="keyword-directive">try</span> {
+      Class.<span class="ST2">forName</span>(<span class="character">&quot;</span><span class="character">org.apache.derby.jdbc.ClientDriver</span><span class="character">&quot;</span>).newInstance();
+      connection = DriverManager.<span class="ST2">getConnection</span>(<span class="ST1">URL</span>, <span class="ST1">USER</span>, <span class="ST1">PASS</span>);
+      statement = connection.createStatement();
+      rs = statement.executeQuery(<span class="character">&quot;</span><span class="character">SELECT * FROM QuizCheck</span><span class="character">&quot;</span>);
+      <span class="keyword-directive">return</span> rs.next();
+    } <span class="keyword-directive">catch</span> (Exception e) {
+      <span class="keyword-directive">return</span> <span class="keyword-directive">false</span>;
+    } <span class="keyword-directive">finally</span> {
+      <span class="keyword-directive">try</span> {
+        rs.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+      <span class="keyword-directive">try</span> {
+        statement.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+      <span class="keyword-directive">try</span> {
+        connection.close();
+      } <span class="keyword-directive">catch</span> (Exception e) {
+      }
+    }
+  }
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

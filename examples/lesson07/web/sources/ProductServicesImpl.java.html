@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ProductServicesImpl.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\src\java\com\examples\lesson07\services\ProductServicesImpl.java</td></tr></table>
+    <pre><span class="info" title="tt-overview">
+<span class="keyword-directive">package</span> com.examples.lesson07.services;
+
+<span class="keyword-directive">import</span> com.examples.lesson07.model.Product;
+<span class="keyword-directive">import</span> com.examples.lesson07.model.ProductCategory;
+<span class="keyword-directive">import</span> java.util.ArrayList;
+<span class="keyword-directive">import</span> java.util.List;
+<span class="keyword-directive">import</span> javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ProductServicesImpl</span> <span class="keyword-directive">implements</span> ProductServices {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">int</span> <span class="ST1">currId</span> = 1;
+  <span class="keyword-directive">private</span> List&lt;ProductCategory&gt; <span class="ST1">categories</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">ProductServicesImpl</span>() {
+    <span class="ST1">categories</span> = <span class="keyword-directive">new</span> ArrayList&lt;ProductCategory&gt;();
+    <span class="ST1">categories</span>.add(createElectronics());
+    <span class="ST1">categories</span>.add(createGroceries());
+    <span class="ST1">categories</span>.add(createComputing());
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> List&lt;ProductCategory&gt; <span class="ST0">getAllProductsByCategory</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">categories</span>;
+  }
+
+  <span class="keyword-directive">private</span> ProductCategory <span class="ST0">createElectronics</span>() {
+    ProductCategory category = <span class="keyword-directive">new</span> ProductCategory(<span class="character">&quot;</span><span class="character">Electronics</span><span class="character">&quot;</span>);
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">Phone</span><span class="character">&quot;</span>, 14.0));
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">CellPhone</span><span class="character">&quot;</span>, 50.0));
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">Stereo</span><span class="character">&quot;</span>, 150.0));
+    <span class="keyword-directive">return</span> category;
+  }
+
+  <span class="keyword-directive">private</span> ProductCategory <span class="ST0">createGroceries</span>() {
+    ProductCategory category = <span class="keyword-directive">new</span> ProductCategory(<span class="character">&quot;</span><span class="character">Toys</span><span class="character">&quot;</span>);
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">Car</span><span class="character">&quot;</span>, 7.0));
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">Doll</span><span class="character">&quot;</span>, 10.0));
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">Bear</span><span class="character">&quot;</span>, 15.0));
+    <span class="keyword-directive">return</span> category;
+  }
+
+  <span class="keyword-directive">private</span> ProductCategory <span class="ST0">createComputing</span>() {
+    ProductCategory category = <span class="keyword-directive">new</span> ProductCategory(<span class="character">&quot;</span><span class="character">Computing</span><span class="character">&quot;</span>);
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">Laptop</span><span class="character">&quot;</span>, 700.0));
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">Desktop</span><span class="character">&quot;</span>, 900.0));
+    category.getProducts().add(<span class="keyword-directive">new</span> Product(getId(), category, <span class="character">&quot;</span><span class="character">Tablet</span><span class="character">&quot;</span>, 550.0));
+    <span class="keyword-directive">return</span> category;
+  }
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">int</span> <span class="ST0">getId</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">currId</span>++;
+  }
+}
+</span>
+    </pre>
+    <div id="tt-overview">
+      The actual implementation of the ProductServices interface creates a catalog of Categories and Products from hard coded values. It is also possible to use a database or an external file.
+    </div>
+
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

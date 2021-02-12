@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      The Squeaky Beans Inc. shopping application was initially developed for a non-distributed environment. The company recently purchased the Acme Application Server, which supports distributed HttpSession objects. When deploying the application to the server, the deployer marks it as distributable in the web application deployment descriptor to take advantage of this feature.
+      Given this scenario, which must be true?
+    </TEXT>
+    <ANSWER ISCORRECT="true">The J2EE web container must support migration of objects that implement Serializable.</ANSWER>
+    <ANSWER ISCORRECT="false">The J2EE web container must use the native JVM Serialization mechanism for distributing HttpSession objects.</ANSWER>
+    <ANSWER ISCORRECT="false">As per the specification, the J2EE web container ensures that distributed HttpSession objects will be stored in a database.</ANSWER>
+    <ANSWER ISCORRECT="true">Storing references to Enterprise JavaBeans components in the HttpSession object might NOT be supported by J2EE web containers.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which three web application deployment descriptor elements allow web components to gain references to resources or EJB components? (Choose three)
+    </TEXT>
+    <ANSWER ISCORRECT="true">ejb-ref</ANSWER>
+    <ANSWER ISCORRECT="false">jdbc-ref</ANSWER>
+    <ANSWER ISCORRECT="false">servlet-ref</ANSWER>
+    <ANSWER ISCORRECT="true">resource-ref</ANSWER>
+    <ANSWER ISCORRECT="false">javamail-ref</ANSWER>
+    <ANSWER ISCORRECT="false">ejb-remote-ref</ANSWER>
+    <ANSWER ISCORRECT="true">resource-env-ref</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      What advantages does JDNI Datasource access has over JDBC connections?
+    </TEXT>
+    <ANSWER ISCORRECT="true">Connection pooling is automatically managed by the server.</ANSWER>
+    <ANSWER ISCORRECT="false">Connections are created every time they are used</ANSWER>
+    <ANSWER ISCORRECT="false">The web application can shut down the entire connection pool</ANSWER>
+    <ANSWER ISCORRECT="true">The connection details are handled by the web server.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      JPA is used to:
+    </TEXT>
+    <ANSWER ISCORRECT="true">Persist Java objects in a database.</ANSWER>
+    <ANSWER ISCORRECT="false">Create queries to get JDBC ResultSet objects.</ANSWER>
+    <ANSWER ISCORRECT="false">Create tables on a database automatically.</ANSWER>
+    <ANSWER ISCORRECT="false">Connect to a database and execute java code in it.</ANSWER>
+  </QUESTION>
+  
+</POLL>

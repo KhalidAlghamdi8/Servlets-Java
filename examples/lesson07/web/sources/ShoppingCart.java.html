@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ShoppingCart.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\src\java\com\examples\lesson07\model\ShoppingCart.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson07.model;
+
+<span class="keyword-directive">import</span> java.util.HashMap;
+<span class="keyword-directive">import</span> java.util.Map;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ShoppingCart</span> {
+
+  <span class="keyword-directive">private</span> Map&lt;Integer, Integer&gt; <span class="ST1">items</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">ShoppingCart</span>() {
+    <span class="ST1">items</span> = <span class="keyword-directive">new</span> HashMap&lt;Integer, Integer&gt;();
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">add</span>(<span class="keyword-directive">int</span> productId) {
+    <span class="keyword-directive">int</span> quantity = getQuantity(productId);
+    quantity++;
+    <span class="ST1">items</span>.put(productId, quantity);
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">remove</span>(<span class="keyword-directive">int</span> productId) {
+    <span class="keyword-directive">int</span> quantity = getQuantity(productId);
+    quantity--;
+    <span class="keyword-directive">if</span> (quantity &lt; 0) {
+      <span class="ST1">items</span>.remove(productId);
+    } <span class="keyword-directive">else</span> {
+      <span class="ST1">items</span>.put(productId, quantity);
+    }
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">getQuantity</span>(<span class="keyword-directive">int</span> productId) {
+    Integer quantity = <span class="ST1">items</span>.get(productId);
+    <span class="keyword-directive">if</span> (quantity == <span class="keyword-directive">null</span>) {
+      <span class="keyword-directive">return</span> 0;
+    } <span class="keyword-directive">else</span> {
+      <span class="keyword-directive">return</span> quantity.intValue();
+    }
+  }
+}
+</span>
+    </pre>
+    <div id="tt-overview">
+      This is the shopping cart object. A shopping cart knows how many products have been added to it.
+      Notice that the way the ShoppingCart object does this is by having a map of product identifiers and the quantity of the related product object.
+      To know what is the actual product in the shopping cart, look for it using the id stored here.
+    </div>
+
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

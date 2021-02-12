@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ProductCategoryView.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\src\java\com\examples\lesson07\view\ProductCategoryView.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson07.view;
+
+<span class="keyword-directive">import</span> com.examples.lesson07.model.Product;
+<span class="keyword-directive">import</span> com.examples.lesson07.model.ProductCategory;
+<span class="keyword-directive">import</span> com.examples.lesson07.model.ShoppingCart;
+<span class="keyword-directive">import</span> java.util.ArrayList;
+<span class="keyword-directive">import</span> java.util.List;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ProductCategoryView</span> {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> String <span class="ST1">name</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> List&lt;ProductView&gt; <span class="ST1">products</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">ProductCategoryView</span>(ProductCategory category, ShoppingCart shoppingCart) {
+    <span class="keyword-directive">this</span>.<span class="ST1">name</span> = category.getName();
+    <span class="keyword-directive">this</span>.<span class="ST1">products</span> = <span class="keyword-directive">new</span> ArrayList&lt;ProductView&gt;();
+    <span class="keyword-directive">for</span> (Product product : category.getProducts()) {
+      <span class="keyword-directive">this</span>.<span class="ST1">products</span>.add(<span class="keyword-directive">new</span> ProductView(product, shoppingCart.getQuantity(product.getId())));
+    }
+  }
+
+  <span class="keyword-directive">public</span> String <span class="ST0">getName</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">name</span>;
+  }
+
+  <span class="keyword-directive">public</span> List&lt;ProductView&gt; <span class="ST0">getProducts</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">products</span>;
+  }
+}</span></pre>
+    <div id="tt-overview">
+      This class contains the category name and a list of ProductView objects. Instances of this
+      class are meant to be used in the JSP page for display.<br>
+      This class is almost identical to the ProductCategory class, except that it contains a list of ProductView objects instead of Product objects.<br>
+      At the moment, the class takes all the products inside the category and "transforms" them into ProductView objects.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+</html>

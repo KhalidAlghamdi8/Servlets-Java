@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>InfoServletCdiController.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson06\src\java\com\examples\lesson06\servlets\InfoServletCdiController.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson06.servlets;
+
+<span class="keyword-directive">import</span> com.examples.lesson06.services.InfoService;
+<span class="keyword-directive">import</span> com.examples.lesson06.model.InfoBean;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> javax.inject.Inject;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">InfoServletCdiController</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/infoCdiController</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">InfoServletCdiController</span> <span class="keyword-directive">extends</span> HttpServlet {</span>
+
+<span class="info" title="tt-inject">  @Inject
+  <span class="keyword-directive">private</span> InfoService <span class="ST1">infoService</span>;</span>
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+
+<span class="info" title="tt-infoBean">    InfoBean infoBean = <span class="keyword-directive">new</span> InfoBean();
+    infoBean.setServerCores(<span class="ST1">infoService</span>.calculateServerCores());
+    infoBean.setServerFreeMemory(<span class="ST1">infoService</span>.calculateServerFreeMemory());
+    infoBean.setServerMemory(<span class="ST1">infoService</span>.calculateServerMemory());
+    infoBean.setServerName(<span class="ST1">infoService</span>.calculateServerName());
+    infoBean.setServerTime(<span class="ST1">infoService</span>.calculateServerTime());</span>
+
+
+<span class="info" title="tt-requestSetAttribute">    request.setAttribute(<span class="character">&quot;</span><span class="character">infoBean</span><span class="character">&quot;</span>, infoBean);</span>
+
+<span class="info" title="tt-redispatch">    request.getRequestDispatcher(<span class="character">&quot;</span><span class="character">/infoServletView.jsp</span><span class="character">&quot;</span>).forward(request, response);</span>
+  }
+}
+
+    </pre>
+    <div id="tt-overview">
+      This servlet uses dependency injection to get the InfoService and uses it to calculate values that are sent
+      to a JSP for display.
+    </div>
+    <div id="tt-inject">
+      The @Inject annotation allows the servlet to get an instance of the annotated variable.<br>
+      In this case, this annotation tells the server that when this servlet is instantiated it must set
+      the infoService variable with a valid InfoService implementation.
+    </div>
+    <div id="tt-calls">
+    </div>
+    <div id="tt-infoBean">
+      To send the values to the view, they must be stored in a model object.<br>
+      InfoBean is a model object that works as a placeholder for values. You store the calculated values from the service in the infoBean.
+    </div>
+    <div id="tt-requestSetAttribute">
+      With this line, the infoBean is set inside a request attribute that is displayed by the JSP.<br>
+    </div>
+    <div id="tt-redispatch">
+      With this line, the request is sent to the JSP for rendering the output HTML and using the infoBean request attribute.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+
+  </body>
+</html>

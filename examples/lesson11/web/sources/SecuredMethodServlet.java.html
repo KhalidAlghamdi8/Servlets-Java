@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>SecuredMethodServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .comment {color: #969696}
+      .ST1 {color: #ce7b00; font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson11\src\java\com\examples\lesson11\servlets\SecuredMethodServlet.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson11.servlets;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.annotation.security.DeclareRoles;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+@WebServlet(name = <span class="character">&quot;</span><span class="character">SecuredMethodServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/SecuredMethodServlet</span><span class="character">&quot;</span>})</span>
+<span class="info" title="tt-declareRoles">@DeclareRoles({<span class="character">&quot;</span><span class="character">quizUser</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">quizPublisher</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">quizAdmin</span><span class="character">&quot;</span>})</span>
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">SecuredMethodServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response) <span class="keyword-directive">throws</span> ServletException, IOException {
+    <span class="comment">//try to send authentication if the user is not authenticated yet.</span>
+    <span class="info" title="tt-authenticate"><span class="keyword-directive">if</span> (request.authenticate(response)) {</span>
+      PrintWriter out = response.getWriter();
+      <span class="info" title="tt-isUserInRole"><span class="keyword-directive">if</span> (request.isUserInRole(<span class="character">&quot;</span><span class="character">quizUser</span><span class="character">&quot;</span>)) {</span>
+        printHead(out);
+        out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Welcome user&lt;/h1&gt;</span><span class="character">&quot;</span>);
+        printFooter(out);
+      <span class="info" title="tt-isUserInRole">} <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (request.isUserInRole(<span class="character">&quot;</span><span class="character">quizInstructor</span><span class="character">&quot;</span>)) {</span>
+        printHead(out);
+        out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Welcome Instructor&lt;/h1&gt;</span><span class="character">&quot;</span>);
+        printFooter(out);
+      <span class="info" title="tt-isUserInRole">} <span class="keyword-directive">else</span> <span class="keyword-directive">if</span> (request.isUserInRole(<span class="character">&quot;</span><span class="character">quizAdmin</span><span class="character">&quot;</span>)) {</span>
+        printHead(out);
+        out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Welcome admin&lt;/h1&gt;</span><span class="character">&quot;</span>);
+        printFooter(out);
+      } <span class="keyword-directive">else</span> {
+        request.getRequestDispatcher(<span class="character">&quot;</span><span class="character">/errors/accessDenied.jsp</span><span class="character">&quot;</span>).forward(request, response);
+      }
+    }
+  }
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> <span class="ST0">printHead</span>(PrintWriter out) {
+    out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Headers&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;link rel=</span><span class="ST1">\&quot;</span><span class="character">stylesheet</span><span class="ST1">\&quot;</span><span class="character"> href=</span><span class="ST1">\&quot;</span><span class="character">res/styles.css</span><span class="ST1">\&quot;</span><span class="character"> type=</span><span class="ST1">\&quot;</span><span class="character">text/css</span><span class="ST1">\&quot;</span><span class="character">/&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+  }
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> <span class="ST0">printFooter</span>(PrintWriter out) {
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST1">\&quot;</span><span class="character">index.jsp</span><span class="ST1">\&quot;</span><span class="character">&gt;Go Home&lt;/a&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);
+  }
+}
+
+    </pre>
+    <div id="tt-authenticate">
+      Triggers the same authentication process as if the request is for a resource that is protected by a security constraint.<br>
+      Returns: true, if the user is successfully authenticated and false, if not.<br>
+      In this example, it is used to force a login if the user is not logged in.
+      Notice that the if statement enclose the entire method body. If the user is not
+      logged-in, the servlet does nothing and lets the server do the authentication.
+    </div>
+    <div id="tt-isUserInRole">
+      Returns a boolean value indicating whether the authenticated user is included in the 
+      specified logical "role". Roles and role membership are defined using deployment 
+      descriptors. If the user has not been authenticated, the method returns false.<br>
+      In this case, it is used check if the user has a specific role to display the correct greeting.
+    </div>
+    <div id="tt-declareRoles">
+      If you don't use the web.xml to declare the roles and there are no
+      ServletSecurity annotations present to declare the roles in the application,
+      this annotation is required.<br>
+      Although it is part of the javax.annotation.security package, it is recognized
+      by the server and used to declare the roles available just as a security-role element in the
+      web.xml file.
+    </div>
+    <div id="tt-overview">
+      In addition of using annotations and XML security configuration in the web.xml file, you
+      may handle authentication and security constraints programmatically with some methods
+      from the Servlet 3.0 specification.<br>
+      The relevant methods have tooltips describing its functionality.<br>
+      This servlet greets the user differently based on the role the user is in.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>QuizServlet.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST2 {font-style: italic}
+.ST0 {font-weight: bold}
+.ST3 {color: #969696; font-weight: bold}
+.comment {color: #969696}
+.ST1 {color: #009900}
+.character {color: #ce7b00}
+.keyword-directive {color: #0000e6}
+.ST4 {color: #9999ff; font-weight: bold}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\servlets\QuizServlet.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.servlets;
+
+<span class="keyword-directive">import</span> com.examples.lesson12.model.Question;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.Quiz;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizCollection;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizResult;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizResultCollection;
+<span class="keyword-directive">import</span> com.examples.lesson12.services.QuizService;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> javax.inject.Inject;
+<span class="keyword-directive">import</span> javax.servlet.ServletContext;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSession;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">quiz-QuizServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/quiz/quiz</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">QuizServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  @Inject
+  <span class="keyword-directive">private</span> QuizService <span class="ST1">quizService</span>;
+
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    ServletContext context = getServletContext();
+    QuizCollection quizzes = (QuizCollection) context.getAttribute(<span class="character">&quot;</span><span class="character">quizzes</span><span class="character">&quot;</span>);
+    <span class="keyword-directive">int</span> quizId = Integer.<span class="ST2">parseInt</span>(request.getParameter(<span class="character">&quot;</span><span class="character">quiz</span><span class="character">&quot;</span>));
+    Quiz quiz = quizzes.getQuiz(quizId);
+
+    HttpSession session = request.getSession();
+    QuizResultCollection results = (QuizResultCollection) session.getAttribute(<span class="character">&quot;</span><span class="character">quizResults</span><span class="character">&quot;</span>);
+    QuizResult result = results.get(quizId);
+
+    <span class="keyword-directive">if</span> (result.isComplete()) {
+      <span class="ST1">quizService</span>.save(result, request.getRemoteUser());
+      response.sendRedirect(<span class="character">&quot;</span><span class="character">score?completed=true</span><span class="character">&quot;</span>);
+      <span class="keyword-directive">return</span>;
+    }
+
+    String dispatchTo = <span class="character">&quot;</span><span class="character">/quiz/quizView.jsp</span><span class="character">&quot;</span>;
+
+    <span class="comment">//check if there is an answer. if so answer</span>
+    <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">answer</span><span class="character">&quot;</span>.equals(request.getParameter(<span class="character">&quot;</span><span class="character">action</span><span class="character">&quot;</span>))) {
+      <span class="keyword-directive">int</span> questionId = Integer.<span class="ST2">parseInt</span>(request.getParameter(<span class="character">&quot;</span><span class="character">questionId</span><span class="character">&quot;</span>));
+      Question askedQuestion = quiz.getQuestionById(questionId);
+
+      request.setAttribute(<span class="character">&quot;</span><span class="character">question</span><span class="character">&quot;</span>, askedQuestion);
+
+      String[] answerStrings = request.getParameterValues(<span class="character">&quot;</span><span class="character">answerId</span><span class="character">&quot;</span>);
+      <span class="keyword-directive">if</span> (answerStrings == <span class="keyword-directive">null</span>) {
+        answerStrings = <span class="keyword-directive">new</span> String[]{};
+      }
+      <span class="keyword-directive">int</span>[] answers = <span class="keyword-directive">new</span> <span class="keyword-directive">int</span>[answerStrings.<span class="ST1">length</span>];
+      <span class="keyword-directive">for</span> (<span class="keyword-directive">int</span> i = 0; i &lt; answerStrings.<span class="ST1">length</span>; i++) {
+        answers[i] = Integer.<span class="ST2">parseInt</span>(answerStrings[i]);
+      }
+      <span class="keyword-directive">if</span> (askedQuestion.isCorrect(answers)) {
+        request.setAttribute(<span class="character">&quot;</span><span class="character">result</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">true</span><span class="character">&quot;</span>);
+        result.addAnswer(questionId, <span class="keyword-directive">true</span>);
+        dispatchTo = <span class="character">&quot;</span><span class="character">/quiz/quizRes.jsp</span><span class="character">&quot;</span>;
+      } <span class="keyword-directive">else</span> {
+        request.setAttribute(<span class="character">&quot;</span><span class="character">result</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">false</span><span class="character">&quot;</span>);
+        <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">true</span><span class="character">&quot;</span>.equals(request.getParameter(<span class="character">&quot;</span><span class="character">isSecondTry</span><span class="character">&quot;</span>))) {
+          result.addAnswer(questionId, <span class="keyword-directive">false</span>);
+          dispatchTo = <span class="character">&quot;</span><span class="character">/quiz/quizRes.jsp</span><span class="character">&quot;</span>;
+        } <span class="keyword-directive">else</span> {
+          request.setAttribute(<span class="character">&quot;</span><span class="character">isSecondTryAttr</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">true</span><span class="character">&quot;</span>);
+        }
+      }
+    }
+    <span class="keyword-directive">if</span> (result.isComplete()) {
+      <span class="ST1">quizService</span>.save(result, request.getRemoteUser());
+      response.sendRedirect(<span class="character">&quot;</span><span class="character">score?completed=true</span><span class="character">&quot;</span>);
+      <span class="keyword-directive">return</span>;
+    }
+    <span class="keyword-directive">if</span> (request.getAttribute(<span class="character">&quot;</span><span class="character">question</span><span class="character">&quot;</span>) == <span class="keyword-directive">null</span>) {
+      Question question = quiz.getNewQuestion(result.getAskedQuestions());
+      request.setAttribute(<span class="character">&quot;</span><span class="character">question</span><span class="character">&quot;</span>, question);
+    }
+    request.setAttribute(<span class="character">&quot;</span><span class="character">quizResult</span><span class="character">&quot;</span>, result);
+    request.setAttribute(<span class="character">&quot;</span><span class="character">quiz</span><span class="character">&quot;</span>, quiz);
+    request.setAttribute(<span class="character">&quot;</span><span class="character">questionNo</span><span class="character">&quot;</span>, result.getAskedQuestions().size() + 1);
+    request.setAttribute(<span class="character">&quot;</span><span class="character">questionTotal</span><span class="character">&quot;</span>, result.getQuestionsToAsk());
+    request.getRequestDispatcher(dispatchTo).forward(request, response);
+  }
+
+  <span class="comment">// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;HttpServlet methods. Click on the + sign on the left to edit the code.&quot;&gt;</span>
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST3">Handles</span> <span class="ST3">the</span> <span class="ST3">HTTP</span>
+<span class="comment">   * </span><span class="ST4">&lt;code&gt;</span><span class="ST3">GET</span><span class="ST4">&lt;/code&gt;</span> <span class="ST3">method</span><span class="ST3">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST3">@param</span> request <span class="comment">servlet</span> <span class="comment">request</span>
+<span class="comment">   * </span><span class="ST3">@param</span> response <span class="comment">servlet</span> <span class="comment">response</span>
+<span class="comment">   * </span><span class="ST3">@throws</span> <span class="comment">ServletException</span> <span class="comment">if</span> <span class="comment">a</span> <span class="comment">servlet</span><span class="comment">-</span><span class="comment">specific</span> <span class="comment">error</span> <span class="comment">occurs</span>
+<span class="comment">   * </span><span class="ST3">@throws</span> <span class="comment">IOException</span> <span class="comment">if</span> <span class="comment">an</span> <span class="comment">I</span><span class="comment">/</span><span class="comment">O</span> <span class="comment">error</span> <span class="comment">occurs</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST3">Handles</span> <span class="ST3">the</span> <span class="ST3">HTTP</span>
+<span class="comment">   * </span><span class="ST4">&lt;code&gt;</span><span class="ST3">POST</span><span class="ST4">&lt;/code&gt;</span> <span class="ST3">method</span><span class="ST3">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST3">@param</span> request <span class="comment">servlet</span> <span class="comment">request</span>
+<span class="comment">   * </span><span class="ST3">@param</span> response <span class="comment">servlet</span> <span class="comment">response</span>
+<span class="comment">   * </span><span class="ST3">@throws</span> <span class="comment">ServletException</span> <span class="comment">if</span> <span class="comment">a</span> <span class="comment">servlet</span><span class="comment">-</span><span class="comment">specific</span> <span class="comment">error</span> <span class="comment">occurs</span>
+<span class="comment">   * </span><span class="ST3">@throws</span> <span class="comment">IOException</span> <span class="comment">if</span> <span class="comment">an</span> <span class="comment">I</span><span class="comment">/</span><span class="comment">O</span> <span class="comment">error</span> <span class="comment">occurs</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST3">Returns</span> <span class="ST3">a</span> <span class="ST3">short</span> <span class="ST3">description</span> <span class="ST3">of</span> <span class="ST3">the</span> <span class="ST3">servlet</span><span class="ST3">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST3">@return</span> <span class="comment">a</span> <span class="comment">String</span> <span class="comment">containing</span> <span class="comment">servlet</span> <span class="comment">description</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">public</span> String <span class="ST0">getServletInfo</span>() {
+    <span class="keyword-directive">return</span> <span class="character">&quot;</span><span class="character">Short description</span><span class="character">&quot;</span>;
+  }<span class="comment">// &lt;/editor-fold&gt;</span>
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>TimeServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #969696; font-weight: bold}
+      .comment {color: #969696}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      .ST2 {color: #9999ff; font-weight: bold}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson03\src\java\com\examples\lesson03\TimeServlet.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson03;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> java.text.SimpleDateFormat;
+<span class="keyword-directive">import</span> java.util.Date;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="info" title="tt-annotation">@WebServlet(name = <span class="character">&quot;</span><span class="character">TimeServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/servlets/timeServlet</span><span class="character">&quot;</span>})</span>
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">TimeServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+<span class="info" title="tt-processRequest">  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {</span>
+<a class="info" title="tt-getOut">    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();</a>
+    <span class="keyword-directive">try</span> {
+<a class="info" title="tt-html">      out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Servlet TimeServlet&lt;/title&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">Welcome. The current time is:</span><span class="character">&quot;</span>);</a>
+<a class="info" title="tt-dateformat">      Date currentDate = <span class="keyword-directive">new</span> Date();
+      SimpleDateFormat formatter = <span class="keyword-directive">new</span> SimpleDateFormat();
+      out.println(formatter.format(currentDate));</a>
+<a class="info" title="tt-html">      out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);</a>
+    } <span class="keyword-directive">finally</span> {
+      out.close();
+    }
+  }
+
+<span class="info" title="tt-Netbeans">  <span class="comment">// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;HttpServlet methods. Click on the + sign on the left to edit the code.&quot;&gt;</span>
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST1">Handles</span> <span class="ST1">the</span> <span class="ST1">HTTP</span>
+<span class="comment">   * </span><span class="ST2">&lt;code&gt;</span><span class="ST1">GET</span><span class="ST2">&lt;/code&gt;</span> <span class="ST1">method</span><span class="ST1">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST1">@param</span> request <span class="comment">servlet</span> <span class="comment">request</span>
+<span class="comment">   * </span><span class="ST1">@param</span> response <span class="comment">servlet</span> <span class="comment">response</span>
+<span class="comment">   * </span><span class="ST1">@throws</span> <span class="comment">ServletException</span> <span class="comment">if</span> <span class="comment">a</span> <span class="comment">servlet</span><span class="comment">-</span><span class="comment">specific</span> <span class="comment">error</span> <span class="comment">occurs</span>
+<span class="comment">   * </span><span class="ST1">@throws</span> <span class="comment">IOException</span> <span class="comment">if</span> <span class="comment">an</span> <span class="comment">I</span><span class="comment">/</span><span class="comment">O</span> <span class="comment">error</span> <span class="comment">occurs</span>
+   <span class="comment">*/</span>
+<a class="info" title="tt-doGet">  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }</a>
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST1">Handles</span> <span class="ST1">the</span> <span class="ST1">HTTP</span>
+<span class="comment">   * </span><span class="ST2">&lt;code&gt;</span><span class="ST1">POST</span><span class="ST2">&lt;/code&gt;</span> <span class="ST1">method</span><span class="ST1">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST1">@param</span> request <span class="comment">servlet</span> <span class="comment">request</span>
+<span class="comment">   * </span><span class="ST1">@param</span> response <span class="comment">servlet</span> <span class="comment">response</span>
+<span class="comment">   * </span><span class="ST1">@throws</span> <span class="comment">ServletException</span> <span class="comment">if</span> <span class="comment">a</span> <span class="comment">servlet</span><span class="comment">-</span><span class="comment">specific</span> <span class="comment">error</span> <span class="comment">occurs</span>
+<span class="comment">   * </span><span class="ST1">@throws</span> <span class="comment">IOException</span> <span class="comment">if</span> <span class="comment">an</span> <span class="comment">I</span><span class="comment">/</span><span class="comment">O</span> <span class="comment">error</span> <span class="comment">occurs</span>
+   <span class="comment">*/</span>
+<a class="info" title="tt-doPost">  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }</a>
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST1">Returns</span> <span class="ST1">a</span> <span class="ST1">short</span> <span class="ST1">description</span> <span class="ST1">of</span> <span class="ST1">the</span> <span class="ST1">servlet</span><span class="ST1">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST1">@return</span> <span class="comment">a</span> <span class="comment">String</span> <span class="comment">containing</span> <span class="comment">servlet</span> <span class="comment">description</span>
+   <span class="comment">*/</span>
+<a class="info" title="tt-getServletInfo">  @Override
+  <span class="keyword-directive">public</span> String <span class="ST0">getServletInfo</span>() {
+    <span class="keyword-directive">return</span> <span class="character">&quot;</span><span class="character">Short description</span><span class="character">&quot;</span>;
+  }<span class="comment">// &lt;/editor-fold&gt;</span>
+  </a></span>
+  }
+
+    </pre>
+
+    <div id="tt-getOut">
+      Obtain the output PrintWriter object to send some data back to the user.
+    </div>
+    <div id="tt-html">
+      Output some HTML code.
+    </div>
+    <div id="tt-dateformat">
+      Format the current date.
+    </div>
+    <div id="tt-processRequest">
+      NetBeans adds the method processRequest which is called by doGet and doPost Servlet methods.<br>
+      This way this method is invoked when the servlet is invoked by a GET or POST request.
+    </div>
+    <div id="tt-annotation">
+      The <b>WebServlet</b> annotation configures the servlet in the server, assigning it a name and a mapping.<br>
+      For this servlet the name is: <b>TimeServlet</b><br>
+      And the mapping is: <b>/servlets/timeServlet</b><br>
+      This means that every time the browser goes to the URL: servlets/timeServlet, this servlet is called.
+    </div>
+    <div id="tt-Netbeans">
+      This code was added by NetBeans automatically when the servlet was created using the wizard.
+    </div>
+    <div id="tt-doGet" >
+      doGet method added by NetBeans, calls to this method are sent to processRequest()
+    </div>
+    <div id="tt-doPost" >
+      doPost method added by NetBeans, calls to this method are sent to processRequest()
+    </div>
+    <div id="tt-getServletInfo" >
+      This method returns some information about this servlet to the web server.
+    </div>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+  </body>
+</html>

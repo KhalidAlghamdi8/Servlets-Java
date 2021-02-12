@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>NameBean.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\src\java\com\examples\lesson07\bean\NameBean.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson07.bean;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">NameBean</span> {
+
+  <span class="keyword-directive">private</span> String <span class="ST1">name</span>;
+
+  <span class="keyword-directive">public</span> String <span class="ST0">getName</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">name</span> == <span class="keyword-directive">null</span> ? <span class="character">&quot;</span><span class="character">world</span><span class="character">&quot;</span> : <span class="ST1">name</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setName</span>(String name) {
+    <span class="keyword-directive">this</span>.<span class="ST1">name</span> = name;
+  }
+}</span>
+
+    </pre>
+    <div id="tt-overview">
+      This is a simple JavaBean that has properties set by the helloJspXml.jspx page. If the name is null, then the default 'world' is returned in the getName method.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

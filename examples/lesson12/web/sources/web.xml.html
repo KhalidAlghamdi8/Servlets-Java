@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>web.xml</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.xml-attribute {color: #009900}
+.xml-value {color: #ce7b00}
+.ST0 {color: #00007c; font-weight: bold}
+.xml-tag {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\web\WEB-INF\web.xml</td></tr></table>
+<pre>
+<span class="ST0">&lt;?</span><span class="ST0">xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+<span class="xml-tag">&lt;web-app</span> <span class="xml-attribute">xmlns</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">xmlns:xsi</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://www.w3.org/2001/XMLSchema-instance</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">xsi:schemaLocation</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span> <span class="xml-value">http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">version</span>=<span class="xml-value">&quot;3.0&quot;</span><span class="xml-tag">&gt;</span>
+
+  <span class="xml-tag">&lt;security-constraint</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;display-name</span><span class="xml-tag">&gt;</span>Quiz area for users<span class="xml-tag">&lt;/display-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;web-resource-collection</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;web-resource-name</span><span class="xml-tag">&gt;</span>QuizArea<span class="xml-tag">&lt;/web-resource-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>/quiz/*<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/web-resource-collection</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-constraint</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Only users may take quizzes.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizUser<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/auth-constraint</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-constraint</span><span class="xml-tag">&gt;</span>
+
+  <span class="xml-tag">&lt;security-constraint</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;display-name</span><span class="xml-tag">&gt;</span>Quiz area for administrators<span class="xml-tag">&lt;/display-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;web-resource-collection</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;web-resource-name</span><span class="xml-tag">&gt;</span>QuizAdmin<span class="xml-tag">&lt;/web-resource-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>/admin/*<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/web-resource-collection</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-constraint</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Only administrators may create or delete quizzes.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizAdmin<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/auth-constraint</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-constraint</span><span class="xml-tag">&gt;</span>
+
+  <span class="xml-tag">&lt;security-constraint</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;display-name</span><span class="xml-tag">&gt;</span>Quiz area for instructors<span class="xml-tag">&lt;/display-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;web-resource-collection</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;web-resource-name</span><span class="xml-tag">&gt;</span>QuizInstructor<span class="xml-tag">&lt;/web-resource-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>/instructor/*<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/web-resource-collection</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-constraint</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Only instructors may review scores.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizInstructor<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/auth-constraint</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-constraint</span><span class="xml-tag">&gt;</span>
+
+  <span class="xml-tag">&lt;security-constraint</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;display-name</span><span class="xml-tag">&gt;</span>Templates must be protected, cant be accessed directly..<span class="xml-tag">&lt;/display-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;web-resource-collection</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;web-resource-name</span><span class="xml-tag">&gt;</span>templates<span class="xml-tag">&lt;/web-resource-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>/templates/*<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/web-resource-collection</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-constraint</span><span class="xml-tag">/&gt;</span>
+  <span class="xml-tag">&lt;/security-constraint</span><span class="xml-tag">&gt;</span>
+        
+  <span class="xml-tag">&lt;security-role</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Quiz Administrator, can remove or add quizzes.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizAdmin<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-role</span><span class="xml-tag">&gt;</span>
+  
+  <span class="xml-tag">&lt;security-role</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Quiz Instructor can review scores.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizInstructor<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-role</span><span class="xml-tag">&gt;</span>
+  
+  <span class="xml-tag">&lt;security-role</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Quiz user can take the quizzes.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizUser<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-role</span><span class="xml-tag">&gt;</span>
+
+  <span class="xml-tag">&lt;login-config</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-method</span><span class="xml-tag">&gt;</span>FORM<span class="xml-tag">&lt;/auth-method</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;realm-name</span><span class="xml-tag">&gt;</span>myrealm<span class="xml-tag">&lt;/realm-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;form-login-config</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;form-login-page</span><span class="xml-tag">&gt;</span>/login.jsp<span class="xml-tag">&lt;/form-login-page</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;form-error-page</span><span class="xml-tag">&gt;</span>/loginError.jsp<span class="xml-tag">&lt;/form-error-page</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/form-login-config</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/login-config</span><span class="xml-tag">&gt;</span>
+
+<span class="xml-tag">&lt;/web-app</span><span class="xml-tag">&gt;</span>
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

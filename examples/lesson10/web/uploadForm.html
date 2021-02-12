@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <h1>Upload a file</h1>
+    <form action="ImageStorageServlet" enctype="multipart/form-data" method="post">
+      Name: 
+      <input type="text" name="name" value=""/>
+      <input type="file" name="filename"/>
+      <input type="submit" value="upload"/>
+    </form>
+    <p>The file will be downloaded using the provided name in the "name" field</p>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 01</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+    <style type="text/css">
+      ul{border-left: solid 1px #999999;}
+    </style>
+  </head>
+  <body>
+    <script src="res/jquery.js" type="text/javascript"></script>
+    <script src="res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="res/tooltip.js" type="text/javascript"></script>
+    <h1>Lesson 1 - Introduction</h1>
+    <p>There are no examples for this lesson.</p>
+
+    <p>Let's review this project in NetBeans.</p>
+    <h2>NetBeans WebProject Structure.</h2>
+    <p>Take some time to review what the structure of a web application in NetBeans IDE.</p>
+    <p>In the Projects tab you can easily explore the contents of your application. This is how an application looks like in NetBeans.<br>
+     Hover over the elements to see a description.</p>
+    <ul>
+      <li><span class="info" title="tt-project"><img src="icons/webProject.gif">WebProject</span>
+        <div id="tt-project">This is the project root. All resources, configuration files, and classes are part of the project.</div>
+        <ul>
+          <li><span class="info" title="tt-webpages"><img src="icons/webFolder.gif">Web Pages</span>
+            <div id="tt-webpages">This folder contains all the web resources in your application.<br>
+              A resource may be:
+              <ul>
+                <li>HTML pages</li>
+                <li>JavaScript files</li>
+                <li>Images</li>
+                <li>JSP files.</li>
+              </ul></div>
+            <ul>
+              <li><span class="info" title="tt-WEB-INF"><img src="icons/webFolder.gif">WEB-INF</span>
+                <div id="tt-WEB-INF">The WEB-INF folder contains the configuration files for the web application as well as the libraries and compiled classes.<br>
+                  This folder is not accessible, in fact trying to access it will return a simple 404 error in your browser as it wont be a direct part of the web application.<br>
+                  Although its not served directly the contents of this folder are processed by the server, classes inside are loaded and libraries are included as part of the classpath.</div>
+                <ul>
+                  <li><span class="info" title="tt-libFolder"><img src="icons/folder.gif">lib</span>
+                    <div id="tt-libFolder">In addition of using NetBeans for library management you can manually add libraries to your application by adding .jar files in the WEB-INF/lib directory.</div>
+                    <ul>
+                      <li><span class="info" title="tt-libFolder"><img src="icons/jarFile.gif">Libraries as .Jar files.</span></li>
+                    </ul>
+                  </li>
+                  <li><span class="info" title="tt-beansXml"><img src="icons/xmlFile.gif">beans.xml</span>
+                    <div id="tt-beansXml">This file contains the Contexts and Dependency Injection configuration.</div></li>
+                  <li><span class="info" title="tt-webXml"><img src="icons/configFile.gif">web.xml</span>
+                    <div id="tt-webXml">The web.xml file its the most important configuration file for a Web Application. If annotations are not used for configuration this file needs to contain all the information for the Web Application configuration.</div></li>
+                  <li><span class="info" title="tt-weblogicXml"><img src="icons/xmlFile.gif">weblogic.xml</span>
+                    <div id="tt-weblogicXml">The weblogic.xml file defines specific parameters that Oracle's WebLogic Server uses for deployment of the application.</div></li>
+                  <li><span class="info" title="tt-glassfishXml"><img src="icons/xmlFile.gif">glassfish.xml</span>
+                    <div id="tt-glassfishXml">Other server specific XML files can be added to the WEB-INF folder.</div></li>
+                  <li><span class="info" title="tt-otherConfig"><img src="icons/configFile.gif">OTHER FILES</span>
+                    <div id="tt-otherConfig">Other configuration files are usually located inside the WEB-INF folder. You can also include resources that cannot be accessed directly by URL<br>
+                      For example, you may add images or JSP files here and access them using Java Servlets.</div></li>
+                </ul>
+              </li>
+              <li><img src="icons/webFile.gif">HTML pages</li>
+              <li><img src="icons/jspFile.gif">JSP pages</li>
+              <li><img src="icons/jsFile.gif">Javascript files</li>
+              <li><img src="icons/imageFile.gif">Images</li>
+              <li><img src="icons/folder.gif">More folders for organizing content</li>
+            </ul>
+          </li>
+          <li><span class="info" title="tt-sourcePackages"><img src="icons/packageFolder.gif">Source Packages</span>
+            <div id="tt-sourcePackages">Java Packages and classes are stored inside this folder.<br>
+              This folder is organized by packages to make easier the modification of Java classes.</div>
+            <ul>
+              <li><img src="icons/package.gif">java.package...</div>
+                <ul>
+                  <li><img src="icons/classFile.gif">JavaClasses</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><span class="info" title="tt-libraries"><img src="icons/libFolder.gif">Libraries</span>
+            <div id="tt-libraries">If handled by NetBeans, libraries and dependencies are organized in this folder.</div></li>
+          <li><span class="info" title="tt-restServ"><img src="icons/restFolder.gif">RESTful Web Services</span>
+            <div id="tt-restServ">REST Services declared in the application are organized here.</div></li>
+          <li><span class="info" title="tt-configFolder"><img src="icons/configFolder.gif">Configuration Files</span>
+            <div id="tt-configFolder">Configuration files are conveniently organized in this folder (they are the same as the original)</div>
+            <ul>
+              <li><span class="info" title="tt-manifest"><img src="icons/webFile.gif">MANIFEST.MF</span>
+                <div id="tt-manifest">The MANIFEST file for the Application Bundle.</div></li>
+              <li><span class="info" title="tt-beansXml"><img src="icons/xmlFile.gif">beans.xml</span></li>
+              <li><span class="info" title="tt-webXml"><img src="icons/configFile.gif">web.xml</span></li>
+              <li><span class="info" title="tt-weblogicXml"><img src="icons/xmlFile.gif">weblogic.xml</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <h1><a href="quiz/list">Lesson 01 - Quiz</a></h1>
+    <ul>
+      <li><a href="quiz/list">Take Quiz</a></li>
+      <li><a href="quiz/score">Quiz Score</a></li>
+      <li><a href="quiz/reset">Reset Quiz</a></li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>simpleTags.tld</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .xml-attribute {color: #009900}
+      .xml-value {color: #ce7b00}
+      .ST0 {color: #00007c; font-weight: bold}
+      .xml-tag {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\web\WEB-INF\tlds\simpleTags.tld</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview">
+<span class="ST0">&lt;?</span><span class="ST0">xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<span class="xml-tag">&lt;taglib</span> <span class="xml-attribute">version</span>=<span class="xml-value">&quot;2.1&quot;</span> <span class="xml-attribute">xmlns</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span><span class="xml-value">&quot;</span> <span class="xml-attribute">xmlns:xsi</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://www.w3.org/2001/XMLSchema-instance</span><span class="xml-value">&quot;</span> <span class="xml-attribute">xsi:schemaLocation</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span> <span class="xml-value">http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd</span><span class="xml-value">&quot;</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;tlib-version</span><span class="xml-tag">&gt;</span>1.0<span class="xml-tag">&lt;/tlib-version</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;short-name</span><span class="xml-tag">&gt;</span>simpletags<span class="xml-tag">&lt;/short-name</span><span class="xml-tag">&gt;</span>
+<span class="info" title="tt-uri">  <span class="xml-tag">&lt;uri</span><span class="xml-tag">&gt;</span>examples/lesson08/tlds/simpleTags<span class="xml-tag">&lt;/uri</span><span class="xml-tag">&gt;</span></span>
+<span class="info" title="tt-headerSimple">  <span class="xml-tag">&lt;tag</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;name</span><span class="xml-tag">&gt;</span>HeaderSimpleTag<span class="xml-tag">&lt;/name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;tag-class</span><span class="xml-tag">&gt;</span>com.examples.lesson08.simpleTags.HeaderSimpleTag<span class="xml-tag">&lt;/tag-class</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;body-content</span><span class="xml-tag">&gt;</span>empty<span class="xml-tag">&lt;/body-content</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;attribute</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;name</span><span class="xml-tag">&gt;</span>title<span class="xml-tag">&lt;/name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;required</span><span class="xml-tag">&gt;</span>true<span class="xml-tag">&lt;/required</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;rtexprvalue</span><span class="xml-tag">&gt;</span>true<span class="xml-tag">&lt;/rtexprvalue</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;type</span><span class="xml-tag">&gt;</span>java.lang.String<span class="xml-tag">&lt;/type</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/attribute</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/tag</span><span class="xml-tag">&gt;</span></span>
+<span class="info" title="tt-footerSimple">  <span class="xml-tag">&lt;tag</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;name</span><span class="xml-tag">&gt;</span>FooterSimpleTag<span class="xml-tag">&lt;/name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;tag-class</span><span class="xml-tag">&gt;</span>com.examples.lesson08.simpleTags.FooterSimpleTag<span class="xml-tag">&lt;/tag-class</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;body-content</span><span class="xml-tag">&gt;</span>scriptless<span class="xml-tag">&lt;/body-content</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/tag</span><span class="xml-tag">&gt;</span></span>
+<span class="xml-tag">&lt;/taglib</span><span class="xml-tag">&gt;</span>
+</span>
+    </pre>
+    <div id="tt-overview">
+      The TLD file contains the definition of the tags inside this library.<br>
+      It also contains tag definitions and additional information that may be useful as documentation for the
+      tag library.<br>
+      These files are usually used for reference and for knowing what tags are available and how they are used.
+    </div>
+    <div id="tt-uri">
+      The URI is identifies this taglib. It is used in JSP directives to refer to this tag library.
+    </div>
+    <div id="tt-headerSimple">
+      The headerSimple tag is defined here. Inside a Tag Xml element the name,
+      class, body and attributes for the tag are defined.
+    </div>
+    <div id="tt-footerSimple">
+      The footerSimple tag contains no attributes but it specifies that a body may exist.
+      Custom tag bodies may not have JSP Java scriptlets in the body.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

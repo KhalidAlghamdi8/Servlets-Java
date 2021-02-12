@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ExampleRequestListener.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson05\src\java\com\examples\lesson05\listeners\ExampleRequestListener.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson05.listeners;
+
+<span class="keyword-directive">import</span> javax.servlet.ServletRequestEvent;
+<span class="keyword-directive">import</span> javax.servlet.ServletRequestListener;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebListener;
+
+@WebListener()
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ExampleRequestListener</span> <span class="keyword-directive">implements</span> ServletRequestListener {
+</span>
+  <span class="keyword-directive">int</span> <span class="ST1">requestCount</span> = 0;
+
+<span class="info" title="tt-destroyed">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">requestDestroyed</span>(ServletRequestEvent sre) {
+  }</span>
+
+<span class="info" title="tt-created">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">requestInitialized</span>(ServletRequestEvent sre) {
+    <span class="ST1">requestCount</span>++;
+    sre.getServletRequest().setAttribute(<span class="character">&quot;</span><span class="character">requestCount</span><span class="character">&quot;</span>, <span class="ST1">requestCount</span>);
+  }</span>
+}
+
+    </pre>
+    <div id="tt-created">
+      This method is called when a request is created. It is a good place to set request
+      attributes that are used by servlets or JSP views and might change over time.<br>
+      In this case, this listener keeps track of the number of requests created.
+    </div>
+    <div id="tt-destroyed">
+      This method is called when the request finishes and is destroyed is usually used for logging or cleanup purposes.
+    </div>
+    <div id="tt-overview">
+      The  is a web application life-cycle listener.<br>
+      This listener is configured by adding the @WebListener annotation. Alternatively,
+      you may add the listener element to the web.xml file:
+      <pre>
+  &lt;listener&gt;
+    &lt;listener-class&gt;LISTENER CLASS FULLY QUALIFIED NAME&lt;/listener-class&gt;
+  &lt;/listener&gt;
+      </pre>
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

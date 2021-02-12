@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ClassicTag.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST2 {color: #969696; font-weight: bold}
+      .comment {color: #969696}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .ST3 {color: #009900; font-style: italic}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\src\java\com\examples\lesson08\classicTags\ClassicTag.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson08.classicTags;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> javax.servlet.jsp.JspException;
+<span class="keyword-directive">import</span> javax.servlet.jsp.JspWriter;
+<span class="keyword-directive">import</span> javax.servlet.jsp.tagext.BodyContent;
+<span class="keyword-directive">import</span> javax.servlet.jsp.tagext.BodyTagSupport;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ClassicTag</span> <span class="keyword-directive">extends</span> BodyTagSupport {
+
+  <span class="keyword-directive">private</span> String <span class="ST1">title</span>;
+  <span class="comment">// A counter to repeat the body 5 times</span>
+  <span class="keyword-directive">private</span> <span class="keyword-directive">int</span> <span class="ST1">iteration</span> = 0;
+
+  <span class="keyword-directive">public</span> <span class="ST0">ClassicTag</span>() {
+    <span class="keyword-directive">super</span>();
+  }
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST2">This</span> <span class="ST2">method</span> <span class="ST2">is</span> <span class="ST2">called</span> <span class="ST2">when</span> <span class="ST2">the</span> <span class="ST2">JSP</span> <span class="ST2">engine</span> <span class="ST2">encounters</span> <span class="ST2">the</span> <span class="ST2">start</span> <span class="ST2">tag</span><span class="ST2">, </span><span class="ST2">after</span>
+<span class="comment">   * </span><span class="ST2">the</span> <span class="ST2">attributes</span> <span class="ST2">are</span> <span class="ST2">processed</span><span class="ST2">.</span> <span class="comment">Scripting</span> <span class="comment">variables</span><span class="comment"> (</span><span class="comment">if</span> <span class="comment">any</span><span class="comment">) </span><span class="comment">have</span> <span class="comment">their</span>
+<span class="comment">   * </span><span class="comment">values</span> <span class="comment">set</span> <span class="comment">here</span><span class="comment">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST2">@return</span> <span class="comment">EVAL_BODY_BUFFERED</span> <span class="comment">if</span> <span class="comment">the</span> <span class="comment">JSP</span> <span class="comment">engine</span> <span class="comment">should</span> <span class="comment">evaluate</span> <span class="comment">the</span> <span class="comment">tag</span> <span class="comment">body</span><span class="comment">,</span>
+<span class="comment">   * </span><span class="comment">otherwise</span> <span class="comment">return</span> <span class="comment">SKIP_BODY</span><span class="comment">.</span> <span class="comment">This</span> <span class="comment">method</span> <span class="comment">is</span> <span class="comment">automatically</span> <span class="comment">generated</span><span class="comment">.</span> <span class="comment">Do</span> <span class="comment">not</span>
+<span class="comment">   * </span><span class="comment">modify</span> <span class="comment">this</span> <span class="comment">method</span><span class="comment">.</span> <span class="comment">Instead</span><span class="comment">, </span><span class="comment">modify</span> <span class="comment">the</span> <span class="comment">methods</span> <span class="comment">that</span> <span class="comment">this</span> <span class="comment">method</span> <span class="comment">calls</span><span class="comment">.</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">doStartTag</span>() <span class="keyword-directive">throws</span> JspException {
+
+    <span class="comment">// Print something at the start of the tag. (only once)</span>
+    <span class="keyword-directive">try</span> {
+      <span class="ST1">pageContext</span>.getOut().println(<span class="character">&quot;</span><span class="character">&lt;ul&gt;</span><span class="character">&quot;</span>);
+    } <span class="keyword-directive">catch</span> (IOException e) {
+      <span class="keyword-directive">throw</span> <span class="keyword-directive">new</span> JspException(e);
+    }
+
+    <span class="comment">// This is usually set in the afterbody method BUT without setting it at the</span>
+    <span class="comment">// start of the tag the first time the body is displayed it WONT have this</span>
+    <span class="comment">// variable set. This is because the afterBody tag happens AFTER the</span>
+    <span class="comment">// body is evaluated.</span>
+    <span class="ST1">pageContext</span>.setAttribute(<span class="character">&quot;</span><span class="character">iteration</span><span class="character">&quot;</span>, <span class="ST1">iteration</span>);
+
+    <span class="comment">// tell the tag to evaluate the body.</span>
+    <span class="keyword-directive">return</span> <span class="ST3">EVAL_BODY_BUFFERED</span>;
+    <span class="comment">// or tell it to not do the body with:</span>
+    <span class="comment">// return SKIP_BODY;</span>
+  }
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST2">This</span> <span class="ST2">method</span> <span class="ST2">is</span> <span class="ST2">called</span> <span class="ST2">after</span> <span class="ST2">the</span> <span class="ST2">JSP</span> <span class="ST2">engine</span> <span class="ST2">finished</span> <span class="ST2">processing</span> <span class="ST2">the</span> <span class="ST2">tag</span><span class="ST2">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST2">@return</span> <span class="comment">EVAL_PAGE</span> <span class="comment">if</span> <span class="comment">the</span> <span class="comment">JSP</span> <span class="comment">engine</span> <span class="comment">should</span> <span class="comment">continue</span> <span class="comment">evaluating</span> <span class="comment">the</span> <span class="comment">JSP</span>
+<span class="comment">   * </span><span class="comment">page</span><span class="comment">, </span><span class="comment">otherwise</span> <span class="comment">return</span> <span class="comment">SKIP_PAGE</span><span class="comment">.</span> <span class="comment">This</span> <span class="comment">method</span> <span class="comment">is</span> <span class="comment">automatically</span> <span class="comment">generated</span><span class="comment">.</span>
+<span class="comment">   * </span><span class="comment">Do</span> <span class="comment">not</span> <span class="comment">modify</span> <span class="comment">this</span> <span class="comment">method</span><span class="comment">.</span> <span class="comment">Instead</span><span class="comment">, </span><span class="comment">modify</span> <span class="comment">the</span> <span class="comment">methods</span> <span class="comment">that</span> <span class="comment">this</span> <span class="comment">method</span>
+<span class="comment">   * </span><span class="comment">calls</span><span class="comment">.</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">doEndTag</span>() <span class="keyword-directive">throws</span> JspException {
+    <span class="comment">// Print something at the end of the tag. (only once)</span>
+    <span class="keyword-directive">try</span> {
+      <span class="ST1">pageContext</span>.getOut().println(<span class="character">&quot;</span><span class="character">&lt;/ul&gt;</span><span class="character">&quot;</span>);
+    } <span class="keyword-directive">catch</span> (IOException e) {
+      <span class="keyword-directive">throw</span> <span class="keyword-directive">new</span> JspException(e);
+    }
+    <span class="keyword-directive">return</span> <span class="ST3">EVAL_PAGE</span>;
+    <span class="comment">// If you want to stop page processing after the tag is processed return </span>
+    <span class="comment">// this instead:</span>
+    <span class="comment">// return SKIP_PAGE;</span>
+  }
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST2">This</span> <span class="ST2">method</span> <span class="ST2">is</span> <span class="ST2">called</span> <span class="ST2">after</span> <span class="ST2">the</span> <span class="ST2">JSP</span> <span class="ST2">engine</span> <span class="ST2">processes</span> <span class="ST2">the</span> <span class="ST2">body</span> <span class="ST2">content</span> <span class="ST2">of</span>
+<span class="comment">   * </span><span class="ST2">the</span> <span class="ST2">tag</span><span class="ST2">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST2">@return</span> <span class="comment">EVAL_BODY_AGAIN</span> <span class="comment">if</span> <span class="comment">the</span> <span class="comment">JSP</span> <span class="comment">engine</span> <span class="comment">should</span> <span class="comment">evaluate</span> <span class="comment">the</span> <span class="comment">tag</span> <span class="comment">body</span>
+<span class="comment">   * </span><span class="comment">again</span><span class="comment">, </span><span class="comment">otherwise</span> <span class="comment">return</span> <span class="comment">SKIP_BODY</span><span class="comment">.</span> <span class="comment">This</span> <span class="comment">method</span> <span class="comment">is</span> <span class="comment">automatically</span> <span class="comment">generated</span><span class="comment">.</span>
+<span class="comment">   * </span><span class="comment">Do</span> <span class="comment">not</span> <span class="comment">modify</span> <span class="comment">this</span> <span class="comment">method</span><span class="comment">.</span> <span class="comment">Instead</span><span class="comment">, </span><span class="comment">modify</span> <span class="comment">the</span> <span class="comment">methods</span> <span class="comment">that</span> <span class="comment">this</span> <span class="comment">method</span>
+<span class="comment">   * </span><span class="comment">calls</span><span class="comment">.</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">doAfterBody</span>() <span class="keyword-directive">throws</span> JspException {
+    <span class="comment">//For the same reason you have to set the iteration variable in the doStartTag</span>
+    <span class="comment">//method you have to increase all values here since this method executes</span>
+    <span class="comment">//ONCE the body has been evaluated.</span>
+    <span class="ST1">iteration</span>++;
+    <span class="keyword-directive">try</span> {
+      <span class="comment">// This code is generated for tags whose bodyContent is &quot;JSP&quot;</span>
+      BodyContent bodyCont = getBodyContent();
+      JspWriter out = bodyCont.getEnclosingWriter();
+
+      <span class="comment">// TODO: insert code to write html before writing the body content.</span>
+      out.println(<span class="character">&quot;</span><span class="character">&lt;li&gt;</span><span class="character">&quot;</span>);
+      out.print(<span class="character">&quot;</span><span class="character">&lt;b&gt;</span><span class="character">&quot;</span> + <span class="ST1">title</span> + <span class="character">&quot;</span><span class="character">&lt;/b&gt; </span><span class="character">&quot;</span>);
+      <span class="comment">// write the body content (after processing by the JSP engine) on the output Writer</span>
+      <span class="ST1">bodyContent</span>.writeOut(out);
+      <span class="ST1">pageContext</span>.setAttribute(<span class="character">&quot;</span><span class="character">iteration</span><span class="character">&quot;</span>, <span class="ST1">iteration</span>);
+      <span class="comment">// TODO: insert code to write html after writing the body content.</span>
+      out.println(<span class="character">&quot;</span><span class="character">&lt;/li&gt;</span><span class="character">&quot;</span>);
+
+      <span class="comment">// clear the body content for the next time through.</span>
+      <span class="ST1">bodyContent</span>.clearBody();
+
+    } <span class="keyword-directive">catch</span> (Exception ex) {
+      <span class="keyword-directive">throw</span> <span class="keyword-directive">new</span> JspException(<span class="character">&quot;</span><span class="character">Error in ClassicTag tag</span><span class="character">&quot;</span>, ex);
+    }
+    <span class="comment">//repeat the body 5 times!</span>
+    <span class="keyword-directive">if</span> (<span class="ST1">iteration</span> &lt; 5) {
+      <span class="keyword-directive">return</span> <span class="ST3">EVAL_BODY_AGAIN</span>;
+    } <span class="keyword-directive">else</span> {
+      <span class="keyword-directive">return</span> <span class="ST3">SKIP_BODY</span>;
+    }
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setTitle</span>(String title) {
+    <span class="keyword-directive">this</span>.<span class="ST1">title</span> = title;
+  }
+}</span>
+
+    </pre>
+    <div id="tt-overview">
+      This class preserves most of the comments added by NetBeans.<br>
+      To create tags (either classic or simple): <br>
+      1. Create a new TLD file with NetBeans (or reuse an existing one).<br>
+      2. Create the custom tag, you may select if you wish to use SimpleTag or BodyTagSupport.<br>
+      3. Create the TLD you want to add your tag to.<br>
+      Try to follow this example to find out the behavior of this code.
+
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

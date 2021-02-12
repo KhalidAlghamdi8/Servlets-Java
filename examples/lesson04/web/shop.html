@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+  </head>
+  <body>
+    <h1>Please select what you want to buy:</h1>
+    <form action="addToCart.do" method="POST">
+      <ul>
+        <li><input type="radio" name="item" value="Cellphone"> Cellphone</li>
+        <li><input type="radio" name="item" value="Smartphone"> Smartphone</li>
+        <li><input type="radio" name="item" value="Computer"> Computer</li>
+        <li><input type="radio" name="item" value="Tablet"> Tablet</li>
+        <li><input type="radio" name="item" value="VG Console"> Video game console</li>
+      </ul>
+      <input type="submit" value="Add">
+    </form>
+    <h2>Options:</h2>
+    <ul>
+      <li><a href="viewShoppingCart">View Shopping Cart</a></li>
+      <li><a href="index.html">Go back</a></li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>beans.xml</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .xml-attribute {color: #009900}
+      .xml-value {color: #ce7b00}
+      .ST0 {color: #00007c; font-weight: bold}
+      .xml-tag {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson06\web\WEB-INF\beans.xml</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="ST0">&lt;?</span><span class="ST0">xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<span class="xml-tag">&lt;beans</span> <span class="xml-attribute">xmlns</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span><span class="xml-value">&quot;</span>
+       <span class="xml-attribute">xmlns:xsi</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://www.w3.org/2001/XMLSchema-instance</span><span class="xml-value">&quot;</span>
+       <span class="xml-attribute">xsi:schemaLocation</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span> <span class="xml-value">http://java.sun.com/xml/ns/javaee/beans_1_0.xsd</span><span class="xml-value">&quot;</span><span class="xml-tag">&gt;</span>
+<span class="xml-tag">&lt;/beans</span><span class="xml-tag">&gt;</span></span>
+    </pre>
+    <div id="tt-overview">
+      The /WEB-INF/beans.xml file tells the server that it should use Context and Dependency Injection.<br>
+      This file may contain the configuration for beans that can be created in the server.<br>
+      In addition to the beans.xml configuration, classes annotated are also processed.<br>
+      <b>NOTE</b>: Even if all objects are configured with annotations, this file is <b>REQUIRED</b> if you want
+      injection to work. A simple "empty" file like this will work.
+      
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

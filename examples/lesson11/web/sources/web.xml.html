@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>web.xml</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .xml-attribute {color: #009900}
+      .xml-value {color: #ce7b00}
+      .ST0 {color: #00007c; font-weight: bold}
+      .xml-tag {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson11\web\WEB-INF\web.xml</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="ST0">&lt;?</span><span class="ST0">xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+<span class="xml-tag">&lt;web-app</span> <span class="xml-attribute">xmlns</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">xmlns:xsi</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://www.w3.org/2001/XMLSchema-instance</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">xsi:schemaLocation</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span> <span class="xml-value">http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">version</span>=<span class="xml-value">&quot;3.0&quot;</span><span class="xml-tag">&gt;</span>
+  
+<span class="info" title="tt-security1">  <span class="xml-tag">&lt;security-constraint</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;display-name</span><span class="xml-tag">&gt;</span>Quiz area for users<span class="xml-tag">&lt;/display-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;web-resource-collection</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;web-resource-name</span><span class="xml-tag">&gt;</span>QuizArea<span class="xml-tag">&lt;/web-resource-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>/quiz/*<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/web-resource-collection</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-constraint</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Only users may take quizzes.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizUser<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/auth-constraint</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-constraint</span><span class="xml-tag">&gt;</span></span>
+
+<span class="info" title="tt-security2">  <span class="xml-tag">&lt;security-constraint</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;display-name</span><span class="xml-tag">&gt;</span>Quiz area for administrators<span class="xml-tag">&lt;/display-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;web-resource-collection</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;web-resource-name</span><span class="xml-tag">&gt;</span>QuizAdmin<span class="xml-tag">&lt;/web-resource-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>/admin/*<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/web-resource-collection</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-constraint</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Only administrators may create or delete quizzes.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizAdmin<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/auth-constraint</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-constraint</span><span class="xml-tag">&gt;</span></span>
+
+<span class="info" title="tt-security3">  <span class="xml-tag">&lt;security-constraint</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;display-name</span><span class="xml-tag">&gt;</span>Quiz area for instructors<span class="xml-tag">&lt;/display-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;web-resource-collection</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;web-resource-name</span><span class="xml-tag">&gt;</span>quizInstructor<span class="xml-tag">&lt;/web-resource-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>/edit/*<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/web-resource-collection</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-constraint</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Only instructors may see everyone score.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizInstructor<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/auth-constraint</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-constraint</span><span class="xml-tag">&gt;</span></span>
+
+<span class="info" title="tt-security4">  <span class="xml-tag">&lt;security-constraint</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;display-name</span><span class="xml-tag">&gt;</span>Templates must be protected, cant be accessed directly..<span class="xml-tag">&lt;/display-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;web-resource-collection</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;web-resource-name</span><span class="xml-tag">&gt;</span>templates<span class="xml-tag">&lt;/web-resource-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>/templates/*<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/web-resource-collection</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-constraint</span><span class="xml-tag">/&gt;</span>
+  <span class="xml-tag">&lt;/security-constraint</span><span class="xml-tag">&gt;</span></span>
+        
+<span class="info" title="tt-roles">  <span class="xml-tag">&lt;security-role</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Quiz Administrator, can remove or add quizzes.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizAdmin<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-role</span><span class="xml-tag">&gt;</span>
+  
+  <span class="xml-tag">&lt;security-role</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Quiz Instructor, can review scores.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizInstructor<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-role</span><span class="xml-tag">&gt;</span>
+  
+  <span class="xml-tag">&lt;security-role</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;description</span><span class="xml-tag">&gt;</span>Quiz user can take the quizzes.<span class="xml-tag">&lt;/description</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;role-name</span><span class="xml-tag">&gt;</span>quizUser<span class="xml-tag">&lt;/role-name</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/security-role</span><span class="xml-tag">&gt;</span></span>
+
+<span class="info" title="tt-login">  <span class="xml-tag">&lt;login-config</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;auth-method</span><span class="xml-tag">&gt;</span>FORM<span class="xml-tag">&lt;/auth-method</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;realm-name</span><span class="xml-tag">&gt;</span>myrealm<span class="xml-tag">&lt;/realm-name</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;form-login-config</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;form-login-page</span><span class="xml-tag">&gt;</span>/login.jsp<span class="xml-tag">&lt;/form-login-page</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;form-error-page</span><span class="xml-tag">&gt;</span>/loginError.jsp<span class="xml-tag">&lt;/form-error-page</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/form-login-config</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/login-config</span><span class="xml-tag">&gt;</span></span>
+
+<span class="info" title="tt-error">  <span class="xml-tag">&lt;error-page</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;error-code</span><span class="xml-tag">&gt;</span>500<span class="xml-tag">&lt;/error-code</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;location</span><span class="xml-tag">&gt;</span>/errors/exception.jsp<span class="xml-tag">&lt;/location</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/error-page</span><span class="xml-tag">&gt;</span>
+
+  <span class="xml-tag">&lt;error-page</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;error-code</span><span class="xml-tag">&gt;</span>404<span class="xml-tag">&lt;/error-code</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;location</span><span class="xml-tag">&gt;</span>/errors/notFound.jsp<span class="xml-tag">&lt;/location</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/error-page</span><span class="xml-tag">&gt;</span>
+
+  <span class="xml-tag">&lt;error-page</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;error-code</span><span class="xml-tag">&gt;</span>403<span class="xml-tag">&lt;/error-code</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;location</span><span class="xml-tag">&gt;</span>/errors/accessDenied.jsp<span class="xml-tag">&lt;/location</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/error-page</span><span class="xml-tag">&gt;</span></span>
+      
+<span class="xml-tag">&lt;/web-app</span><span class="xml-tag">&gt;</span>
+</span>
+    </pre>
+    <div id="tt-overview">
+      Web application security is declared in the
+      WEB-INF/web.xml file. Access to resources may be restricted
+      and only specific roles allowed to view them.<br>
+      The web application contains the restrictions and required
+      roles.<br>
+      Authentication is done by the web server, so users and
+      groups are configured in the server (not in the application).
+    </div>
+    <div id="tt-security1">
+      This security constraint restricts access to the 
+      /quiz/* resources (the quiz sub-directory) so that only the quizUser role
+      has access to it.
+    </div>
+    <div id="tt-security2">
+      This security constraint restricts access to the 
+      /admin/* resources (the admin sub-directory) so that only the 
+      quizAdmin role has access to it.
+    </div>
+    <div id="tt-security3">
+      This security constraint restricts access to the 
+      /instructor/* resources (the edit sub-directory) so that only the 
+      quizInstructor role has access it.
+    </div>
+    <div id="tt-security4">
+      This security constraint restrict access to the templates subdirectory so that
+      no one can access it directly. An empty &lt;auth-constraint/&gt; tag means
+      that it is restricted to everyone. If you don't add an &lt;auth-constraint&gt; tag
+      it is accessible by everyone. Be careful of this difference.
+    </div>
+    <div id="tt-roles">
+      A web application must define the roles available. This is a list of the
+      roles available that are expected to be authenticated and used in security constraints.
+    </div>
+    <div id="tt-login">
+      The login-config element configures how the web application handles the login process
+      and how it is going to be requested to the web server.<br>
+      Note the realm-name element is the name of the authentication realm defined in the
+      web server.<br>
+      Additionally using the form auth-method, you must
+      define the form-login-page to be used and the form-error-page that IS displayed
+      if there is an error in the login.
+    </div>
+    <div id="tt-error">
+      This web.xml defines error pages to display custom pages when there is an error.
+      The one relevant for this example is:<br>
+      <span class="xml-tag">&lt;error-page</span><span class="xml-tag">&gt;</span><br>
+      &nbsp;&nbsp;<span class="xml-tag">&lt;error-code</span><span class="xml-tag">&gt;</span>403<span class="xml-tag">&lt;/error-code</span><span class="xml-tag">&gt;</span><br>
+      &nbsp;&nbsp;<span class="xml-tag">&lt;location</span><span class="xml-tag">&gt;</span>/errors/accessDenied.jsp<span class="xml-tag">&lt;/location</span><span class="xml-tag">&gt;</span><br>
+      <span class="xml-tag">&lt;/error-page</span><span class="xml-tag">&gt;</span><br>
+      The 403 error is "Forbidden". This is used when the user tries to access a resource but does not have permission.
+    </div>
+
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

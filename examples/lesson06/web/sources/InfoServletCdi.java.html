@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>InfoServletCdi.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST2 {color: #ce7b00; font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson06\src\java\com\examples\lesson06\servlets\InfoServletCdi.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson06.servlets;
+
+<span class="keyword-directive">import</span> com.examples.lesson06.model.InfoBean;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.inject.Inject;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">InfoServletCdi</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/infoCdi</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">InfoServletCdi</span> <span class="keyword-directive">extends</span> HttpServlet {</span>
+
+<span class="info" title="tt-inject">  @Inject</span>
+<span class="info" title="tt-infoService">  <span class="keyword-directive">private</span> InfoService <span class="ST1">infoService</span>;</span>
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();
+    out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Servlet InfoServletCdi&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;link rel=</span><span class="ST2">\&quot;</span><span class="character">stylesheet</span><span class="ST2">\&quot;</span><span class="character"> href=</span><span class="ST2">\&quot;</span><span class="character">res/styles.css</span><span class="ST2">\&quot;</span><span class="character"> type=</span><span class="ST2">\&quot;</span><span class="character">text/css</span><span class="ST2">\&quot;</span><span class="character">/&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;System information&lt;/h1&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;ul&gt;</span><span class="character">&quot;</span>);
+<span class="info" title="tt-calls">    out.println(<span class="character">&quot;</span><span class="character">&lt;li&gt;Server Name: </span><span class="character">&quot;</span> + <span class="ST1">infoService</span>.getServerName() + <span class="character">&quot;</span><span class="character">&lt;/li&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;li&gt;Server Memory: </span><span class="character">&quot;</span> + <span class="ST1">infoService</span>.getServerMemory() + <span class="character">&quot;</span><span class="character">&lt;/li&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;li&gt;Server FreeMemory: </span><span class="character">&quot;</span> + <span class="ST1">infoService</span>.getServerFreeMemory() + <span class="character">&quot;</span><span class="character">&lt;/li&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;li&gt;Server Cores: </span><span class="character">&quot;</span> + <span class="ST1">infoService</span>.getServerCores() + <span class="character">&quot;</span><span class="character">&lt;/li&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;li&gt;Server Time: </span><span class="character">&quot;</span> + <span class="ST1">infoService</span>.getServerTime() + <span class="character">&quot;</span><span class="character">&lt;/li&gt;</span><span class="character">&quot;</span>);</span>
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/ul&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST2">\&quot;</span><span class="character">index.html</span><span class="ST2">\&quot;</span><span class="character">&gt;Go Home&lt;/a&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);
+  }
+}
+
+    </pre>
+    <div id="tt-overview">
+      This servlet separates the business logic.<br>
+      Instead of having the business logic here that logic is inside a Service Object that is injected into the Servlet.<br>
+      Injection is the process of setting a variable with an Object created elsewhere.<br>
+      In the case of Contexts and Dependency Injection (CDI), objects are created and managed by the server.<br>
+      The goal of this class is to use that external object to get the system values.
+    </div>
+    <div id="tt-inject">
+      The @Inject annotation allows the servlet to get an instance of the annotated variable.<br>
+      In this case, this annotation tells the server that when this servlet is instantiated, it must set
+      the infoService variable with a valid InfoService implementation.
+    </div>
+    <div id="tt-infoService">
+      It is a good practice to inject interfaces instead of concrete classes.<br>
+      In this case, InfoServiceImpl is the concrete implementation of the InfoService interface.
+    </div>
+    <div id="tt-calls">
+      The servlet gets the value from the InfoService. This way the servlet
+      delegates all the business logic to the InfoService.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

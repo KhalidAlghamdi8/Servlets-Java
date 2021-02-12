@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>infoServletView.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST4 {color: #628fb5}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST6 {color: #009900}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST5 {color: #0000e6}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson06\web\infoServletView.jsp</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="ST0">&lt;%@</span><span class="ST1">page</span> <span class="ST2">contentType</span><span class="ST0">=</span><span class="ST3">&quot;text/html&quot;</span> <span class="ST2">pageEncoding</span><span class="ST0">=</span><span class="ST3">&quot;UTF-8&quot;</span><span class="ST0">%&gt;</span>
+<span class="ST4">&lt;!DOCTYPE</span> <span class="ST4">html</span><span class="ST4">&gt;</span>
+<span class="ST5">&lt;</span><span class="ST5">html</span><span class="ST5">&gt;</span>
+  <span class="ST5">&lt;</span><span class="ST5">head</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">meta</span> <span class="ST6">http-equiv</span><span class="ST6">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST6">content</span><span class="ST6">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">title</span><span class="ST5">&gt;</span>System information<span class="ST5">&lt;/</span><span class="ST5">title</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">link</span> <span class="ST6">rel</span><span class="ST6">=</span><span class="attribute-value">&quot;stylesheet&quot;</span> <span class="ST6">href</span><span class="ST6">=</span><span class="attribute-value">&quot;res/styles.css&quot;</span> <span class="ST6">type</span><span class="ST6">=</span><span class="attribute-value">&quot;text/css&quot;</span><span class="ST5">&gt;</span> 
+  <span class="ST5">&lt;/</span><span class="ST5">head</span><span class="ST5">&gt;</span>
+  <span class="ST5">&lt;</span><span class="ST5">body</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">h1</span><span class="ST5">&gt;</span>System Information<span class="ST5">&lt;/</span><span class="ST5">h1</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">p</span><span class="ST5">&gt;</span>JSP view<span class="ST5">&lt;/</span><span class="ST5">p</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">ul</span><span class="ST5">&gt;</span>
+<span class="info" title="tt-el">      <span class="ST5">&lt;</span><span class="ST5">li</span><span class="ST5">&gt;</span>Server Name: <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">infoBean.serverName</span><span class="scriptlet-delimiter">}</span><span class="ST5">&lt;/</span><span class="ST5">li</span><span class="ST5">&gt;</span>
+      <span class="ST5">&lt;</span><span class="ST5">li</span><span class="ST5">&gt;</span>Server Memory: <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">infoBean.serverMemory</span><span class="scriptlet-delimiter">}</span><span class="ST5">&lt;/</span><span class="ST5">li</span><span class="ST5">&gt;</span>
+      <span class="ST5">&lt;</span><span class="ST5">li</span><span class="ST5">&gt;</span>Server Free Memory <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">infoBean.serverFreeMemory</span><span class="scriptlet-delimiter">}</span><span class="ST5">&lt;/</span><span class="ST5">li</span><span class="ST5">&gt;</span>
+      <span class="ST5">&lt;</span><span class="ST5">li</span><span class="ST5">&gt;</span>Server Cores: <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">infoBean.serverCores</span><span class="scriptlet-delimiter">}</span><span class="ST5">&lt;/</span><span class="ST5">li</span><span class="ST5">&gt;</span>
+      <span class="ST5">&lt;</span><span class="ST5">li</span><span class="ST5">&gt;</span>Server Time: <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">infoBean.serverTime</span><span class="scriptlet-delimiter">}</span><span class="ST5">&lt;/</span><span class="ST5">li</span><span class="ST5">&gt;</span></span>
+    <span class="ST5">&lt;/</span><span class="ST5">ul</span><span class="ST5">&gt;</span>
+    <span class="ST5">&lt;</span><span class="ST5">a</span> <span class="ST6">href</span><span class="ST6">=</span><span class="attribute-value">&quot;index.html&quot;</span><span class="ST5">&gt;</span>Go Home<span class="ST5">&lt;/</span><span class="ST5">a</span><span class="ST5">&gt;</span>
+  <span class="ST5">&lt;/</span><span class="ST5">body</span><span class="ST5">&gt;</span>
+<span class="ST5">&lt;/</span><span class="ST5">html</span><span class="ST5">&gt;</span></span>
+
+    </pre>
+    <div id="tt-overview">
+      This is your first glance at a real JSP (with some dynamic code).<br>
+      JSP pages are used to render HTML code and include dynamic data inside.<br>
+      JSP are not meant to be used to make calculations or extensive processing, the
+      correct approach is to do this processing in a servlet and then just using the JSP
+      pages for rendering the elements as HTML.<br>
+      It is easier to write HTML code in a JSP, but writing Java code in JSP is not advisable.<br>
+    </div>
+    <div id="tt-el">
+      This is Expression Language and it is the easiest way to include attributes set in
+      servlets inside a JSP page.<br>
+      The value inside the ${ } is an expression. In this case the expressions refer to the request
+      attribute infoBean (set by the Servlet).<br>
+      Using Expression Language it is possible to call the get methods inside the infoBean object this is done using the dot operator
+      in the expression. The expression: infoBean.serverTime will translate into the InfoBean.getServerTime method.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>InfoServletController.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST2 {font-style: italic}
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .ST1 {color: #009900; font-style: italic}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson06\src\java\com\examples\lesson06\servlets\InfoServletController.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson06.servlets;
+
+<span class="keyword-directive">import</span> com.examples.lesson06.model.InfoBean;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.text.SimpleDateFormat;
+<span class="keyword-directive">import</span> java.util.Date;
+<span class="keyword-directive">import</span> javax.servlet.RequestDispatcher;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">InfoServletController</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/infoController</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">InfoServletController</span> <span class="keyword-directive">extends</span> HttpServlet {
+</span>
+  <span class="keyword-directive">private</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST1">SERVER_NAME</span> = <span class="character">&quot;</span><span class="character">TEST SERVER</span><span class="character">&quot;</span>;
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+<span class="info" title="tt-bizLogic">    String serverName = <span class="ST1">SERVER_NAME</span>;
+    String serverMemory = formatBytes(Runtime.<span class="ST2">getRuntime</span>().maxMemory());
+    String serverFreeMemory = formatBytes(Runtime.<span class="ST2">getRuntime</span>().freeMemory());
+    String serverCores = Integer.<span class="ST2">toString</span>(Runtime.<span class="ST2">getRuntime</span>().availableProcessors());
+    String serverTime = <span class="keyword-directive">new</span> SimpleDateFormat().format(<span class="keyword-directive">new</span> Date());</span>
+
+<span class="info" title="tt-infoBean">    InfoBean infoBean = <span class="keyword-directive">new</span> InfoBean();
+    infoBean.setServerCores(serverCores);
+    infoBean.setServerFreeMemory(serverFreeMemory);
+    infoBean.setServerMemory(serverMemory);
+    infoBean.setServerName(serverName);
+    infoBean.setServerTime(serverTime);</span>
+
+<span class="info" title="tt-requestSetAttribute">    request.setAttribute(<span class="character">&quot;</span><span class="character">infoBean</span><span class="character">&quot;</span>, infoBean);</span>
+
+<span class="info" title="tt-redispatch">    RequestDispatcher requestDispatcher = request.getRequestDispatcher(<span class="character">&quot;</span><span class="character">/infoServletView.jsp</span><span class="character">&quot;</span>);
+    requestDispatcher.forward(request, response);</span>
+  }
+
+<span class="info" title="tt-bizLogic">  <span class="keyword-directive">private</span> String <span class="ST0">formatBytes</span>(<span class="keyword-directive">long</span> bytes) {
+    <span class="keyword-directive">if</span> (bytes &lt; 1024) {
+      <span class="keyword-directive">return</span> bytes + <span class="character">&quot;</span><span class="character">B</span><span class="character">&quot;</span>;
+    }
+    <span class="keyword-directive">if</span> (bytes &lt; 1024 * 1024) {
+      <span class="keyword-directive">return</span> (bytes / 1024) + <span class="character">&quot;</span><span class="character">KB</span><span class="character">&quot;</span>;
+    }
+    <span class="keyword-directive">return</span> (bytes / (1024 * 1024)) + <span class="character">&quot;</span><span class="character">MB</span><span class="character">&quot;</span>;
+  }</span>
+}
+
+    </pre>
+    <div id="tt-overview">
+      This servlet calculates the values that you want to display and stores those
+      values on request attributes.<br>
+      This way the data stored in the request is sent to a JSP page that renders
+      the view.
+    </div>
+    <div id="tt-bizLogic">
+      This is the business logic. This servlet calculates this values.
+    </div>
+    <div id="tt-infoBean">
+      In order to send the values to the view, they need to be stored in an object.<br>
+      InfoBean is a simple object that works as a placeholder for values. You store the calculated values in the infoBean.
+    </div>
+    <div id="tt-requestSetAttribute">
+      Since you can't set parameters, to send data across the servlet and the JSP
+      they must be stored in attributes.<br>
+      To send data to the view, store the infoBean object (with the calculated data) in a request attribute.<br>
+      Keep in mind for how long you need those attributes, since that defines the scope you need to use.<br>
+      In this case, these values are needed to change with each request and be calculated again so you have to use request scoped attributes.<br>
+      If you want the attributes to be bound to a user session, then use the session object to store the attributes.<br>
+      Finally, if you want to share the same value for all the users in your application, use the ServletContext attributes.
+    </div>
+    <div id="tt-redispatch">
+      The request.getRequestDispatcher() method returns an object that allows you to relay the request
+      to another Servlet or page. This process occurs in the SERVER.<br>
+      There are 2 types of relay that you can do:<br>
+      <ul>
+        <li>requestDispatcher.include() that inclues the servlet or page output and then continue normally with the servlet execution.</li>
+        <li>requestDispatcher.forward() that sends the request and response to the servlet or page finalizing the output as soon as the called resource finishes execution.
+      </ul>
+      <b>Note</b>: Contrary to response.sendRedirect() a redispatch occurs on the server. The client does NOT know that this call happened and the browser's URL path does not change.
+    </div>
+
+  </body>
+</html>

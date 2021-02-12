@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>classicTagsTest.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST4 {font-weight: bold}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST7 {color: #009900}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST6 {color: #0000e6}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\web\classicTagsTest.jsp</td></tr></table>
+    <pre>
+<span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">taglib</span> <span class="attribute-name">prefix</span><span class="ST4">=</span><span class="attribute-value">&quot;classictags&quot;</span> <span class="attribute-name">uri</span><span class="ST4">=</span><span class="attribute-value">&quot;examples/lesson08/tlds/classicTags&quot;</span> <span class="ST4">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span>
+<span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/res/styles.css&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;stylesUrl&quot;</span><span class="ST4">/&gt;</span>
+<span class="ST6">&lt;</span><span class="ST6">html</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;</span><span class="ST6">head</span><span class="ST6">&gt;</span>
+    <span class="ST6">&lt;</span><span class="ST6">meta</span> <span class="ST7">http-equiv</span><span class="ST7">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST7">content</span><span class="ST7">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST6">&gt;</span>
+    <span class="ST6">&lt;</span><span class="ST6">link</span> <span class="ST7">rel</span><span class="ST7">=</span><span class="attribute-value">&quot;stylesheet&quot;</span> <span class="ST7">href</span><span class="ST7">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">stylesUrl</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="ST7">type</span><span class="ST7">=</span><span class="attribute-value">&quot;text/css&quot;</span><span class="ST6">&gt;</span> 
+    <span class="ST6">&lt;</span><span class="ST6">title</span><span class="ST6">&gt;</span>Clasic tags :(<span class="ST6">&lt;/</span><span class="ST6">title</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;/</span><span class="ST6">head</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;</span><span class="ST6">body</span><span class="ST6">&gt;</span>
+    This is a classic tag test!
+    <span class="ST4">&lt;</span><span class="ST5">classictags:ClassicTag</span> <span class="attribute-name">title</span><span class="ST4">=</span><span class="attribute-value">&quot;HELLO&quot;</span><span class="ST4">&gt;</span>
+      Iteration = <span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">iteration</span><span class="scriptlet-delimiter">}</span>
+    <span class="ST4">&lt;/</span><span class="ST5">classictags:ClassicTag</span><span class="ST4">&gt;</span>
+    <span class="ST6">&lt;</span><span class="ST6">p</span><span class="ST6">&gt;</span>
+      <span class="ST6">&lt;</span><span class="ST6">a</span> <span class="ST7">href</span><span class="ST7">=</span><span class="attribute-value">&quot;./&quot;</span><span class="ST6">&gt;</span>Go back<span class="ST6">&lt;/</span><span class="ST6">a</span><span class="ST6">&gt;</span>
+    <span class="ST6">&lt;/</span><span class="ST6">p</span><span class="ST6">&gt;</span>
+  <span class="ST6">&lt;/</span><span class="ST6">body</span><span class="ST6">&gt;</span>
+<span class="ST6">&lt;/</span><span class="ST6">html</span><span class="ST6">&gt;</span>
+
+    </pre>
+    <div id="tt-overview">
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

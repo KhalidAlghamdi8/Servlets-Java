@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>error.script.jsp</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST9 {color: #0000e6; background-color: #e3f2e1}
+.ST4 {font-weight: bold}
+.ST8 {color: #009900}
+.scriptlet-delimiter {background-color: #e3f2e1}
+.ST3 {color: #ce7b00; background-color: #e9eff8}
+.ST7 {color: #0000e6}
+.ST5 {color: #0000e6; font-weight: bold}
+.attribute-name {color: #009b00}
+.ST0 {background-color: #e9eff8; font-weight: bold}
+.ST6 {color: #628fb5}
+.ST10 {background-color: #eceba3}
+.ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+.attribute-value {color: #ce7b00}
+.ST2 {color: #009b00; background-color: #e9eff8}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson07\web\error.script.jsp</td></tr></table>
+<pre>
+<span class="ST0">&lt;%@</span><span class="ST1">page</span> <span class="ST2">contentType</span><span class="ST0">=</span><span class="ST3">&quot;text/html&quot;</span> <span class="ST2">pageEncoding</span><span class="ST0">=</span><span class="ST3">&quot;UTF-8&quot;</span><span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">isErrorPage</span><span class="ST4">=</span><span class="attribute-value">&quot;true&quot;</span> <span class="ST4">%&gt;</span>
+<span class="ST6">&lt;!DOCTYPE</span> <span class="ST6">html</span><span class="ST6">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">meta</span> <span class="ST8">http-equiv</span><span class="ST8">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST8">content</span><span class="ST8">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">link</span> <span class="ST8">rel</span><span class="ST8">=</span><span class="attribute-value">&quot;stylesheet&quot;</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;res/styles.css&quot;</span> <span class="ST8">type</span><span class="ST8">=</span><span class="attribute-value">&quot;text/css&quot;</span><span class="ST7">&gt;</span> 
+    <span class="ST7">&lt;</span><span class="ST7">title</span><span class="ST7">&gt;</span>Error!<span class="ST7">&lt;/</span><span class="ST7">title</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h1</span><span class="ST7">&gt;</span>There was a problem!<span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h2</span><span class="ST7">&gt;</span>Error code: <span class="scriptlet-delimiter">&lt;%=</span> <span class="scriptlet-delimiter">response</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getStatus</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">%&gt;</span><span class="ST7">&lt;/</span><span class="ST7">h2</span><span class="ST7">&gt;</span>
+    <span class="scriptlet-delimiter">&lt;%</span> <span class="ST9">if</span> <span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">exception</span> <span class="scriptlet-delimiter">!=</span> <span class="ST9">null</span><span class="scriptlet-delimiter">)</span> <span class="scriptlet-delimiter">{</span><span class="scriptlet-delimiter">%&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h3</span><span class="ST7">&gt;</span>Exception: <span class="scriptlet-delimiter">&lt;%=</span> <span class="scriptlet-delimiter">exception</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getClass</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getName</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">%&gt;</span><span class="ST7">&lt;/</span><span class="ST7">h3</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h3</span><span class="ST7">&gt;</span>Message: <span class="scriptlet-delimiter">&lt;%=</span> <span class="scriptlet-delimiter">exception</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getMessage</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">%&gt;</span><span class="ST7">&lt;/</span><span class="ST7">h3</span><span class="ST7">&gt;</span>
+    <span class="scriptlet-delimiter">&lt;%</span> <span class="scriptlet-delimiter">}</span><span class="scriptlet-delimiter">%&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h4</span><span class="ST7">&gt;</span>URI: <span class="scriptlet-delimiter">&lt;%=</span> <span class="scriptlet-delimiter">request</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getRequestURI</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">.</span><span class="ST10">toString</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">%&gt;</span><span class="ST7">&lt;/</span><span class="ST7">h4</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h4</span><span class="ST7">&gt;</span>ServletName: <span class="scriptlet-delimiter">&lt;%=</span> <span class="scriptlet-delimiter">request</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">getServletPath</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">%&gt;</span><span class="ST7">&lt;/</span><span class="ST7">h4</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;./&quot;</span><span class="ST7">&gt;</span>Go back<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+<span class="ST7">&lt;/</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

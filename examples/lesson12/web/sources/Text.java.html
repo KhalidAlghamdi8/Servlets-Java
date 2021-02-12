@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Text.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST0 {font-weight: bold}
+.ST2 {color: #ce7b00; font-weight: bold}
+.ST1 {color: #009900}
+.character {color: #ce7b00}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\model\Text.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.model;
+
+<span class="keyword-directive">import</span> java.util.ArrayList;
+<span class="keyword-directive">import</span> java.util.List;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">Text</span> {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">boolean</span> <span class="ST1">code</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> List&lt;String&gt; <span class="ST1">lines</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">Text</span>(String text, <span class="keyword-directive">boolean</span> code) {
+    <span class="keyword-directive">this</span>();
+    setCode(code);
+    setText(text);
+  }
+
+  <span class="keyword-directive">public</span> <span class="ST0">Text</span>() {
+    <span class="keyword-directive">this</span>.<span class="ST1">lines</span> = <span class="keyword-directive">new</span> ArrayList&lt;String&gt;();
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">boolean</span> <span class="ST0">isCode</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">code</span>;
+  }
+
+  <span class="keyword-directive">public</span> String <span class="ST0">getText</span>() {
+    StringBuilder str = <span class="keyword-directive">new</span> StringBuilder();
+    <span class="keyword-directive">for</span> (String line : <span class="ST1">lines</span>) {
+      <span class="keyword-directive">if</span> (str.length() &gt; 0) {
+        str.append(<span class="character">&#39;</span><span class="ST2">\n</span><span class="character">&#39;</span>);
+      }
+      str.append(line);
+    }
+    <span class="keyword-directive">return</span> str.toString();
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setText</span>(String text) {
+    <span class="keyword-directive">if</span> (text != <span class="keyword-directive">null</span>) {
+      <span class="keyword-directive">for</span> (String line : text.split(<span class="character">&quot;</span><span class="ST2">\\</span><span class="character">n</span><span class="character">&quot;</span>)) {
+        <span class="keyword-directive">if</span> (!<span class="ST1">code</span>) {
+          line = line.trim();
+        }
+        <span class="keyword-directive">if</span> (line.trim().length() &gt; 0) {
+          <span class="ST1">lines</span>.add(line);
+        }
+      }
+    }
+  }
+
+  <span class="keyword-directive">public</span> List&lt;String&gt; <span class="ST0">getLines</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">lines</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">boolean</span> <span class="ST0">isEmpty</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">lines</span>.isEmpty();
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setCode</span>(<span class="keyword-directive">boolean</span> code) {
+    <span class="keyword-directive">this</span>.<span class="ST1">code</span> = code;
+  }
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

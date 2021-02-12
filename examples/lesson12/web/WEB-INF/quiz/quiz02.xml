@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      Given that www.example.com/SCWCDtestApp is a validly deployed Java EE web application and that all of the JSP files specified in the requests below exist in the locations specified.
+      Which two requests, issued from a browser, will return an HTTP 404 error?
+    </TEXT>
+    <ANSWER ISCORRECT="true">http://www.example.com/SCWCDtestApp/WEB-INF/test.jsp</ANSWER>
+    <ANSWER ISCORRECT="true">http://www.example.com/SCWCDtestApp/META-INF/test.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">http://www.example.com/SCWCDtestApp/test.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">http://www.example.com/SCWCDtestApp/WEB-WAR/test.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">http://www.example.com/SCWCDtestApp/Customer/test.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">http://www.example.com/SCWCDtestApp/Customer/Update/test.jsp</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      A web application contains a WEB-INF/lib/foo.jar file, which in turn contains a META-INF/resources/bar.jsp JSP page.    
+      At what URL (relative to the context root of the web application) is that JSP page accessible?
+    </TEXT>
+    <ANSWER ISCORRECT="true">/bar.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">/foo/bar.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">/foo/resources/bar.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">/resources/bar.jsp</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+	To create a HTTP Servlet class you have to:
+    </TEXT>
+    <ANSWER ISCORRECT="true">Extend the javax.servlet.http.HttpServlet class</ANSWER>
+    <ANSWER ISCORRECT="false">Implement the javax.servlet.http.HttpServlet interface</ANSWER>
+    <ANSWER ISCORRECT="false">Extend the javax.servlet.Servlet class</ANSWER>
+    <ANSWER ISCORRECT="false">Implement the javax.servlet.Servlet interface</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+	A server is running localy listening on the port 7001.
+	A webapp.war is deployed on the server and its running on the /webapp context root.
+	The webapp.war contains an HTML file: contacts.html.
+	How do you access the contacts.html file from a browser?
+    </TEXT>
+	<TEXT CODE="TRUE">
+	webapp.war
+	|-contacts.html
+	</TEXT>
+    <ANSWER ISCORRECT="true">http://localhost:7001/webapp/contacts.html</ANSWER>
+    <ANSWER ISCORRECT="false">http://localhost:7001/contacts.html</ANSWER>
+    <ANSWER ISCORRECT="false">http://localhost/webapp/contacts.html</ANSWER>
+    <ANSWER ISCORRECT="false">http://localhost/contacts.html</ANSWER>
+	<ANSWER ISCORRECT="false">The file cannot be accessed.</ANSWER>
+  </QUESTION>
+  
+  <QUESTION>
+    <TEXT>
+	In which files can servlets be configured?
+    </TEXT>
+    <ANSWER ISCORRECT="true">In the same class file using the @WebServlet annotation</ANSWER>
+    <ANSWER ISCORRECT="true">The web.xml file in /WEB-INF</ANSWER>
+    <ANSWER ISCORRECT="true">The web-fragment.xml in META-INF in a JAR or in WEB-INF/lib in a WAR</ANSWER>
+    <ANSWER ISCORRECT="false">In the web.xml file in META-INF in a JAR file.</ANSWER>
+    <ANSWER ISCORRECT="false">Using XML comments inside java classes.</ANSWER>
+    <ANSWER ISCORRECT="false">In the web-fragment.xml file in the root folder of a WAR.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+	A server is running localy listening on the port 7001.
+	A webapp.war is deployed on the server and its running on the /webapp context root.
+	The webapp.war contains an JSP file in: WEB-INF/view.jsp.
+	How do you access the jsp.jsp file from a browser?
+    </TEXT>
+	<TEXT CODE="TRUE">
+	webapp.war
+	|-WEB-INF
+	|-|-view.jsp
+	</TEXT>
+    <ANSWER ISCORRECT="true">The file cannot be accessed.</ANSWER>
+    <ANSWER ISCORRECT="false">http://localhost:7001/WEB-INF/views.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">http://localhost:7001/webapp/WEB-INF/views.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">http://localhost/webapp/WEB-INF/views.jsp</ANSWER>
+    <ANSWER ISCORRECT="false">http://localhost/WEB-INF/views.jsp</ANSWER>
+  </QUESTION>
+</POLL>

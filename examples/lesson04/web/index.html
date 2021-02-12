@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 04</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+  </head>
+  <body>
+    <h1>Lesson 04 - Forms and Servlets - Examples</h1>
+
+    <h2>Forms</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>HTML Form Source code</th>
+          <th>Servlet Source code</th>
+          <th>Servlet Mapping</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="4">Hello Form.</td>
+        </tr>
+        <tr>
+          <td><a href="helloForm.html">/helloForm.html</a></td>
+          <td><a href="sources/helloForm.html.html">helloForm.html</a></td>
+          <td><a href="sources/HelloServlet.java.html">com.examples.lesson04.HelloServlet</a></td>
+          <td>/HelloSvlt</td>
+        </tr>
+        <tr>
+          <td colspan="4">Quiz Servlet.</td>
+        </tr>
+        <tr>
+          <td><a href="quiz.html">/quiz.html</a></td>
+          <td><a href="sources/quiz.html.html">quiz.html</a></td>
+          <td><a href="sources/QuizServlet.java.html">com.examples.lesson04.QuizServlet</a></td>
+          <td>/QuizServlet</td>
+        </tr>
+        <tr>
+          <td colspan="4">Servlet that list all the parameters sent to it.</td>
+        </tr>
+        <tr>
+          <td><a href="servletParams.html">/servletParams.html</a></td>
+          <td><a href="sources/servletParams.html.html">servletParams.html</a></td>
+          <td><a href="sources/ParametersServlet.java.html">com.examples.lesson04.ParametersServlet</a></td>
+          <td>/params</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <h2>HTTP Headers</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Servlet Source code</th>
+          <th>Servlet Mapping</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3">Servlet that displays all request and response headers.</td>
+        </tr>
+        <tr>
+          <td><a href="headers">/headers</a></td>
+          <td><a href="sources/HeadersServlet.java.html">com.examples.lesson04.HeadersServlet</a></td>
+          <td>/headers</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Sessions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Servlet Source code</th>
+          <th>Servlet Mapping</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3">Login Example.<br>
+        </tr>
+        <tr>
+          <td rowspan="4"><a href="greet">/greet</a></td>
+          <td><a href="sources/GreetingServlet.java.html">com.examples.lesson04.GreetingServlet</a></td>
+          <td>/greet</td>
+        </tr>
+        <tr>
+          <td><a href="sources/LoginServlet.java.html">com.examples.lesson04.LoginServlet</a></td>
+          <td>/login.do</td>
+        </tr>        <tr>
+          <td><a href="sources/loginForm.html.html">loginForm.html</a> HTML Page</td>
+          <td>/loginForm.html</td>
+        </tr>
+        <tr>
+          <td><a href="sources/loginFailed.html.html">loginFailed.html</a> HTML Page</td>
+          <td>/loginFailed.html</td>
+        </tr>
+        <tr>
+          <td colspan="3">Shopping cart example.<br>
+        </tr>
+        <tr>
+          <td rowspan="4"><a href="shop.html">/shop.html</a></td>
+          <td><a href="sources/shop.html.html">shop.html</a> HTML page</td>
+          <td>/shop.html</td>
+        </tr>
+        <tr>
+          <td><a href="sources/ViewShoppingCartServlet.java.html">com.examples.lesson04.ViewShoppingCartServlet</a></td>
+          <td>/viewShoppingCart</td>
+        </tr>
+        <tr>
+          <td><a href="sources/AddToCartServlet.java.html">com.examples.lesson04.AddToCartServlet</a></td>
+          <td>/addToCart.do</td>
+        </tr>
+        <tr>
+          <td><a href="sources/ShopItem.java.html">com.examples.lesson04.ShopItem</a> Java Bean</td>
+          <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td><a href="logout">logout</a></td>
+          <td><a href="sources/LogoutServlet.java.html">com.examples.lesson04.LogoutServlet</a></td>
+          <td>/logout</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <h2>Cookies</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Servlet Source code</th>
+          <th>Servlet Mapping</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3">Set and display cookies.</td>
+        </tr>
+        <tr>
+          <td><a href="cookies">/cookies</a></td>
+          <td><a href="sources/CookiesServlet.java.html">com.examples.lesson04.CookiesServlet</a></td>
+          <td>/cookies</td>
+        </tr>
+        <tr>
+          <td colspan="3">Clear cookies.</td>
+        </tr>
+        <tr>
+          <td><a href="clearCookies">/clearCookies</a></td>
+          <td><a href="sources/ClearCookiesServlet.java.html">com.examples.lesson04.ClearCookiesServlet</a></td>
+          <td>/clearCookies</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a href="quiz/list">Lesson 04 - Quiz</a></h1>
+    <ul>
+      <li><a href="quiz/list">Take Quiz</a></li>
+      <li><a href="quiz/score">Quiz Score</a></li>
+      <li><a href="quiz/reset">Reset Quiz</a></li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>QuizServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css"> 
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST2 {color: #009900}
+      .ST1 {color: #ce7b00; font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson04\src\java\com\examples\lesson04\QuizServlet.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson04;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">QuizServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/QuizServlet</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">QuizServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();
+<span class="info" title="tt-html">   out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Servlet QuizServlet&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;link rel=</span><span class="ST1">\&quot;</span><span class="character">stylesheet</span><span class="ST1">\&quot;</span><span class="character"> href=</span><span class="ST1">\&quot;</span><span class="character">res/styles.css</span><span class="ST1">\&quot;</span><span class="character"> type=</span><span class="ST1">\&quot;</span><span class="character">text/css</span><span class="ST1">\&quot;</span><span class="character">/&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);</span>
+<span class="info" title="tt-getParameters">    String username = request.getParameter(<span class="character">&quot;</span><span class="character">name</span><span class="character">&quot;</span>);
+    String[] answer = request.getParameterValues(<span class="character">&quot;</span><span class="character">answer</span><span class="character">&quot;</span>);</span>
+<span class="info" title="tt-ifCorrect">    <span class="keyword-directive">if</span> (isCorrect(answer)) {
+      out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Great </span><span class="character">&quot;</span> + username + <span class="character">&quot;</span><span class="character"> you are correct!&lt;/h1&gt;</span><span class="character">&quot;</span>);
+    } <span class="keyword-directive">else</span> {
+      out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Sorry </span><span class="character">&quot;</span> + username + <span class="character">&quot;</span><span class="character"> your answer is wrong&lt;/h1&gt;</span><span class="character">&quot;</span>);
+      out.println(<span class="character">&quot;</span><span class="character">&lt;p&gt;Tip: there are 3 correct options.&lt;/p&gt;</span><span class="character">&quot;</span>);
+    }</span>
+
+<span class="info" title="tt-html">    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST1">\&quot;</span><span class="character">quiz.html</span><span class="ST1">\&quot;</span><span class="character">&gt;Go Back&lt;/a&gt; </span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST1">\&quot;</span><span class="character">index.html</span><span class="ST1">\&quot;</span><span class="character">&gt;Go Home&lt;/a&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);</span>
+  }
+
+<span class="info" title="tt-isCorrect">  <span class="keyword-directive">private</span> <span class="keyword-directive">boolean</span> <span class="ST0">isCorrect</span>(String[] answer) {
+    <span class="keyword-directive">if</span> (answer != <span class="keyword-directive">null</span> &amp;&amp; answer.<span class="ST2">length</span> == 3 &amp;&amp; arrayContains(answer, <span class="character">&quot;</span><span class="character">web</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">fragment</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">annotation</span><span class="character">&quot;</span>)) {
+      <span class="keyword-directive">return</span> <span class="keyword-directive">true</span>;
+    } <span class="keyword-directive">else</span> {
+      <span class="keyword-directive">return</span> <span class="keyword-directive">false</span>;
+    }
+  }</span>
+
+<span class="info" title="tt-arrayContains">  <span class="keyword-directive">private</span> <span class="keyword-directive">boolean</span> <span class="ST0">arrayContains</span>(String[] array, String... options) {
+    <span class="keyword-directive">for</span> (String option : options) {
+      <span class="keyword-directive">if</span> (!arrayContain(array, option)) {
+        <span class="keyword-directive">return</span> <span class="keyword-directive">false</span>;
+      }
+    }
+    <span class="keyword-directive">return</span> <span class="keyword-directive">true</span>;
+  }</span>
+
+<span class="info" title="tt-arrayContain">  <span class="keyword-directive">private</span> <span class="keyword-directive">boolean</span> <span class="ST0">arrayContain</span>(String[] array, String option) {
+    <span class="keyword-directive">for</span> (String arrayElement : array) {
+      <span class="keyword-directive">if</span> (arrayElement.equals(option)) {
+        <span class="keyword-directive">return</span> <span class="keyword-directive">true</span>;
+      }
+    }
+    <span class="keyword-directive">return</span> <span class="keyword-directive">false</span>;
+  }</span>
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+}
+
+    </pre>
+    <div id="tt-getParameters">
+      Get the parameters from the request.<br>
+      Note that you must use getParameterValues() to get multiple values for a single parameter.
+    </div>
+    <div id="tt-ifCorrect">
+      After checking if the parameter values were the correct answer, print the result to the user.
+    </div>
+    <div id="tt-isCorrect">
+      This method checks if the selected answer values are the correct ones.
+    </div>
+    <div id="tt-arrayContains">
+      This method checks that the array contains all the elements in the options vararg.
+    </div>
+    <div id="tt-arrayContain">
+      This method checks that the array contains the option element.
+    </div>
+    <div id="tt-html">
+      Some HTML output.
+    </div>
+    <p>
+      <a href="../index.html">Go back</a>
+    </p>
+  </body>
+</html>

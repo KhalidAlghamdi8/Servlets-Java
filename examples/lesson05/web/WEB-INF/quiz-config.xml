@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quizzes>
+  <quiz>
+    <name>Lesson 05</name>
+    <description>Web Application Configuration</description>
+    <questionCount></questionCount>
+    <sources>
+      <source>/WEB-INF/quiz/quiz.xml</source>
+    </sources>
+  </quiz>
+</quizzes>

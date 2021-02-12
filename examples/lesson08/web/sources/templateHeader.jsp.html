@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>templateHeader.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST6 {color: #628fb5}
+      .ST4 {font-weight: bold}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST8 {color: #009900}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST7 {color: #0000e6}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\web\templateHeader.jsp</td></tr></table>
+    <pre><span class="info" title="tt-overview">
+<span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span>
+<span class="ST6">&lt;!DOCTYPE</span> <span class="ST6">html</span><span class="ST6">&gt;</span>
+<span class="info" title="tt-curl"><span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/res/styles.css&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;stylesUrl&quot;</span><span class="ST4">/&gt;</span></span>
+<span class="ST7">&lt;</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">meta</span> <span class="ST8">http-equiv</span><span class="ST8">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST8">content</span><span class="ST8">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">link</span> <span class="ST8">rel</span><span class="ST8">=</span><span class="attribute-value">&quot;stylesheet&quot;</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">stylesUrl</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="ST8">type</span><span class="ST8">=</span><span class="attribute-value">&quot;text/css&quot;</span><span class="ST7">&gt;</span> 
+<span class="info" title="tt-paramTitle">    <span class="ST7">&lt;</span><span class="ST7">title</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">param</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">title</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">title</span><span class="ST7">&gt;</span></span>
+  <span class="ST7">&lt;/</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+<span class="info" title="tt-paramTitle"><span class="ST7">  &lt;</span><span class="ST7">h1</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">param</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">title</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span></span></span>
+    </pre>
+    <div id="tt-overview">
+      This JSP page contains the upper elements of an HTML page. The head and opening body tag are rendered in the page.<br>
+      Noticee that dynamic elements may be used in included pages just like with other JSP pages.
+      To use the Java Standard Tag Library Core tags, use the following JSP taglib directive:
+      <pre><span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span></pre>      
+    </div>
+    <div id="tt-paramTitle">
+      This page displays the title using a parameter provided from the including page. This is done by using the jsp:include tag with jsp:param tags or using the
+      c:import tag with c:param tags.
+    </div>
+    <div id="tt-curl">
+      The c:url tag sets the absolute URL for a context-relative URL. This is the preferred way of getting the path to a resource in your web application.
+      Notice that the URL variable is displayed later in this page to include the CSS file.
+      <pre><span class="ST7">&lt;</span><span class="ST7">link</span> <span class="ST8">rel</span><span class="ST8">=</span><span class="attribute-value">&quot;stylesheet&quot;</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">stylesUrl</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="ST8">type</span><span class="ST8">=</span><span class="attribute-value">&quot;text/css&quot;</span><span class="ST7">&gt;</span> </pre>
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>setup.jsp</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST4 {font-weight: bold}
+.scriptlet-delimiter {background-color: #e3f2e1}
+.ST8 {color: #009900}
+.ST3 {color: #ce7b00; background-color: #e9eff8}
+.ST7 {color: #0000e6}
+.ST5 {color: #0000e6; font-weight: bold}
+.attribute-name {color: #009b00}
+.ST0 {background-color: #e9eff8; font-weight: bold}
+.ST6 {color: #628fb5}
+.ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+.attribute-value {color: #ce7b00}
+.ST9 {color: #0000ff; background-color: #e3f2e1}
+.ST2 {color: #009b00; background-color: #e9eff8}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\web\setup\setup.jsp</td></tr></table>
+<pre>
+<span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5"> taglib</span> <span class="attribute-name">prefix</span><span class="ST4">=</span><span class="attribute-value">&quot;template&quot;</span> <span class="attribute-name">tagdir</span><span class="ST4">=</span><span class="attribute-value">&quot;/WEB-INF/tags&quot;</span> <span class="ST4">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span>
+<span class="ST6">&lt;!DOCTYPE</span> <span class="ST6">html</span><span class="ST6">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">meta</span> <span class="ST8">http-equiv</span><span class="ST8">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST8">content</span><span class="ST8">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST7">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">template:head</span> <span class="attribute-name">title</span><span class="ST4">=</span><span class="attribute-value">&quot;SETUP&quot;</span><span class="ST4">/&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h1</span><span class="ST7">&gt;</span>Setup Required!<span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>The database for this project is not configured correctly.<span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>The application can create the database tables necessary to run the application but
+      first you must create the database using NetBeans.<span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">div</span> <span class="ST8">style</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST9">boder</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">1px</span> <span class="scriptlet-delimiter">gray</span> <span class="scriptlet-delimiter">solid</span><span class="scriptlet-delimiter">;</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">h3</span><span class="ST7">&gt;</span>Create Database.<span class="ST7">&lt;/</span><span class="ST7">h3</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">ul</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">li</span><span class="ST7">&gt;</span>Open the services tab.<span class="ST7">&lt;/</span><span class="ST7">li</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">li</span><span class="ST7">&gt;</span>Open the databases node.<span class="ST7">&lt;/</span><span class="ST7">li</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">li</span><span class="ST7">&gt;</span>Right-click the Java DB node and select <span class="ST7">&lt;</span><span class="ST7">b</span><span class="ST7">&gt;</span>Start Server<span class="ST7">&lt;/</span><span class="ST7">b</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">li</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">li</span><span class="ST7">&gt;</span>Right-click the Java DB node and select <span class="ST7">&lt;</span><span class="ST7">b</span><span class="ST7">&gt;</span>Create Database...<span class="ST7">&lt;/</span><span class="ST7">b</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">li</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">li</span><span class="ST7">&gt;</span>Set the following values:
+          <span class="ST7">&lt;</span><span class="ST7">ul</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">li</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">b</span><span class="ST7">&gt;</span>Database Name: <span class="ST7">&lt;/</span><span class="ST7">b</span><span class="ST7">&gt;</span>QuizDB<span class="ST7">&lt;/</span><span class="ST7">li</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">li</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">b</span><span class="ST7">&gt;</span>User Name: <span class="ST7">&lt;/</span><span class="ST7">b</span><span class="ST7">&gt;</span>oracle<span class="ST7">&lt;/</span><span class="ST7">li</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">li</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">b</span><span class="ST7">&gt;</span>Password: <span class="ST7">&lt;/</span><span class="ST7">b</span><span class="ST7">&gt;</span>welcome1<span class="ST7">&lt;/</span><span class="ST7">li</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">ul</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;/</span><span class="ST7">li</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;/</span><span class="ST7">ul</span><span class="ST7">&gt;</span>
+      If there is an already created database delete it and create it anew.
+    <span class="ST7">&lt;/</span><span class="ST7">div</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">b</span><span class="ST7">&gt;</span>For best results make sure you run the setup in a newly created database.<span class="ST7">&lt;/</span><span class="ST7">b</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>After you created the database<span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;setupURL&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/Setup&quot;</span><span class="ST4">&gt;</span>
+      <span class="ST4">&lt;</span><span class="ST5">c:param</span> <span class="attribute-name">name</span><span class="ST4">=</span><span class="attribute-value">&quot;action&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;setup&quot;</span><span class="ST4">/&gt;</span>
+    <span class="ST4">&lt;/</span><span class="ST5">c:url</span><span class="ST4">&gt;</span>
+    <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;skipURL&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/Setup&quot;</span><span class="ST4">&gt;</span>
+      <span class="ST4">&lt;</span><span class="ST5">c:param</span> <span class="attribute-name">name</span><span class="ST4">=</span><span class="attribute-value">&quot;action&quot;</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;skip&quot;</span><span class="ST4">/&gt;</span>
+    <span class="ST4">&lt;/</span><span class="ST5">c:url</span><span class="ST4">&gt;</span>
+
+    <span class="ST7">&lt;</span><span class="ST7">h1</span> <span class="ST8">style</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST9">text-align</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">center</span><span class="scriptlet-delimiter">;</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">setupURL</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>RUN SETUP<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h1</span> <span class="ST8">style</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST9">text-align</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">center</span><span class="scriptlet-delimiter">;</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">skipURL</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>SKIP SETUP<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+<span class="ST7">&lt;/</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ProductView.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\src\java\com\examples\lesson07\view\ProductView.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson07.view;
+
+<span class="keyword-directive">import</span> com.examples.lesson07.model.Product;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ProductView</span> {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> Product <span class="ST1">product</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> <span class="keyword-directive">int</span> <span class="ST1">quantity</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">ProductView</span>(Product product, <span class="keyword-directive">int</span> quantity) {
+    <span class="keyword-directive">this</span>.<span class="ST1">product</span> = product;
+    <span class="keyword-directive">this</span>.<span class="ST1">quantity</span> = quantity;
+  }
+
+  <span class="keyword-directive">public</span> Product <span class="ST0">getProduct</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">product</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">getQuantity</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">quantity</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">double</span> <span class="ST0">getTotalPrice</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">product</span>.getPrice() * <span class="ST1">quantity</span>;
+  }
+}</span></pre>
+    <div id="tt-overview">
+      The ProductView class contains a product object and some additional information required by the JSP page to display.<br>
+      In the constructor method you might notice that the original product is stored.
+      The ordered quantity for that product is obtained and stored in this object.<br>
+      The method getTotalPrice calculates the total price based on the quantity and the product price.<br>
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ExampleContextAttributeListener.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson05\src\java\com\examples\lesson05\listeners\ExampleContextAttributeListener.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson05.listeners;
+
+<span class="keyword-directive">import</span> javax.servlet.ServletContext;
+<span class="keyword-directive">import</span> javax.servlet.ServletContextAttributeEvent;
+<span class="keyword-directive">import</span> javax.servlet.ServletContextAttributeListener;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebListener;
+
+@WebListener()
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ExampleContextAttributeListener</span> <span class="keyword-directive">implements</span> ServletContextAttributeListener {
+</span>
+<span class="info" title="tt-added">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">attributeAdded</span>(ServletContextAttributeEvent event) {
+    ServletContext servletContext = event.getServletContext();
+    Integer count = (Integer) servletContext.getAttribute(<span class="character">&quot;</span><span class="character">attributeCount</span><span class="character">&quot;</span>);
+    <span class="keyword-directive">if</span> (count == <span class="keyword-directive">null</span>) {
+      count = 0;
+    }
+    count++;
+    servletContext.setAttribute(<span class="character">&quot;</span><span class="character">attributeCount</span><span class="character">&quot;</span>, count);
+  }</span>
+
+<span class="info" title="tt-removed">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">attributeRemoved</span>(ServletContextAttributeEvent event) {
+  }</span>
+
+<span class="info" title="tt-replaced">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">attributeReplaced</span>(ServletContextAttributeEvent event) {
+  }</span>
+}
+
+    </pre>
+    <div id="tt-added">
+      This method is called when an attribute is added to the application (context) scope.<br>
+      The goal of this method is to keep track of how many objects are in this scope.<br>
+      The count is stored inside another attribute inside of the same scope.<br>
+    </div>
+    <div id="tt-removed">
+      This method is called when an attribute is removed from the application (context) scope.
+    </div>
+    <div id="tt-replaced">
+      This method is called when an attribute is replaced by another.
+      This occurs when a setAttribute() is called in an already set attribute.
+    </div>
+    <div id="tt-overview">
+      The ServletContextAttributeListener is a web application life-cycle listener.<br>
+      This listener is configured by adding the @WebListener annotation. Alternatively,
+      the listener element can be added to the web.xml file:
+      <pre>
+  &lt;listener&gt;
+    &lt;listener-class&gt;LISTENER CLASS FULLY QUALIFIED NAME&lt;/listener-class&gt;
+  &lt;/listener&gt;
+      </pre>
+    </div>
+
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

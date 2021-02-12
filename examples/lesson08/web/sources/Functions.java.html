@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Functions.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST1 {font-weight: bold; font-style: italic}
+      .ST0 {font-weight: bold}
+      .comment {color: #969696}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\src\java\com\examples\lesson08\elfunctions\Functions.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview">
+<span class="keyword-directive">package</span> com.examples.lesson08.elfunctions;
+
+<span class="keyword-directive">import</span> java.util.Date;
+<span class="keyword-directive">import</span> java.util.GregorianCalendar;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">Functions</span> {
+  
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> Date <span class="ST1">now</span>() {
+    <span class="keyword-directive">return</span> <span class="keyword-directive">new</span> Date();
+  }
+  
+  <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> Date <span class="ST1">date</span>(<span class="keyword-directive">int</span> day, <span class="keyword-directive">int</span> month, <span class="keyword-directive">int</span> year) {
+    <span class="comment">//months are zero based. you want users to use this function 1 based.</span>
+    <span class="keyword-directive">return</span> <span class="keyword-directive">new</span> GregorianCalendar(year, month - 1, day).getTime();
+  }
+}</span>
+
+    </pre>
+    <div id="tt-overview">
+      Custom Expression Language functions are public static methods. Any valid Java code may be added.<br>
+      Note that Expression Language functions are static methods and are not aware of any context.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

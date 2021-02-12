@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      <TEXT CODE="true"></TEXT>
+    </TEXT>
+    <ANSWER ISCORRECT="true"></ANSWER>
+    <ANSWER ISCORRECT="false"></ANSWER>
+  </QUESTION>
+
+  <QUESTION TYPE="mcone" TITLE="QUESTION_TEXT">
+    <ANSWER ISCORRECT="true">d</ANSWER>
+    <ANSWER ISCORRECT="false">c</ANSWER>
+  </QUESTION>
+  <![CDATA[  ]]>
+</POLL>

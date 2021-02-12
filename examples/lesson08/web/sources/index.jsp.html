@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>index.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST5 {font-weight: bold}
+      .ST8 {color: #009900}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST7 {color: #0000e6}
+      .ST6 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST9 {color: #ce7b00; background-color: #e3f2e1}
+      .ST4 {color: #628fb5}
+      .ST11 {color: #007c00; background-color: #e3f2e1; font-weight: bold}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .ST10 {color: #0000ff; background-color: #e3f2e1}
+      .attribute-value {color: #ce7b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\web\index.jsp</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview">
+<span class="ST0">&lt;%@</span><span class="ST1">page</span> <span class="ST2">contentType</span><span class="ST0">=</span><span class="ST3">&quot;text/html&quot;</span> <span class="ST2">pageEncoding</span><span class="ST0">=</span><span class="ST3">&quot;UTF-8&quot;</span><span class="ST0">%&gt;</span>
+<span class="ST4">&lt;!DOCTYPE</span> <span class="ST4">html</span><span class="ST4">&gt;</span>
+<span class="ST5">&lt;</span><span class="ST6">jsp:include</span> <span class="attribute-name">page</span><span class="ST5">=</span><span class="attribute-value">&quot;templateHeader.jsp&quot;</span><span class="ST5">&gt;</span>
+  <span class="ST5">&lt;</span><span class="ST6">jsp:param</span> <span class="attribute-name">name</span><span class="ST5">=</span><span class="attribute-value">&quot;title&quot;</span> <span class="attribute-name">value</span><span class="ST5">=</span><span class="attribute-value">&quot;Lesson 08&quot;</span><span class="ST5">/&gt;</span>
+<span class="ST5">&lt;/</span><span class="ST6">jsp:include</span><span class="ST5">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">script</span> <span class="ST8">src</span><span class="ST8">=</span><span class="attribute-value">&quot;res/jquery.js&quot;</span> <span class="ST8">type</span><span class="ST8">=</span><span class="attribute-value">&quot;text/javascript&quot;</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">script</span><span class="ST7">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">onclick</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">$</span><span class="scriptlet-delimiter">(</span><span class="ST9">&#39;</span><span class="ST9">#cheatSheet</span><span class="ST9">&#39;</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">toggle</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">;</span><span class="attribute-value">&quot;</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;#&quot;</span> <span class="ST8">style</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST10">text-align</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">right</span><span class="scriptlet-delimiter">;</span> <span class="ST10">display</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">block</span><span class="scriptlet-delimiter">;</span> <span class="ST10">width</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">100%</span><span class="scriptlet-delimiter">;</span> <span class="ST10">background-color</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">#ddddff</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>Hide/Show<span class="ST5">&amp;nbsp;</span><span class="ST5">&amp;nbsp;</span><span class="ST5">&amp;nbsp;</span><span class="ST5">&amp;nbsp;</span><span class="ST5">&amp;nbsp;</span><span class="ST5">&amp;nbsp;</span><span class="ST5">&amp;nbsp;</span><span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">table</span> <span class="ST8">style</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST10">width</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">100%</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">td</span> <span class="ST8">style</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST10">text-align</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">left</span><span class="scriptlet-delimiter">;</span> <span class="ST10">vertical-align</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">top</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">h1</span><span class="ST7">&gt;</span>Lesson 08 - JSP Custom Tags - Examples<span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">h2</span><span class="ST7">&gt;</span>Expression Language.<span class="ST7">&lt;/</span><span class="ST7">h2</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>While using EL do so to display or provide values. Use Custom Tags to include
+        logic that you would normally code using Java.<span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+
+      <span class="ST7">&lt;</span><span class="ST7">h2</span><span class="ST7">&gt;</span>Java Standard Tag Libraries.<span class="ST7">&lt;/</span><span class="ST7">h2</span><span class="ST7">&gt;</span>
+
+      <span class="ST7">&lt;</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">thead</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Example<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Source Code<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Description<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;/</span><span class="ST7">thead</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">tbody</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span> <span class="ST8">rowspan</span><span class="ST8">=</span><span class="attribute-value">&quot;5&quot;</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;ShopListServlet&quot;</span><span class="ST7">&gt;</span>/ShopListServlet<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/ShopListServlet.java.html&quot;</span><span class="ST7">&gt;</span>com.examples.lesson08.servlets.ShopListServlet<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>The Servlet that receives the request and processes it.<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/shopListView.jsp.html&quot;</span><span class="ST7">&gt;</span>/shopListView.jsp<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>The JSP view for the shopping list.<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/ShopItem.java.html&quot;</span><span class="ST7">&gt;</span>com.examples.lesson08.ShopItem<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>A model object that represents an item in the list.<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/ShopList.java.html&quot;</span><span class="ST7">&gt;</span>com.examples.lesson08.model.ShopList<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>A model object that contains the shopping list.<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/ShoppingListSessionSetupListener.java.html&quot;</span><span class="ST7">&gt;</span>com.examples.lesson08.listeners. ShoppingListSessionSetupListener<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>A session listener that sets up the ShopList object inside the session.<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;/</span><span class="ST7">tbody</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;/</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+
+      <span class="ST7">&lt;</span><span class="ST7">h2</span><span class="ST7">&gt;</span>JSP templating<span class="ST7">&lt;/</span><span class="ST7">h2</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>You can use include directives or jsp:include or c:import tags to create templates.<span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">thead</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Example<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Source Code<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Description<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;/</span><span class="ST7">thead</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">tbody</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span> <span class="ST8">rowspan</span><span class="ST8">=</span><span class="attribute-value">&quot;4&quot;</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;shopListTemplated.jsp&quot;</span><span class="ST7">&gt;</span>/shopListTemplated.jsp<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/ShopListServlet.java.html&quot;</span><span class="ST7">&gt;</span>com.examples.lesson08.servlets<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/shopListTemplated.jsp.html&quot;</span><span class="ST7">&gt;</span>/shopListTemplated.jsp<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>The list of items using templates for the header and the footer of the page.<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/templateHeader.jsp.html&quot;</span><span class="ST7">&gt;</span>/templateHeader.jsp<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>The header of the page.<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/templateFooter.jsp.html&quot;</span><span class="ST7">&gt;</span>/templateFooter.jsp<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+            <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>The footer of the page.<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;/</span><span class="ST7">tbody</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;/</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+
+      <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>jsp:include includes the content of a resource in the same application in the current page while c:import
+        can include resources outside the application.<span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>Another example of templating is this page: <span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/index.jsp.html&quot;</span><span class="ST7">&gt;</span>/index.jsp<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>Also using templates there is the <span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;cheatsheetView.jsp&quot;</span><span class="ST7">&gt;</span>cheatsheetView.jsp<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span> 
+        source code for <span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;sources/cheatsheetView.jsp.html&quot;</span><span class="ST7">&gt;</span>/cheatsheetView.jsp<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span><span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+
+    <span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">td</span> <span class="ST8">style</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST10">text-align</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">left</span><span class="scriptlet-delimiter">;</span> <span class="ST10">vertical-align</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">top</span><span class="scriptlet-delimiter">;</span> <span class="ST10">width</span><span class="scriptlet-delimiter">:</span> <span class="scriptlet-delimiter">300px</span><span class="scriptlet-delimiter">;</span><span class="attribute-value">&quot;</span> <span class="ST8">id</span><span class="ST8">=</span><span class="attribute-value">&quot;</span><span class="ST11">cheatSheet</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>
+      <span class="ST5">&lt;</span><span class="ST6">jsp:include</span> <span class="attribute-name">page</span><span class="ST5">=</span><span class="attribute-value">&quot;cheatsheet.jsp&quot;</span><span class="ST5">/&gt;</span>
+    <span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+<span class="ST7">&lt;/</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+
+<span class="ST7">&lt;</span><span class="ST7">h1</span><span class="ST7">&gt;</span>Lesson 08 - Quizes<span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span>
+<span class="ST5">&lt;</span><span class="ST6">jsp:include</span> <span class="attribute-name">page</span><span class="ST5">=</span><span class="attribute-value">&quot;quiz/quizzes.jsp&quot;</span><span class="ST5">/&gt;</span>
+<span class="ST5">&lt;</span><span class="ST6">jsp:include</span> <span class="attribute-name">page</span><span class="ST5">=</span><span class="attribute-value">&quot;templateFooter.jsp&quot;</span><span class="ST5">&gt;</span>
+  <span class="ST5">&lt;</span><span class="ST6">jsp:param</span> <span class="attribute-name">name</span><span class="ST5">=</span><span class="attribute-value">&quot;footerNote&quot;</span> <span class="attribute-name">value</span><span class="ST5">=</span><span class="attribute-value">&quot;Made with JSP&quot;</span><span class="ST5">/&gt;</span>
+<span class="ST5">&lt;/</span><span class="ST6">jsp:include</span><span class="ST5">&gt;</span></span>
+    </pre>
+    <div id="tt-overview">
+      This page takes advantage of including other JSP pages at 4 points:<br>
+      <ul>
+        <li>The header</li>
+        <li>The footer</li>
+        <li>The sidebar with the cheatsheet</li>
+        <li>The list of quizzes for this lesson</li>
+      </ul>
+      See that including pages is a great way to avoid repeating text and HTML elements that are common in several pages.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

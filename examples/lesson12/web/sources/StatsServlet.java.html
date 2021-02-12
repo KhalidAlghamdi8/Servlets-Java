@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>StatsServlet.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST0 {font-weight: bold}
+.ST2 {color: #969696; font-weight: bold}
+.comment {color: #969696}
+.ST1 {color: #009900}
+.character {color: #ce7b00}
+.keyword-directive {color: #0000e6}
+.ST3 {color: #9999ff; font-weight: bold}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\servlets\StatsServlet.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.servlets;
+
+<span class="keyword-directive">import</span> com.examples.lesson12.model.Question;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuestionResult;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuestionStatView;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.Quiz;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizCollection;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizResult;
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizStatView;
+<span class="keyword-directive">import</span> com.examples.lesson12.services.QuizService;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.util.ArrayList;
+<span class="keyword-directive">import</span> java.util.List;
+<span class="keyword-directive">import</span> javax.inject.Inject;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">StatsServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/instructor/stats</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">StatsServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  @Inject
+  <span class="keyword-directive">private</span> QuizService <span class="ST1">quizService</span>;
+
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    List&lt;QuizStatView&gt; quizStat = <span class="keyword-directive">new</span> ArrayList&lt;QuizStatView&gt;();
+    QuizCollection quizzes = (QuizCollection) getServletContext().getAttribute(<span class="character">&quot;</span><span class="character">quizzes</span><span class="character">&quot;</span>);
+    <span class="keyword-directive">for</span> (Quiz quiz : quizzes.getQuizes()) {
+      QuizStatView quizStatView = <span class="keyword-directive">new</span> QuizStatView();
+      quizStatView.setId(quiz.getQuizId());
+      quizStatView.setQuiz(quiz);
+      List&lt;QuestionStatView&gt; questions = <span class="keyword-directive">new</span> ArrayList&lt;QuestionStatView&gt;();
+      <span class="keyword-directive">for</span> (Question question : quiz.getQuestions()) {
+        QuestionStatView questionStat = <span class="keyword-directive">new</span> QuestionStatView();
+        questionStat.setId(question.getId());
+        questionStat.setQuestion(question);
+        questions.add(questionStat);
+      }
+      quizStatView.setQuestions(questions);
+      quizStat.add(quizStatView);
+    }
+    List&lt;QuizResult&gt; quizResults = <span class="ST1">quizService</span>.getAllResults();
+    <span class="keyword-directive">for</span> (QuizResult quizResult : quizResults) {
+      <span class="keyword-directive">for</span> (QuestionResult questionResult : quizResult.getAskedQuestions()) {
+        QuestionStatView stat = getQuestion(quizStat, quizResult.getId(), questionResult.getQuestionId());
+        <span class="keyword-directive">if</span> (questionResult.isCorrect()) {
+          stat.setCorrect(stat.getCorrect() + 1);
+        } <span class="keyword-directive">else</span> {
+          stat.setIncorrect(stat.getIncorrect() + 1);
+        }
+      }
+    }
+    request.setAttribute(<span class="character">&quot;</span><span class="character">quizStats</span><span class="character">&quot;</span>, quizStat);
+
+    request.getRequestDispatcher(<span class="character">&quot;</span><span class="character">/instructor/stats.jsp</span><span class="character">&quot;</span>).forward(request, response);
+  }
+
+  <span class="keyword-directive">private</span> QuestionStatView <span class="ST0">getQuestion</span>(List&lt;QuizStatView&gt; quizStats, <span class="keyword-directive">int</span> quizId, <span class="keyword-directive">int</span> questionId) {
+    <span class="keyword-directive">for</span> (QuizStatView quizStat : quizStats) {
+      <span class="keyword-directive">if</span> (quizStat.getId() == quizId) {
+        <span class="keyword-directive">for</span> (QuestionStatView stat : quizStat.getQuestions()) {
+          <span class="keyword-directive">if</span> (stat.getId() == questionId) {
+            <span class="keyword-directive">return</span> stat;
+          }
+        }
+      }
+    }
+    <span class="keyword-directive">return</span> <span class="keyword-directive">null</span>;
+  }
+
+  <span class="comment">// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;HttpServlet methods. Click on the + sign on the left to edit the code.&quot;&gt;</span>
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST2">Handles</span> <span class="ST2">the</span> <span class="ST2">HTTP</span>
+<span class="comment">   * </span><span class="ST3">&lt;code&gt;</span><span class="ST2">GET</span><span class="ST3">&lt;/code&gt;</span> <span class="ST2">method</span><span class="ST2">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST2">@param</span> request <span class="comment">servlet</span> <span class="comment">request</span>
+<span class="comment">   * </span><span class="ST2">@param</span> response <span class="comment">servlet</span> <span class="comment">response</span>
+<span class="comment">   * </span><span class="ST2">@throws</span> <span class="comment">ServletException</span> <span class="comment">if</span> <span class="comment">a</span> <span class="comment">servlet</span><span class="comment">-</span><span class="comment">specific</span> <span class="comment">error</span> <span class="comment">occurs</span>
+<span class="comment">   * </span><span class="ST2">@throws</span> <span class="comment">IOException</span> <span class="comment">if</span> <span class="comment">an</span> <span class="comment">I</span><span class="comment">/</span><span class="comment">O</span> <span class="comment">error</span> <span class="comment">occurs</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST2">Handles</span> <span class="ST2">the</span> <span class="ST2">HTTP</span>
+<span class="comment">   * </span><span class="ST3">&lt;code&gt;</span><span class="ST2">POST</span><span class="ST3">&lt;/code&gt;</span> <span class="ST2">method</span><span class="ST2">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST2">@param</span> request <span class="comment">servlet</span> <span class="comment">request</span>
+<span class="comment">   * </span><span class="ST2">@param</span> response <span class="comment">servlet</span> <span class="comment">response</span>
+<span class="comment">   * </span><span class="ST2">@throws</span> <span class="comment">ServletException</span> <span class="comment">if</span> <span class="comment">a</span> <span class="comment">servlet</span><span class="comment">-</span><span class="comment">specific</span> <span class="comment">error</span> <span class="comment">occurs</span>
+<span class="comment">   * </span><span class="ST2">@throws</span> <span class="comment">IOException</span> <span class="comment">if</span> <span class="comment">an</span> <span class="comment">I</span><span class="comment">/</span><span class="comment">O</span> <span class="comment">error</span> <span class="comment">occurs</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  <span class="comment">/**</span>
+<span class="comment">   * </span><span class="ST2">Returns</span> <span class="ST2">a</span> <span class="ST2">short</span> <span class="ST2">description</span> <span class="ST2">of</span> <span class="ST2">the</span> <span class="ST2">servlet</span><span class="ST2">.</span>
+<span class="comment">   *</span>
+<span class="comment">   * </span><span class="ST2">@return</span> <span class="comment">a</span> <span class="comment">String</span> <span class="comment">containing</span> <span class="comment">servlet</span> <span class="comment">description</span>
+   <span class="comment">*/</span>
+  @Override
+  <span class="keyword-directive">public</span> String <span class="ST0">getServletInfo</span>() {
+    <span class="keyword-directive">return</span> <span class="character">&quot;</span><span class="character">Short description</span><span class="character">&quot;</span>;
+  }<span class="comment">// &lt;/editor-fold&gt;</span>
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

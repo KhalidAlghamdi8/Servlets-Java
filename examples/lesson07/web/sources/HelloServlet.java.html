@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>HelloServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST1 {font-weight: bold}
+      .ST0 {color: #969696; font-weight: bold}
+      .comment {color: #969696}
+      .ST3 {color: #ce7b00; font-weight: bold}
+      .character {color: #ce7b00}
+      .ST2 {color: #009900; font-style: italic}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\src\java\com\examples\lesson07\servlets\HelloServlet.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson07.servlets;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">HelloServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/HelloServlet</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST1">HelloServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> String <span class="ST2">DEFAULT_NAME</span> = <span class="character">&quot;</span><span class="character">world</span><span class="character">&quot;</span>;
+
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST1">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+
+    String name = request.getParameter(<span class="character">&quot;</span><span class="character">name</span><span class="character">&quot;</span>);
+    <span class="keyword-directive">if</span> (name == <span class="keyword-directive">null</span>) {
+      name = <span class="ST2">DEFAULT_NAME</span>;
+    }
+
+    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();
+    out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;HelloServlet&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;link rel=</span><span class="ST3">\&quot;</span><span class="character">stylesheet</span><span class="ST3">\&quot;</span><span class="character"> href=</span><span class="ST3">\&quot;</span><span class="character">res/styles.css</span><span class="ST3">\&quot;</span><span class="character"> type=</span><span class="ST3">\&quot;</span><span class="character">text/css</span><span class="ST3">\&quot;</span><span class="character">/&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Hello </span><span class="character">&quot;</span> + name + <span class="character">&quot;</span><span class="character">!&lt;/h1&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST3">\&quot;</span><span class="character">index.html</span><span class="ST3">\&quot;</span><span class="character">&gt;Go Home&lt;/a&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);
+  }
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST1">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST1">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> String <span class="ST1">getServletInfo</span>() {
+    <span class="keyword-directive">return</span> <span class="character">&quot;</span><span class="character">Short description</span><span class="character">&quot;</span>;
+  }
+}</span>
+    </pre>
+    <div id="tt-overview">
+      This servlet uses the name request parameter and displays a greeting based on it. If there is no parameter, it greets displaying "Hello World!" instead.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 06</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="res/styles.css" type="text/css"> 
+  </head>
+  <body>
+    <h1>Lesson 06 - Model View Controller.</h1>
+
+    <h2>Monolithic Servlet</h2>
+
+    <p>This is the base monolithic servlet. In the following examples you will convert it into a
+      Controller by separating the business logic (Model) and HTMLl code (View) from it.</p>
+    <table>
+      <thead>
+        <tr><td colspan="3">Base Servlet</td></tr>
+        <tr>
+          <th>Example</th>
+          <th>Source code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="info">/info</a></td>
+          <td><a href="sources/InfoServlet.java.html">com.examples.lesson06.servlets.InfoServlet</a></td>
+          <td>A monolithic servlet</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Implementing MVC (Servlet redispatch to JSP)</h3>
+    <p><b>Goal</b>: To move HTML code to JSP and to display dynamic data using model objects inside request.<b>attributes</b>.</p>
+    <p>To display the <b>request attributes</b> in this example, use <b>${</b>ATTRIBUTE NAME<b>}</b> syntax in the JSP file.</p>
+    <table>
+      <thead>
+        <tr><td colspan="3">Servlet with JSP view</td></tr>
+        <tr>
+          <th>Example</th>
+          <th>Source code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4"><a href="infoController">/infoController</a></td>
+          <td><a href="sources/InfoServletController.java.html">com.examples.lesson06.servlets.InfoServletController</a></td>
+          <td>Servlet that re-dispatches the request to a JSP page</td>
+        </tr>
+        <tr>
+          <td><a href="sources/InfoBean.java.html">com.examples.lesson06.model.InfoBean</a></td>
+          <td>The model bean.</td>
+        </tr>
+        <tr>
+          <td><a href="sources/infoServletView.jsp.html">/infoServletView.jsp</a></td>
+          <td>The JSP view.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Adding service layers (Dependency injection)</h3>
+    <p><b>Goal</b>: Separate business logic from Servlets.</p>
+    <table>
+      <thead>
+        <tr><td colspan="3">Servlet with Dependency Injection</td></tr>
+        <tr>
+          <th>Example</th>
+          <th>Source code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4"><a href="infoCdi">/infoCdi</a></td>
+          <td><a href="sources/InfoServletCdi.java.html">com.examples.lesson06.servlets.InfoServletCdi</a></td>
+          <td>The servlet with the injected Info Object</td>
+        </tr>
+        <tr>
+          <td><a href="sources/InfoService.java.html">com.examples.lesson06.services.InfoService</a></td>
+          <td>The business object interface.</td>
+        </tr>
+        <tr>
+          <td><a href="sources/InfoServiceImpl.java.html">com.examples.lesson06.services.InfoServiceImpl</a></td>
+          <td>The business object implementation.</td>
+        </tr>
+        <tr>
+          <td><a href="sources/beans.xml.html">WEB-INF/beans.xml</a></td>
+          <td>CDI configuration file.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>MVC + Service Objects.</h3>
+    <p><b>Goal</b>: To make servlets coordinate injected objects and dispatch them to the view.</p>
+    <p>This example shows the servlet with both dependency injection and MVC.</p>
+    <p>Please note that the injected bean and the view JSP are reused.</p>
+
+    <table>
+      <thead>
+        <tr><td colspan="3">Controller Servlet</td></tr>
+        <tr>
+          <th>Example</th>
+          <th>Source code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="6"><a href="infoCdiController">/infoCdiController</a></td>
+          <td><a href="sources/InfoServletCdiController.java.html">com.examples.lesson06.servlets.InfoServletCdiController</a></td>
+          <td>The Controller servlet</td>
+        </tr>
+        <tr>
+          <td><a href="sources/InfoService.java.html">com.examples.lesson06.services.InfoService</a></td>
+          <td>The business object interface.</td>
+        </tr>
+        <tr>
+          <td><a href="sources/InfoServiceImpl.java.html">com.examples.lesson06.services.InfoServiceImpl</a></td>
+          <td>The business object implementation.</td>
+        </tr>
+        <tr>
+          <td><a href="sources/InfoBean.java.html">com.examples.lesson06.model.InfoBean</a></td>
+          <td>The model bean.</td>
+        </tr>
+        <tr>
+          <td><a href="sources/infoServletView.jsp.html">/infoServletView.jsp</a></td>
+          <td>The JSP view.</td>
+        </tr>
+        <tr>
+          <td><a href="sources/beans.xml.html">WEB-INF/beans.xml</a></td>
+          <td>CDI configuration file.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a href="quiz/list">Lesson 06 - Quiz</a></h1>
+    <ul>
+      <li><a href="quiz/list">Take Quiz</a></li>
+      <li><a href="quiz/score">Quiz Score</a></li>
+      <li><a href="quiz/reset">Reset Quiz</a></li>
+    </ul>
+  </body>
+</html>

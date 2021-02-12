@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>header.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST7 {color: #0000e6; background-color: #e3f2e1}
+      .ST4 {font-weight: bold}
+      .ST9 {color: #009900}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST8 {color: #0000e6}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST6 {color: #969696}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson11\web\templates\header.jsp</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5"> taglib</span> <span class="attribute-name">prefix</span><span class="ST4">=</span><span class="attribute-value">&quot;sec&quot;</span> <span class="attribute-name">uri</span><span class="ST4">=</span><span class="attribute-value">&quot;examples/lesson11/tlds/securityTags&quot;</span> <span class="ST4">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span>
+</span>
+<span class="info" title="tt-filterValues"><span class="ST6">&lt;!-- This is set by a filter!. --&gt;</span></span>
+<span class="info" title="tt-userLoggedIn"><span class="ST4">&lt;</span><span class="ST5">c:if</span> <span class="attribute-name">test</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="ST7">not</span> <span class="ST7">empty</span> <span class="scriptlet-delimiter">requestScope</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">userName</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">&gt;</span>
+  <span class="ST8">&lt;</span><span class="ST8">table</span><span class="ST8">&gt;</span>
+    <span class="ST8">&lt;</span><span class="ST8">tr</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>User:<span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span><span class="ST8">&lt;</span><span class="ST8">b</span><span class="ST8">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">requestScope</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">userName</span><span class="scriptlet-delimiter">}</span><span class="ST8">&lt;/</span><span class="ST8">b</span><span class="ST8">&gt;</span> <span class="ST4">&amp;nbsp;</span><span class="ST4">&amp;nbsp;</span><span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>Roles:<span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span><span class="ST8">&lt;</span><span class="ST8">b</span><span class="ST8">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">requestScope</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">userRoles</span><span class="scriptlet-delimiter">}</span><span class="ST8">&lt;/</span><span class="ST8">b</span><span class="ST8">&gt;</span><span class="ST4">&amp;nbsp;</span><span class="ST4">&amp;nbsp;</span><span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/LogoutServlet&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;URLLogout&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST8">&lt;</span><span class="ST8">a</span> <span class="ST9">href</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">URLLogout</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST8">&gt;</span>LOGOUT<span class="ST8">&lt;/</span><span class="ST8">a</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+    <span class="ST8">&lt;/</span><span class="ST8">tr</span><span class="ST8">&gt;</span>
+  <span class="ST8">&lt;/</span><span class="ST8">table</span><span class="ST8">&gt;</span>
+<span class="ST4">&lt;/</span><span class="ST5">c:if</span><span class="ST4">&gt;</span></span>
+<span class="info" title="tt-userNotLoggedIn"><span class="ST4">&lt;</span><span class="ST5">c:if</span> <span class="attribute-name">test</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="ST7">empty</span> <span class="scriptlet-delimiter">requestScope</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">userName</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">&gt;</span>
+  <span class="ST8">&lt;</span><span class="ST8">table</span><span class="ST8">&gt;</span>
+    <span class="ST8">&lt;</span><span class="ST8">tr</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/quiz/list&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;URLQuiz&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST8">&lt;</span><span class="ST8">a</span> <span class="ST9">href</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">URLQuiz</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST8">&gt;</span>Quizzes<span class="ST8">&lt;/</span><span class="ST8">a</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/instructor/&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;URLPublish&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST8">&lt;</span><span class="ST8">a</span> <span class="ST9">href</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">URLPublish</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST8">&gt;</span>Instructor Tools<span class="ST8">&lt;/</span><span class="ST8">a</span><span class="ST8">&gt;</span> |
+      <span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/admin/&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;URLAdmin&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST8">&lt;</span><span class="ST8">a</span> <span class="ST9">href</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">URLAdmin</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST8">&gt;</span>Administration<span class="ST8">&lt;/</span><span class="ST8">a</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+    <span class="ST8">&lt;/</span><span class="ST8">tr</span><span class="ST8">&gt;</span>
+  <span class="ST8">&lt;/</span><span class="ST8">table</span><span class="ST8">&gt;</span>
+<span class="ST4">&lt;/</span><span class="ST5">c:if</span><span class="ST4">&gt;</span></span>
+<span class="info" title="tt-customTag1"><span class="ST4">&lt;</span><span class="ST5">sec:IfInRole</span> <span class="attribute-name">role</span><span class="ST4">=</span><span class="attribute-value">&quot;quizUser&quot;</span><span class="ST4">&gt;</span>
+  <span class="ST4">&lt;</span><span class="ST5">jsp:include</span> <span class="attribute-name">page</span><span class="ST4">=</span><span class="attribute-value">&quot;/quiz/options.jsp&quot;</span><span class="ST4">/&gt;</span>
+  <span class="ST4">&lt;</span><span class="ST5">jsp:include</span> <span class="attribute-name">page</span><span class="ST4">=</span><span class="attribute-value">&quot;/quiz/quizzes.jsp&quot;</span><span class="ST4">/&gt;</span>
+<span class="ST4">&lt;/</span><span class="ST5">sec:IfInRole</span><span class="ST4">&gt;</span></span>
+<span class="info" title="tt-customTag2"><span class="ST4">&lt;</span><span class="ST5">sec:IfInRole</span> <span class="attribute-name">role</span><span class="ST4">=</span><span class="attribute-value">&quot;quizAdmin&quot;</span><span class="ST4">&gt;</span>
+  <span class="ST8">&lt;</span><span class="ST8">table</span><span class="ST8">&gt;</span>
+    <span class="ST8">&lt;</span><span class="ST8">tr</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;URLHome&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST8">&lt;</span><span class="ST8">a</span> <span class="ST9">href</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">URLHome</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST8">&gt;</span>Home<span class="ST8">&lt;/</span><span class="ST8">a</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/admin/&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;URLAdmin&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST8">&lt;</span><span class="ST8">a</span> <span class="ST9">href</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">URLAdmin</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST8">&gt;</span>Administration<span class="ST8">&lt;/</span><span class="ST8">a</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+    <span class="ST8">&lt;/</span><span class="ST8">tr</span><span class="ST8">&gt;</span>
+  <span class="ST8">&lt;/</span><span class="ST8">table</span><span class="ST8">&gt;</span>
+<span class="ST4">&lt;/</span><span class="ST5">sec:IfInRole</span><span class="ST4">&gt;</span></span>
+<span class="info" title="tt-customTag3"><span class="ST4">&lt;</span><span class="ST5">sec:IfInRole</span> <span class="attribute-name">role</span><span class="ST4">=</span><span class="attribute-value">&quot;quizInstructor&quot;</span><span class="ST4">&gt;</span>
+  <span class="ST8">&lt;</span><span class="ST8">table</span><span class="ST8">&gt;</span>
+    <span class="ST8">&lt;</span><span class="ST8">tr</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;URLHome&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST8">&lt;</span><span class="ST8">a</span> <span class="ST9">href</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">URLHome</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST8">&gt;</span>Home<span class="ST8">&lt;/</span><span class="ST8">a</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+      <span class="ST8">&lt;</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+        <span class="ST4">&lt;</span><span class="ST5">c:url</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;/instructor/&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;URLPublish&quot;</span><span class="ST4">/&gt;</span>
+        <span class="ST8">&lt;</span><span class="ST8">a</span> <span class="ST9">href</span><span class="ST9">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">URLPublish</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST8">&gt;</span>Instructor Tools<span class="ST8">&lt;/</span><span class="ST8">a</span><span class="ST8">&gt;</span> |
+      <span class="ST8">&lt;/</span><span class="ST8">td</span><span class="ST8">&gt;</span>
+    <span class="ST8">&lt;/</span><span class="ST8">tr</span><span class="ST8">&gt;</span>
+  <span class="ST8">&lt;/</span><span class="ST8">table</span><span class="ST8">&gt;</span>
+<span class="ST4">&lt;/</span><span class="ST5">sec:IfInRole</span><span class="ST4">&gt;</span></span>
+<span class="ST8">&lt;</span><span class="ST8">h1</span><span class="ST8">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">param</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">title</span><span class="scriptlet-delimiter">}</span><span class="ST8">&lt;/</span><span class="ST8">h1</span><span class="ST8">&gt;</span>
+    </pre>
+    <div id="tt-overview">
+      The header displayed in the example pages is generated by this JSP. It contains 
+      the navigation bars and does several validation on what content
+      to display.<br>
+      The request attributes this JSP needs are set by a filter that intercepts 
+      all the requests in the application, setting the current user and role as text in the request.<br>
+      It uses a custom tag to mimic the request.isUserInRole method for displaying
+      the tag contents if the user is in a particular role.
+    </div>
+    <div id="tt-filterValues">
+      The RolesFilter that intercepts all the requests sets the 
+      userName and userRoles attributes.
+    </div>
+    <div id="tt-userLoggedIn">
+      The user is considered logged-in if the filter sets the username attribute.
+      If it is not empty, the user is logged-in and then the
+      user name, its roles and the logout link is displayed.
+    </div>
+    <div id="tt-userNotLoggedIn">
+      If the user is not logged-in, the main navigation bar with the 
+      different "sections" of the web application is displayed.
+    </div>
+    <div id="tt-customTag1">
+      The sec:IfInRole tag is a custom tag (IfInRole.java) that
+      processes the body of the tag if the user is in a particular role.
+      In this case the, Quiz list is displayed if the user is a QuizUser
+    </div>
+    <div id="tt-customTag2">
+      The sec:IfInRole tag is a custom tag (IfInRole.java) that
+      processes the body of the tag if the user has a particular role.
+      If the user is a quizAdmin, then the administration bar is displayed.
+    </div>
+    <div id="tt-customTag3">
+      The sec:IfInRole tag is a custom tag (IfInRole.java) that
+      processes the body of the tag if the user is in a particular role.
+      If the user is a quizPublisher then the edit bar is displayed.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

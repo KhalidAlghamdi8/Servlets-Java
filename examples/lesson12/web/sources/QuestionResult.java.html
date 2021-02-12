@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>QuestionResult.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST0 {font-weight: bold}
+.ST2 {color: #009900}
+.character {color: #ce7b00}
+.ST1 {color: #009900; font-style: italic}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\model\QuestionResult.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.model;
+
+<span class="keyword-directive">import</span> javax.persistence.Column;
+<span class="keyword-directive">import</span> javax.persistence.Entity;
+<span class="keyword-directive">import</span> javax.persistence.GeneratedValue;
+<span class="keyword-directive">import</span> javax.persistence.GenerationType;
+<span class="keyword-directive">import</span> javax.persistence.Id;
+<span class="keyword-directive">import</span> javax.persistence.JoinColumn;
+<span class="keyword-directive">import</span> javax.persistence.ManyToOne;
+
+@Entity
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">QuestionResult</span> {
+
+  @GeneratedValue(strategy = GenerationType.<span class="ST1">IDENTITY</span>)
+  @Id
+  @Column(name = <span class="character">&quot;</span><span class="character">QuestionResultID</span><span class="character">&quot;</span>)
+  <span class="keyword-directive">private</span> <span class="keyword-directive">int</span> <span class="ST2">id</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">int</span> <span class="ST2">questionId</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">boolean</span> <span class="ST2">correct</span>;
+  @ManyToOne
+  @JoinColumn(name = <span class="character">&quot;</span><span class="character">QuizResultID</span><span class="character">&quot;</span>)
+  <span class="keyword-directive">private</span> QuizResult <span class="ST2">quizResult</span>;
+
+  <span class="keyword-directive">public</span> <span class="ST0">QuestionResult</span>() {
+  }
+
+  <span class="keyword-directive">public</span> <span class="ST0">QuestionResult</span>(<span class="keyword-directive">int</span> questionId, <span class="keyword-directive">boolean</span> correct, QuizResult result) {
+    <span class="keyword-directive">this</span>.<span class="ST2">questionId</span> = questionId;
+    <span class="keyword-directive">this</span>.<span class="ST2">correct</span> = correct;
+    <span class="keyword-directive">this</span>.<span class="ST2">quizResult</span> = result;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">getQuestionId</span>() {
+    <span class="keyword-directive">return</span> <span class="ST2">questionId</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setQuestionId</span>(<span class="keyword-directive">int</span> questionId) {
+    <span class="keyword-directive">this</span>.<span class="ST2">questionId</span> = questionId;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">boolean</span> <span class="ST0">isCorrect</span>() {
+    <span class="keyword-directive">return</span> <span class="ST2">correct</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setCorrect</span>(<span class="keyword-directive">boolean</span> correct) {
+    <span class="keyword-directive">this</span>.<span class="ST2">correct</span> = correct;
+  }
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Quiz.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../res/styles.css" type="text/css">
+<style type="text/css">
+<!--
+.ST2 {font-style: italic}
+.ST0 {font-weight: bold}
+.ST1 {color: #009900}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<script src="../res/jquery.js" type="text/javascript"></script>
+<script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+<script src="../res/tooltip.js" type="text/javascript"></script>
+<p>
+<a href="../">Go back</a>
+</p>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\model\Quiz.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.model;
+
+<span class="keyword-directive">import</span> java.util.ArrayList;
+<span class="keyword-directive">import</span> java.util.Collection;
+<span class="keyword-directive">import</span> java.util.Collections;
+<span class="keyword-directive">import</span> java.util.Iterator;
+<span class="keyword-directive">import</span> java.util.List;
+
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">Quiz</span> {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">int</span> <span class="ST1">questionId</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> String <span class="ST1">name</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> <span class="keyword-directive">int</span> <span class="ST1">quizId</span>;
+  <span class="keyword-directive">private</span> String <span class="ST1">description</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">int</span> <span class="ST1">howManyToAsk</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">final</span> List&lt;Question&gt; <span class="ST1">questions</span>;
+  <span class="keyword-directive">private</span> <span class="keyword-directive">boolean</span> <span class="ST1">error</span> = <span class="keyword-directive">false</span>;
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">boolean</span> <span class="ST0">add</span>(Question e) {
+    <span class="keyword-directive">return</span> <span class="ST1">questions</span>.add(e);
+  }
+
+  <span class="keyword-directive">public</span> Question <span class="ST0">getQuestion</span>(<span class="keyword-directive">int</span> index) {
+    <span class="keyword-directive">return</span> <span class="ST1">questions</span>.get(index);
+  }
+
+  <span class="keyword-directive">public</span> <span class="ST0">Quiz</span>(<span class="keyword-directive">int</span> quizId, String name) {
+    <span class="keyword-directive">this</span>.<span class="ST1">name</span> = name;
+    <span class="keyword-directive">this</span>.<span class="ST1">quizId</span> = quizId;
+    <span class="ST1">questions</span> = <span class="keyword-directive">new</span> ArrayList&lt;Question&gt;();
+  }
+
+  <span class="keyword-directive">public</span> Question <span class="ST0">addQuestion</span>() {
+    <span class="ST1">questionId</span>++;
+    Question question = <span class="keyword-directive">new</span> Question(<span class="ST1">questionId</span>);
+    add(question);
+    <span class="keyword-directive">return</span> question;
+  }
+
+  <span class="keyword-directive">public</span> Question <span class="ST0">addQuestion</span>(String text) {
+    <span class="keyword-directive">return</span> addQuestion().addText(text, <span class="keyword-directive">false</span>);
+  }
+
+  <span class="keyword-directive">public</span> Question <span class="ST0">getNewQuestion</span>(Collection&lt;QuestionResult&gt; askedQuestions) {
+    <span class="keyword-directive">if</span> (<span class="ST1">questions</span>.isEmpty()) {
+      <span class="keyword-directive">throw</span> <span class="keyword-directive">new</span> IllegalStateException();
+    }
+    <span class="keyword-directive">if</span> (askedQuestions.size() &gt;= <span class="ST1">questions</span>.size()) {
+      List&lt;QuestionResult&gt; emptyList = Collections.<span class="ST2">emptyList</span>();
+      <span class="keyword-directive">return</span> getNewQuestion(emptyList);
+    }
+    List&lt;Question&gt; temporalList = <span class="keyword-directive">new</span> ArrayList&lt;Question&gt;(<span class="ST1">questions</span>);
+    <span class="keyword-directive">for</span> (QuestionResult qId : askedQuestions) {
+      <span class="keyword-directive">for</span> (Iterator&lt;Question&gt; iter = temporalList.iterator(); iter.hasNext();) {
+        <span class="keyword-directive">if</span> (iter.next().getId() == qId.getQuestionId()) {
+          iter.remove();
+          <span class="keyword-directive">break</span>;
+        }
+      }
+    }
+    Collections.<span class="ST2">shuffle</span>(temporalList);
+    <span class="keyword-directive">return</span> temporalList.get(0);
+  }
+
+  <span class="keyword-directive">public</span> Question <span class="ST0">getQuestionById</span>(<span class="keyword-directive">int</span> id) {
+    <span class="keyword-directive">for</span> (Question question : <span class="ST1">questions</span>) {
+      <span class="keyword-directive">if</span> (question.getId() == id) {
+        <span class="keyword-directive">return</span> question;
+      }
+    }
+    <span class="keyword-directive">return</span> <span class="keyword-directive">null</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">boolean</span> <span class="ST0">isCorrect</span>(<span class="keyword-directive">int</span> questionId, List&lt;Integer&gt; answerIds) {
+    <span class="keyword-directive">return</span> getQuestionById(questionId).isCorrect(answerIds);
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">boolean</span> <span class="ST0">isCorrect</span>(<span class="keyword-directive">int</span> questionId, <span class="keyword-directive">int</span>... answerIds) {
+    <span class="keyword-directive">return</span> getQuestionById(questionId).isCorrect(answerIds);
+  }
+
+  <span class="keyword-directive">public</span> String <span class="ST0">getName</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">name</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">getQuizId</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">quizId</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setHowManyToAsk</span>(<span class="keyword-directive">int</span> howManyToAsk) {
+    <span class="keyword-directive">this</span>.<span class="ST1">howManyToAsk</span> = howManyToAsk;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">getHowManyToAsk</span>() {
+    <span class="keyword-directive">if</span> (<span class="ST1">howManyToAsk</span> == 0 || <span class="ST1">howManyToAsk</span> &gt; <span class="ST1">questions</span>.size()) {
+      <span class="keyword-directive">return</span> <span class="ST1">questions</span>.size();
+    }
+    <span class="keyword-directive">return</span> <span class="ST1">howManyToAsk</span>;
+  }
+
+  <span class="keyword-directive">public</span> String <span class="ST0">getDescription</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">description</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setDescription</span>(String description) {
+    <span class="keyword-directive">this</span>.<span class="ST1">description</span> = description;
+  }
+
+  <span class="keyword-directive">public</span> List&lt;Question&gt; <span class="ST0">getQuestions</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">questions</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">int</span> <span class="ST0">getId</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">quizId</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">boolean</span> <span class="ST0">isError</span>() {
+    <span class="keyword-directive">return</span> <span class="ST1">error</span>;
+  }
+
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">setError</span>(<span class="keyword-directive">boolean</span> error) {
+    <span class="keyword-directive">this</span>.<span class="ST1">error</span> = error;
+  }
+}
+
+</pre>
+<div id="tt-overview">
+</div>
+<p>
+<a href="../">Go back</a>
+</p>
+</body>
+</html>

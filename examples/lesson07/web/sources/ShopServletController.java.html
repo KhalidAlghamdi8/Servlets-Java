@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ShopServletController.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST2 {font-style: italic}
+      .ST0 {font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\src\java\com\examples\lesson07\servlets\ShopServletController.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson07.servlets;
+
+<span class="keyword-directive">import</span> com.examples.lesson07.model.ProductCategory;
+<span class="keyword-directive">import</span> com.examples.lesson07.model.ShoppingCart;
+<span class="keyword-directive">import</span> com.examples.lesson07.services.ProductServices;
+<span class="keyword-directive">import</span> com.examples.lesson07.view.ProductCategoryView;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.util.ArrayList;
+<span class="keyword-directive">import</span> java.util.List;
+<span class="keyword-directive">import</span> javax.inject.Inject;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpSession;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">ShopServletController</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/Shop</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ShopServletController</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+<span class="info" title="tt-inject">  @Inject
+  <span class="keyword-directive">private</span> ProductServices <span class="ST1">productServices</span>;</span>
+
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">processRequest</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+
+<span class="info" title="tt-servletCode">    ShoppingCart shoppingCart = getShoppingCart(request.getSession());
+
+    addOrRemoveItems(shoppingCart, request);
+
+<span class="info" title="tt-convertProducts">    List&lt;ProductCategory&gt; allProductsByCategory = <span class="ST1">productServices</span>.getAllProductsByCategory();
+    List&lt;ProductCategoryView&gt; categoriesView = <span class="keyword-directive">new</span> ArrayList&lt;ProductCategoryView&gt;();
+    <span class="keyword-directive">for</span> (ProductCategory category : allProductsByCategory) {
+      categoriesView.add(<span class="keyword-directive">new</span> ProductCategoryView(category, shoppingCart));
+    }</span></span>
+<span class="info" title="tt-setAttribute">    request.setAttribute(<span class="character">&quot;</span><span class="character">categories</span><span class="character">&quot;</span>, categoriesView);</span>
+<span class="info" title="tt-redispatch">    request.getRequestDispatcher(<span class="character">&quot;</span><span class="character">shopView.jsp</span><span class="character">&quot;</span>).forward(request, response);</span>
+  }
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    processRequest(request, response);
+  }
+
+<span class="info" title="tt-methods">  <span class="keyword-directive">private</span> ShoppingCart <span class="ST0">getShoppingCart</span>(HttpSession session) {
+    ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute(<span class="character">&quot;</span><span class="character">shoppingCart</span><span class="character">&quot;</span>);
+    <span class="keyword-directive">if</span> (shoppingCart == <span class="keyword-directive">null</span>) {
+      shoppingCart = <span class="keyword-directive">new</span> ShoppingCart();
+      session.setAttribute(<span class="character">&quot;</span><span class="character">shoppingCart</span><span class="character">&quot;</span>, shoppingCart);
+    }
+    <span class="keyword-directive">return</span> shoppingCart;
+  }
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">void</span> <span class="ST0">addOrRemoveItems</span>(ShoppingCart shoppingCart, HttpServletRequest request) {
+    String action = request.getParameter(<span class="character">&quot;</span><span class="character">action</span><span class="character">&quot;</span>);
+    <span class="keyword-directive">try</span> {
+      <span class="keyword-directive">int</span> productId = Integer.<span class="ST2">parseInt</span>(request.getParameter(<span class="character">&quot;</span><span class="character">productId</span><span class="character">&quot;</span>));
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">add</span><span class="character">&quot;</span>.equals(action)) {
+        shoppingCart.add(productId);
+      }
+      <span class="keyword-directive">if</span> (<span class="character">&quot;</span><span class="character">remove</span><span class="character">&quot;</span>.equals(action)) {
+        shoppingCart.remove(productId);
+      }
+    } <span class="keyword-directive">catch</span> (Exception e) {
+    }
+  }</span>
+}
+
+    </pre>
+    <div id="tt-inject">CDI injection as with the original servlet.</div>
+    <div id="tt-methods">The methods for getting the shopping cart and adding or removing items are unchanged from the original servlet.</div>
+    <div id="tt-servletCode">This code is the one that changes the most.<br>
+      At first, it is almost unchanged since it adds or removes items from the shopping cart like the original servlet does.<br>
+      Now, instead of printing the HTML, it <b>prepares</b> the data for the JSP page.<br>
+      Although it is possible to send the Model objects, in this case there is more information needed per object. It is then prepared prior to redispatching.</div>
+    <div id="tt-convertProducts">Product object require more information to be displayed in the JSP page.<br>
+      Although it is possible to send the ShoppingCart object and the collection of Product objects, this would mean that the JSP page would require to make a join query.<br>
+      The join query in question that must occur is the following (from the original Servlet)
+      <pre><span class="keyword-directive">int</span> quantity = shoppingCart.getQuantity(product.getId());
+<span class="keyword-directive">double</span> totalPrice = product.getPrice() * quantity;</pre>
+      Instead of doing the above calculations in the JSP, you do this on other objects that have the data that the JSP needs to display.
+    </div>
+    <div id="tt-setAttribute">Once the preparation is complete, the data is stored inside the Request object.</div>
+    <div id="tt-redispatch">The request is forwarded to the JSP page that displays the data. This is done with this call.</div>
+
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

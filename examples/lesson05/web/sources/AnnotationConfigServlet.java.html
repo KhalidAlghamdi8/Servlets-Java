@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>AnnotationConfigServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST2 {color: #ce7b00; font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .ST3 {color: #009900; font-style: italic}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson05\src\java\com\examples\lesson05\AnnotationConfigServlet.java</td></tr></table>
+    <pre>
+<span class="keyword-directive">package</span> com.examples.lesson05;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebInitParam;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="info" title="tt-webServlet">@WebServlet(name = <span class="character">&quot;</span><span class="character">AnnotationConfigServlet</span><span class="character">&quot;</span>,
+urlPatterns = {<span class="character">&quot;</span><span class="character">/AnnotationConfigServlet</span><span class="character">&quot;</span>},
+initParams = {
+<span class="info" title="tt-webInitParam">  @WebInitParam(name = <span class="character">&quot;</span><span class="character">ServletName</span><span class="character">&quot;</span>, value = <span class="character">&quot;</span><span class="character">Annotation Configured Servlet</span><span class="character">&quot;</span>)</span>,
+<span class="info" title="tt-webInitParam">  @WebInitParam(name = <span class="character">&quot;</span><span class="character">WelcomeMessage</span><span class="character">&quot;</span>, value = <span class="character">&quot;</span><span class="character">Welcome</span><span class="character">&quot;</span>)</span>
+})</span>
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">AnnotationConfigServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  <span class="keyword-directive">private</span> String <span class="ST1">servletName</span>;
+
+<span class="info" title="tt-init">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">init</span>() <span class="keyword-directive">throws</span> ServletException {
+  <span class="ST1">servletName</span> = <span class="info" title="tt-servletConfig">getServletConfig().getInitParameter(<span class="character">&quot;</span><span class="character">Welcome</span><span class="character">&quot;</span>)</span>;
+  }</span>
+
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    String welcomeMessage = <span class="info" title="tt-servletConfig">getServletConfig().getInitParameter(<span class="character">&quot;</span><span class="character">WelcomeMessage</span><span class="character">&quot;</span>)</span>;
+    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();
+    out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Servlet AnnotationConfigServlet&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;link rel=</span><span class="ST2">\&quot;</span><span class="character">stylesheet</span><span class="ST2">\&quot;</span><span class="character"> href=</span><span class="ST2">\&quot;</span><span class="character">res/styles.css</span><span class="ST2">\&quot;</span><span class="character"> type=</span><span class="ST2">\&quot;</span><span class="character">text/css</span><span class="ST2">\&quot;</span><span class="character">/&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;</span><span class="character">&quot;</span> + welcomeMessage + <span class="character">&quot;</span><span class="character">&lt;/h1&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST2">\&quot;</span><span class="character">home.html</span><span class="ST2">\&quot;</span><span class="character">&gt;Go Home&lt;/a&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);
+  }
+
+<span class="info" title="tt-destroy">  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">destroy</span>() {
+    System.<span class="ST3">out</span>.print(<span class="character">&quot;</span><span class="character">SERVLET DESTROYED</span><span class="character">&quot;</span>);
+  }</span>
+}
+
+    </pre>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <div id="tt-webServlet">
+      The @WebServlet annotation lets you configure the servlet in the same file.<br>
+      The servlet configuration parameters can be specified in this annotation.<br>
+      The parameters used in this example are:<br>
+      <ul>
+        <li>name: The servlet name. Usually used in other configuration or when getting a servlet from the server by name.</li>
+        <li>urlPatterns: An array of strings that define the URLs the servlet is mapped to.</li>
+        <li>InitParams: An array of WebInitParam annotations that define initialization parameters for this servlet.</li>
+      </ul>
+    </div>
+    <div id="tt-webInitParam">
+      An Initialization Parameter. A parameter is a key/value pair of strings.
+    </div>
+    <div id="tt-init">
+      The init() method is called right after the servlet has been instantiated.
+      This method may be used to initialize variables or create beans.
+    </div>
+    <div id="tt-servletConfig">
+      The getServletConfig method returns the ServletConfiguration of this servlet.
+      By using this object, the initialization parameters with can be obtained with: getInitParameter(NAME);
+    </div>
+    <div id="tt-destroy">
+      The destroy method allows you to execute some code before the servlet is destroyed by the server.
+      This occurs when the application is stopped or undeployed, also when the server will be shut down.
+    </div>
+  </body>
+</html>

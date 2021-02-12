@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>QuizServiceImpl.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.ST2 {font-family: Monospaced; font-style: italic}
+.ST0 {font-family: Monospaced; font-weight: bold}
+.ST3 {color: #009900}
+.character {color: #ce7b00}
+.ST1 {color: #009900; font-family: Monospaced; font-style: italic}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">D:\labs\examples\lesson12\src\java\com\examples\lesson12\services\QuizServiceImpl.java</td></tr></table>
+<pre>
+<span class="keyword-directive">package</span> com.examples.lesson12.services;
+
+<span class="keyword-directive">import</span> com.examples.lesson12.model.QuizResult;
+<span class="keyword-directive">import</span> java.util.Collections;
+<span class="keyword-directive">import</span> java.util.List;
+<span class="keyword-directive">import</span> java.util.logging.Level;
+<span class="keyword-directive">import</span> java.util.logging.Logger;
+<span class="keyword-directive">import</span> javax.annotation.Resource;
+<span class="keyword-directive">import</span> javax.enterprise.context.ApplicationScoped;
+<span class="keyword-directive">import</span> javax.persistence.EntityManager;
+<span class="keyword-directive">import</span> javax.persistence.PersistenceContext;
+<span class="keyword-directive">import</span> javax.persistence.TypedQuery;
+<span class="keyword-directive">import</span> javax.persistence.criteria.CriteriaBuilder;
+<span class="keyword-directive">import</span> javax.persistence.criteria.CriteriaQuery;
+<span class="keyword-directive">import</span> javax.persistence.criteria.Root;
+<span class="keyword-directive">import</span> javax.transaction.UserTransaction;
+
+@ApplicationScoped
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">QuizServiceImpl</span> <span class="keyword-directive">implements</span> QuizService {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">static</span> <span class="keyword-directive">final</span> Logger <span class="ST1">LOG</span> = Logger.<span class="ST2">getLogger</span>(QuizServiceImpl.<span class="keyword-directive">class</span>.getName());
+  @PersistenceContext(unitName = <span class="character">&quot;</span><span class="character">QuizPU</span><span class="character">&quot;</span>)
+  <span class="keyword-directive">private</span> EntityManager <span class="ST3">em</span>;
+  @Resource
+  <span class="keyword-directive">private</span> UserTransaction <span class="ST3">utx</span>;
+
+  @Override
+  <span class="keyword-directive">public</span> List&lt;QuizResult&gt; <span class="ST0">getAllResults</span>() {
+    <span class="keyword-directive">try</span> {
+      CriteriaBuilder cb = <span class="ST3">em</span>.getCriteriaBuilder();
+      CriteriaQuery&lt;QuizResult&gt; cq = cb.createQuery(QuizResult.<span class="keyword-directive">class</span>);
+      Root&lt;QuizResult&gt; quizRes = cq.from(QuizResult.<span class="keyword-directive">class</span>);
+      cq.select(quizRes);
+      TypedQuery&lt;QuizResult&gt; auctionQuery = <span class="ST3">em</span>.createQuery(cq);
+      <span class="keyword-directive">return</span> auctionQuery.getResultList();
+    } <span class="keyword-directive">catch</span> (Exception e) {
+      <span class="ST1">LOG</span>.log(Level.<span class="ST1">SEVERE</span>, e.getMessage());
+    }
+    <span class="keyword-directive">return</span> Collections.<span class="ST2">emptyList</span>();
+
+  }
+
+  @Override
+  <span class="keyword-directive">public</span> <span class="keyword-directive">void</span> <span class="ST0">save</span>(QuizResult result, String remoteUser) {
+    <span class="keyword-directive">if</span> (!result.isSaved()) {
+      <span class="keyword-directive">try</span> {
+        <span class="ST3">utx</span>.begin();
+        result.setUser(remoteUser);
+        <span class="ST3">em</span>.persist(result);
+        result.setSaved(<span class="keyword-directive">true</span>);
+        <span class="ST3">utx</span>.commit();
+      } <span class="keyword-directive">catch</span> (Exception ex) {
+        <span class="ST1">LOG</span>.log(Level.<span class="ST1">SEVERE</span>, ex.getMessage());
+        <span class="keyword-directive">throw</span> <span class="keyword-directive">new</span> RuntimeException(ex);
+      }
+    }
+  }
+}
+
+</pre></body>
+</html>

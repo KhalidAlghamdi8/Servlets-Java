@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ImageStorageServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST2 {color: #ce7b00; font-weight: bold}
+      .ST1 {color: #009900}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson10\src\java\com\examples\lesson10\servlets\ImageStorageServlet.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview"><span class="keyword-directive">package</span> com.examples.lesson10.servlets;
+
+<span class="keyword-directive">import</span> java.io.ByteArrayInputStream;
+<span class="keyword-directive">import</span> java.io.ByteArrayOutputStream;
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.InputStream;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.ServletOutputStream;
+<span class="keyword-directive">import</span> javax.servlet.annotation.MultipartConfig;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+<span class="keyword-directive">import</span> javax.servlet.http.Part;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">ImageStorageServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/ImageStorageServlet</span><span class="character">&quot;</span>})
+<span class="info" title="tt-multipart">@MultipartConfig</span>
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">ImageStorageServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+
+  <span class="keyword-directive">private</span> <span class="keyword-directive">byte</span>[] <span class="ST1">data</span> = <span class="keyword-directive">null</span>;
+  <span class="keyword-directive">private</span> String <span class="ST1">content</span> = <span class="keyword-directive">null</span>;
+  <span class="keyword-directive">private</span> String <span class="ST1">name</span> = <span class="keyword-directive">null</span>;
+</span>
+<span class="info" title="tt-doGet">  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    <span class="keyword-directive">if</span> (<span class="ST1">data</span> != <span class="keyword-directive">null</span>) {
+<span class="info" title="tt-doGet-outImage">      response.setContentType(<span class="ST1">content</span>);
+      response.setContentLength(<span class="ST1">data</span>.<span class="ST1">length</span>);
+      response.setHeader(<span class="character">"Content-Disposition"</span>, <span class="character">"attachment; filename="</span> + <span class="ST1">name</span>);
+
+      ByteArrayInputStream in = <span class="keyword-directive">new</span> ByteArrayInputStream(<span class="ST1">data</span>);
+      ServletOutputStream out = response.getOutputStream();
+
+      <span class="keyword-directive">byte</span> buffer[] = <span class="keyword-directive">new</span> <span class="keyword-directive">byte</span>[4048];
+      <span class="keyword-directive">int</span> bytesRead;
+      <span class="keyword-directive">while</span> ((bytesRead = in.read(buffer)) &gt; 0) {
+        out.write(buffer, 0, bytesRead);
+      }
+
+      in.close();
+      out.close();</span>
+    } <span class="keyword-directive">else</span> {
+<span class="info" title="tt-doGet-outMessage">      response.setContentType(<span class="character">&quot;</span><span class="character">text/html</span><span class="character">&quot;</span>);
+      PrintWriter out = response.getWriter();
+      out.write(<span class="character">&quot;</span><span class="character">&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;</span><span class="character">&quot;</span>);
+      out.write(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST2">\&quot;</span><span class="character">index.jsp</span><span class="ST2">\&quot;</span><span class="character">&gt;go back&lt;/a&gt;</span><span class="character">&quot;</span>);
+      out.write(<span class="character">&quot;</span><span class="character">&lt;/body&gt;&lt;/html&gt;</span><span class="character">&quot;</span>);</span>
+    }
+  }</span>
+
+<span class="info" title="tt-doPost">  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doPost</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+<span class="info" title="tt-getPart">    Part part = request.getPart(<span class="character">&quot;</span><span class="character">filename</span><span class="character">&quot;</span>);</span>
+
+<span class="info" title="tt-readStream">    ByteArrayOutputStream out = <span class="keyword-directive">new</span> ByteArrayOutputStream();
+    InputStream in = part.getInputStream();
+
+    <span class="keyword-directive">byte</span> buffer[] = <span class="keyword-directive">new</span> <span class="keyword-directive">byte</span>[4048];
+    <span class="keyword-directive">int</span> bytesRead;
+    <span class="keyword-directive">while</span> ((bytesRead = in.read(buffer)) &gt; 0) {
+      out.write(buffer, 0, bytesRead);
+    }
+    in.close();
+    out.close();
+
+    <span class="ST1">data</span> = out.toByteArray();</span>
+    <span class="info" title="tt-getContent"><span class="ST1">content</span> = part.getContentType();</span>
+
+<span class="info" title="tt-name">    <span class="ST1">name</span> = request.getParameter(<span class="character">&quot;</span><span class="character">name</span><span class="character">&quot;</span>);
+</span>
+
+    response.setContentType(<span class="character">&quot;</span><span class="character">text/html</span><span class="character">&quot;</span>);
+    PrintWriter writer = response.getWriter();
+    writer.write(<span class="character">&quot;</span><span class="character">&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;</span><span class="character">&quot;</span>);
+    writer.write(<span class="character">&quot;</span><span class="character">&lt;h1&gt;Upload complete&lt;/h1&gt;</span><span class="character">&quot;</span>);
+    writer.write(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST2">\&quot;</span><span class="character">index.jsp</span><span class="ST2">\&quot;</span><span class="character">&gt;go back&lt;/a&gt;</span><span class="character">&quot;</span>);
+    writer.write(<span class="character">&quot;</span><span class="character">&lt;/body&gt;&lt;/html&gt;</span><span class="character">&quot;</span>);
+
+  }</span>
+}
+
+    </pre>
+    <p>The actual file in the project contains additional code to read a simple parameter using parts.</p>
+    <div id="tt-overview">
+      To handle file uploads (multipart-encoded forms) in servlets, the 
+      MultipartConfig annotation and the Multipart servlet API are needed.<br>
+      This servlet receives an image in the file and displays it to the user. It can work with any file.
+    </div>
+    <div id="tt-multipart">
+      The @MultipartConfig annotation enables the servlet to handle multipart encoded forms.
+    </div>
+    <div id="tt-doGet">
+      The doGet method displays the uploaded file or a message if no file was uploaded. 
+      The file is stored as raw bytes in the content variable.<br>
+      Note that the doGet and doPost methods are different, the GET method is used to
+      download the image, while the POST method is used for uploading files.
+    </div>
+    <div id="tt-doGet-outImage">
+      This piece of code creates an input stream from the raw bytes and then 
+      copies the stream to the response output stream.<br>
+      The Content-Disposition header tells the browser to download the file.
+    </div>
+    <div id="tt-doGet-outMessage">
+      In case there is no file uploaded, the servlet prints out an error message.
+    </div>
+    <div id="tt-doPost">
+      The doPost handles the file upload.<br>
+      When using multipart forms, each parameter is sent in a separate part.
+      The parts contains a stream where the content can be read.<br>
+      The servlet API makes sure that files sent are stored in their respective parts.
+    </div>
+    <div id="tt-getPart">
+      The getPart method gets a part (parameter) from the request. The parts contains
+      more information than regular parameters and are read using streams.
+    </div>
+    <div id="tt-name">
+      The name parameter in this example is read normally, although you may also use a stream
+      to read it. To do so, use the following code:
+      <span style="font-family: monospace">
+        Part nameField = request.getPart("name");<br>
+        BufferedReader reader = new BufferedReader(new InputStreamReader(nameField.getInputStream()));<br>
+        name = reader.readLine();<br>
+        reader.close();</span><br>
+      Find this code snippet in the actual source code for this class.
+      The source code presented here is a simpler version.
+    </div>
+    <div id="tt-readStream">
+      This code reads the stream, copies it to a byteArrayOutputStream and then
+      stores it in the data array.
+    </div>
+    <div id="tt-getContent">
+      To get the content-type of the uploaded file (part), call part.getContentType();<br>
+      Notice in this example how parts contain more information than normal request parameters.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

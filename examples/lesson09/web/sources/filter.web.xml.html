@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>web.xml</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .xml-attribute {color: #009900}
+      .xml-value {color: #ce7b00}
+      .ST0 {color: #00007c; font-weight: bold}
+      .xml-tag {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson09\web\WEB-INF\web.xml</td></tr></table>
+    <pre>
+<span class="ST0">&lt;?</span><span class="ST0">xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+<span class="xml-tag">&lt;web-app</span> <span class="xml-attribute">xmlns</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">xmlns:xsi</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://www.w3.org/2001/XMLSchema-instance</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">xsi:schemaLocation</span>=<span class="xml-value">&quot;</span><span class="xml-value">http://java.sun.com/xml/ns/javaee</span> <span class="xml-value">http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd</span><span class="xml-value">&quot;</span>
+         <span class="xml-attribute">version</span>=<span class="xml-value">&quot;3.0&quot;</span><span class="xml-tag">&gt;</span>
+<span class="info" title="tt-filter">  <span class="xml-tag">&lt;filter</span><span class="xml-tag">&gt;</span>
+<span class="info" title="tt-filterName">    <span class="xml-tag">&lt;filter-name</span><span class="xml-tag">&gt;</span>RequestDataFilter<span class="xml-tag">&lt;/filter-name</span><span class="xml-tag">&gt;</span></span>
+<span class="info" title="tt-filterClass">    <span class="xml-tag">&lt;filter-class</span><span class="xml-tag">&gt;</span>com.examples.lesson09.filters.RequestDataFilter<span class="xml-tag">&lt;/filter-class</span><span class="xml-tag">&gt;</span></span>
+<span class="info" title="tt-initParam">    <span class="xml-tag">&lt;init-param</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;param-name</span><span class="xml-tag">&gt;</span>server-name<span class="xml-tag">&lt;/param-name</span><span class="xml-tag">&gt;</span>
+      <span class="xml-tag">&lt;param-value</span><span class="xml-tag">&gt;</span>Example Server<span class="xml-tag">&lt;/param-value</span><span class="xml-tag">&gt;</span>
+    <span class="xml-tag">&lt;/init-param</span><span class="xml-tag">&gt;</span></span>
+  <span class="xml-tag">&lt;/filter</span><span class="xml-tag">&gt;</span></span>
+<span class="info" title="tt-filterMapping">  <span class="xml-tag">&lt;filter-mapping</span><span class="xml-tag">&gt;</span>
+<span class="info" title="tt-filterName">    <span class="xml-tag">&lt;filter-name</span><span class="xml-tag">&gt;</span>RequestDataFilter<span class="xml-tag">&lt;/filter-name</span><span class="xml-tag">&gt;</span></span>
+    <span class="xml-tag">&lt;url-pattern</span><span class="xml-tag">&gt;</span>*.jsp<span class="xml-tag">&lt;/url-pattern</span><span class="xml-tag">&gt;</span>
+  <span class="xml-tag">&lt;/filter-mapping</span><span class="xml-tag">&gt;</span> </span>
+<span class="xml-tag">&lt;/web-app</span><span class="xml-tag">&gt;</span>
+
+    </pre>
+    <div id="tt-filter">
+      The web.xml file is used for configuring and mapping filters instead of using annotations.<br>
+      This tag declares a filter in the application and specifies how the filter is constructed.
+    </div>
+    <div id="tt-filterName">
+      This is the name of the filter. The name is used to match filters for filtering mappings and to get the filter by name programmatically.
+    </div>
+    <div id="tt-filterClass">
+      This is the class of the filter. A filter must implement the javax.servlet.Filter interface. It is instantiated by the server.
+    </div>
+    <div id="tt-initParam">
+      Like servlets, filters may have initParams that can be read using the FilterConfig object in the filter's init method.
+    </div>
+    <div id="tt-filterMapping">
+      To process a filter, it must be mapped to resources.<br>
+      The mapping specifies what resources are filtered.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>shopView.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST6 {color: #628fb5}
+      .ST4 {font-weight: bold}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST8 {color: #009900}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST7 {color: #0000e6}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson07\web\shopView.jsp</td></tr></table>
+    <pre>
+<span class="info" title="tt-taglib"><span class="ST0">&lt;%@</span><span class="ST1"> taglib</span> <span class="ST2">prefix</span><span class="ST0">=</span><span class="ST3">&quot;c&quot;</span> <span class="ST2">uri</span><span class="ST0">=</span><span class="ST3">&quot;</span><span class="ST3">http://java.sun.com/jsp/jstl/core</span><span class="ST3">&quot;</span> <span class="ST0">%&gt;</span></span>
+<span class="info" title="tt-page"><span class="ST4">&lt;%@</span><span class="ST5">page</span> <span class="attribute-name">contentType</span><span class="ST4">=</span><span class="attribute-value">&quot;text/html&quot;</span> <span class="attribute-name">pageEncoding</span><span class="ST4">=</span><span class="attribute-value">&quot;UTF-8&quot;</span><span class="ST4">%&gt;</span></span>
+<span class="info" title="tt-niceHtml"><span class="ST6">&lt;!DOCTYPE</span> <span class="ST6">html</span><span class="ST6">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">meta</span> <span class="ST8">http-equiv</span><span class="ST8">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST8">content</span><span class="ST8">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">link</span> <span class="ST8">rel</span><span class="ST8">=</span><span class="attribute-value">&quot;stylesheet&quot;</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;res/styles.css&quot;</span> <span class="ST8">type</span><span class="ST8">=</span><span class="attribute-value">&quot;text/css&quot;</span><span class="ST7">/&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">title</span><span class="ST7">&gt;</span>Shop<span class="ST7">&lt;/</span><span class="ST7">title</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">h1</span><span class="ST7">&gt;</span>Shop List<span class="ST7">&lt;/</span><span class="ST7">h1</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">thead</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>+<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>-<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Product<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Price<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Qty<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+          <span class="ST7">&lt;</span><span class="ST7">th</span><span class="ST7">&gt;</span>Total<span class="ST7">&lt;/</span><span class="ST7">th</span><span class="ST7">&gt;</span>
+        <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;/</span><span class="ST7">thead</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">tbody</span><span class="ST7">&gt;</span>
+<span class="info" title="tt-forEach1">        <span class="ST4">&lt;</span><span class="ST5">c:forEach</span> <span class="attribute-name">items</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">categories</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;categoryView&quot;</span><span class="ST4">&gt;</span></span>
+          <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+<span class="info" title="tt-el-catName">            <span class="ST7">&lt;</span><span class="ST7">td</span> <span class="ST8">colspan</span><span class="ST8">=</span><span class="attribute-value">&quot;6&quot;</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">categoryView</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">name</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span></span>
+          <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+<span class="info" title="tt-forEach2">          <span class="ST4">&lt;</span><span class="ST5">c:forEach</span> <span class="attribute-name">items</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">categoryView</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">products</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span> <span class="attribute-name">var</span><span class="ST4">=</span><span class="attribute-value">&quot;productView&quot;</span><span class="ST4">&gt;</span></span>
+            <span class="ST7">&lt;</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+<span class="info" title="tt-el-productId">              <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>[<span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;Shop?action=add&amp;productId=</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">productView</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">product</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">id</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>+<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span>]<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span></span>
+<span class="info" title="tt-el-productId">              <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span>[<span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;Shop?action=remove&amp;productId=</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">productView</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">product</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">id</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST7">&gt;</span>-<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span>]<span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span></span>
+<span class="info" title="tt-el-productName">              <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">productView</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">product</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">name</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span></span>
+<span class="info" title="tt-el-productPrice">              <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">productView</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">product</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">price</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span></span>
+<span class="info" title="tt-el-quantity">              <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">productView</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">quantity</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span></span>
+<span class="info" title="tt-el-totalPrice">              <span class="ST7">&lt;</span><span class="ST7">td</span><span class="ST7">&gt;</span><span class="scriptlet-delimiter">${</span><span class="scriptlet-delimiter">productView</span><span class="scriptlet-delimiter">.</span><span class="scriptlet-delimiter">totalPrice</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;/</span><span class="ST7">td</span><span class="ST7">&gt;</span></span>
+            <span class="ST7">&lt;/</span><span class="ST7">tr</span><span class="ST7">&gt;</span>
+<span class="info" title="tt-closingForEach">          <span class="ST4">&lt;/</span><span class="ST5">c:forEach</span><span class="ST4">&gt;</span>
+        <span class="ST4">&lt;/</span><span class="ST5">c:forEach</span><span class="ST4">&gt;</span></span>
+      <span class="ST7">&lt;/</span><span class="ST7">tbody</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;/</span><span class="ST7">table</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">html</span><span class="ST7">&gt;</span></span>
+    </pre>
+    <div id="tt-taglib">To use custom tags inside a JSP file, the custom tag libraries must be declared in a JSP directive.</div>
+    <div id="tt-page">In this case, the page directive specifies the contentType and the pageEncoding.</div>
+    <div id="tt-niceHtml">The HTML code in this page is easier to read and maintain. Since JSTL is used with proper opening and closing tags, the document indentation remains consistent.</div>
+    <div id="tt-forEach1">The c:forEach tag allows you to loop through a collection of elements. In this case, the collection that is iterated is the "categories" request attribute and each element is stored in the categoryView variable.</div>
+    <div id="tt-forEach2">The c:forEach tags can be nested. In this case, the category.getProducts collection are iterated and the element is stored in the productView variable. Be careful and do not overwrite variables as the resulting behavior might be unpredictable.</div>
+    <div id="tt-el-catName">
+      Expression Languange may be used to output values. In this case, the result from evaluating categoryView.getName() is displayed.<br>
+      Expression Language evaluates the .name expression to the getName method that is defined in the JavaBeans specification.
+    </div>
+    <div id="tt-el-productId">
+      Expression Languange may be used to output values. In this case, the result from evaluating productView.getProduct().getId() is displayed.<br>
+      Note that you can access bean properties inside any number of beans.<br>
+      Expression Language evaluates the getter methods as defined in the JavaBeans specification. It also takes care if the value is printing a null character (an empty string) instead of "null".
+    </div>
+    <div id="tt-el-productName">
+      Expression Languange may be used to output values. In this case, the result from evaluating productView.getProduct().getName() is displayed.<br>
+      Note that you can access bean properties inside any number of beans.<br>
+      Expression Language evaluates the getter methods as defined in the JavaBeans specification. It also takes care if the value is printing a null character (an empty string) instead of "null".
+    </div>
+    <div id="tt-el-productPrice">
+      Expression Languange may be used to output values. In this case, the result from evaluating productView.getProduct().getPrice() is displayed.<br>
+      Note that you can access bean properties inside any number of beans.<br>
+      Expression Language evaluates the getter methods as defined in the JavaBeans specification. It also takes care if the value is printing a null character (an empty string) instead of "null".
+    </div>
+    <div id="tt-el-quantity">
+      Expression Languange may be used to output values. In this case, the result from evaluating productView.getQuantity() is displayed.<br>
+      The use of a view object to add data to the Product object is very useful. Extra data, like the product quantity, may be stored in this object.<br>
+      Expression Language evaluates the getter methods as defined in the JavaBeans specification. It also takes care if the value is printing a null character (an empty string) instead of "null".
+    </div>
+    <div id="tt-el-totalPrice">
+      Expression Languange may be used to output values. In this case, the result from evaluating productView.getTotalPrice() is displayed.<br>
+      The use of a view object to add data to the Product object is very useful. Extra data, like the product's total price, may be stored in this object.<br>
+      Expression Language evaluates the getter methods as defined in the JavaBeans specification. It also takes care if the value is printing a null character (an empty string) instead of "null".
+    </div>
+    <div id="tt-closingForEach">
+      c:forEach tags must be closed to work correctly. Everything inside of the tags is printed for each iteration.<br>
+      The HTML code is now easier to read.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

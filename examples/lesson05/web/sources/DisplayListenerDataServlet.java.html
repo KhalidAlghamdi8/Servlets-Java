@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>DisplayListenerDataServlet.java</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/code.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST0 {font-weight: bold}
+      .ST1 {color: #ce7b00; font-weight: bold}
+      .character {color: #ce7b00}
+      .keyword-directive {color: #0000e6}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson05\src\java\com\examples\lesson05\DisplayListenerDataServlet.java</td></tr></table>
+    <pre>
+<span class="info" title="tt-overview">
+<span class="keyword-directive">package</span> com.examples.lesson05;
+
+<span class="keyword-directive">import</span> java.io.IOException;
+<span class="keyword-directive">import</span> java.io.PrintWriter;
+<span class="keyword-directive">import</span> javax.servlet.ServletException;
+<span class="keyword-directive">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletRequest;
+<span class="keyword-directive">import</span> javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = <span class="character">&quot;</span><span class="character">DisplayListenerDataServlet</span><span class="character">&quot;</span>, urlPatterns = {<span class="character">&quot;</span><span class="character">/displayListenerData</span><span class="character">&quot;</span>})
+<span class="keyword-directive">public</span> <span class="keyword-directive">class</span> <span class="ST0">DisplayListenerDataServlet</span> <span class="keyword-directive">extends</span> HttpServlet {
+</span>
+  @Override
+  <span class="keyword-directive">protected</span> <span class="keyword-directive">void</span> <span class="ST0">doGet</span>(HttpServletRequest request, HttpServletResponse response)
+          <span class="keyword-directive">throws</span> ServletException, IOException {
+    response.setContentType(<span class="character">&quot;</span><span class="character">text/html;charset=UTF-8</span><span class="character">&quot;</span>);
+    PrintWriter out = response.getWriter();
+    out.println(<span class="character">&quot;</span><span class="character">&lt;html&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;title&gt;Listener test.&lt;/title&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;link rel=</span><span class="ST1">\&quot;</span><span class="character">stylesheet</span><span class="ST1">\&quot;</span><span class="character"> href=</span><span class="ST1">\&quot;</span><span class="character">res/styles.css</span><span class="ST1">\&quot;</span><span class="character"> type=</span><span class="ST1">\&quot;</span><span class="character">text/css</span><span class="ST1">\&quot;</span><span class="character">/&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/head&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;h1&gt;This data was set by listeners&lt;/h1&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;table&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;thead&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;Scope&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;Value&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;th&gt;Who set it?&lt;/th&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/thead&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;servletContext.getAttribute(</span><span class="ST1">\&quot;</span><span class="character">attributeCount</span><span class="ST1">\&quot;</span><span class="character">)&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + getServletContext().getAttribute(<span class="character">&quot;</span><span class="character">attributeCount</span><span class="character">&quot;</span>) + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;ExampleContextAttributeListener keeps the count of elements inside the servlet context&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;servletContext.getAttribute(</span><span class="ST1">\&quot;</span><span class="character">listenerValue</span><span class="ST1">\&quot;</span><span class="character">)&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + getServletContext().getAttribute(<span class="character">&quot;</span><span class="character">listenerValue</span><span class="character">&quot;</span>) + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;ExampleContextListener sets this value when the application starts&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+
+    request.setAttribute(<span class="character">&quot;</span><span class="character">demo</span><span class="character">&quot;</span>, <span class="character">&quot;</span><span class="character">nothing</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;request.getAttribute(</span><span class="ST1">\&quot;</span><span class="character">attributeCount</span><span class="ST1">\&quot;</span><span class="character">)&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + request.getAttribute(<span class="character">&quot;</span><span class="character">attributeCount</span><span class="character">&quot;</span>) + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;ExampleRequestAttributeListener keeps the count of the elements inside the request attributes.&lt;br&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">*Only attributes set in filters and servlets are counted, attributes set in listeners are not counted.&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;request.getAttribute(</span><span class="ST1">\&quot;</span><span class="character">requestCount</span><span class="ST1">\&quot;</span><span class="character">)&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + request.getAttribute(<span class="character">&quot;</span><span class="character">requestCount</span><span class="character">&quot;</span>) + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;ExampleRequestListener keeps the count of the requests made to the server.&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;session.getAttribute(</span><span class="ST1">\&quot;</span><span class="character">attributeCount</span><span class="ST1">\&quot;</span><span class="character">)&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + request.getSession().getAttribute(<span class="character">&quot;</span><span class="character">attributeCount</span><span class="character">&quot;</span>) + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;ExampleSessionAttributeListener keeps the count of the elements inside the session attributes.&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;session.getAttribute(</span><span class="ST1">\&quot;</span><span class="character">sessionValue</span><span class="ST1">\&quot;</span><span class="character">)&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + request.getSession().getAttribute(<span class="character">&quot;</span><span class="character">sessionValue</span><span class="character">&quot;</span>) + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;ExampleSessionListener adds some objects to the session.&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;tr&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;session.getAttribute(</span><span class="ST1">\&quot;</span><span class="character">valueBound</span><span class="ST1">\&quot;</span><span class="character">)&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;</span><span class="character">&quot;</span> + request.getSession().getAttribute(<span class="character">&quot;</span><span class="character">valueBound</span><span class="character">&quot;</span>) + <span class="character">&quot;</span><span class="character">&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;td&gt;ExampleSessionBindingListener is a session aware bean that sets its value when bound to a session.&lt;br&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">This object is added to the session in: ExampleSessionListener&lt;/td&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/tr&gt;</span><span class="character">&quot;</span>);
+
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/table&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/body&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;a href=</span><span class="ST1">\&quot;</span><span class="character">home.html</span><span class="ST1">\&quot;</span><span class="character">&gt;Go Home&lt;/a&gt;</span><span class="character">&quot;</span>);
+    out.println(<span class="character">&quot;</span><span class="character">&lt;/html&gt;</span><span class="character">&quot;</span>);
+
+  }
+}
+
+    </pre>
+    <div id="tt-overview">
+      This servlet displays only <b>attributes</b> inside the different scopes.<br>
+      The attributes are set in the different listeners part of this example.<br>
+      Go back to the listener classes and identify when are these attributes set.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>

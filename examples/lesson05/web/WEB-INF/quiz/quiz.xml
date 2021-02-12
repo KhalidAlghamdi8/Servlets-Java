@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POLL TYPE="anonymous" SHOWTIMER="yes" ALARM="2:0" NOANSWER="yes" SHOWRESPONSE="yes">
+  <QUESTION>
+    <TEXT>
+      To add a servlet to a context that has not been declared either via annotation or via the descriptor, during context initialization time the following API can be used (Choose three):
+    </TEXT>
+    <ANSWER ISCORRECT="true">servletContext.addServlet(“myServletName”, “MyServlet”);</ANSWER>
+    <ANSWER ISCORRECT="false">
+<![CDATA[ servletContext.addServlet( (<Class extends Servlet>)getClass().getClassLoader().loadClass(“MyServlet”)); ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="false">servletContext.addServlet(myServlet);</ANSWER>
+    <ANSWER ISCORRECT="true">
+<![CDATA[ servletContext.addServlet( (“myServletName”, <Class extends Servlet>)getClass().getClassLoader().loadClass(“MyServlet”)); ]]>
+    </ANSWER>
+    <ANSWER ISCORRECT="true">servletContext.addServlet(“myServletName”, myServlet);</ANSWER>
+  </QUESTION>
+  
+  <QUESTION>
+    <TEXT>
+      You have a use case in your web application that adds several session-scoped attributes.  At the end of the use case, one of these objects, the manager attribute, is removed and then it needs to decide which of the other session-scoped attributes to remove.
+      How can this goal be accomplished?
+    </TEXT>
+    <ANSWER ISCORRECT="true">The object of the manager attribute should implement the HttpSessionBindingListener and it should call the removeAttribute method on the appropriate session attributes.</ANSWER>
+    <ANSWER ISCORRECT="false">The object of the manager attribute should implement the HttpSessionListener and it should call the removeAttribute method on the appropriate session attributes.</ANSWER>
+    <ANSWER ISCORRECT="false">The object of the manager attribute should implement the HttpSessionBindingListener and it should call the deleteAttribute method on the appropriate session attributes.</ANSWER>
+    <ANSWER ISCORRECT="false">The object of the manager attribute should implement the HttpSessionListener and it should call the deleteAttribute method on the appropriate session attributes.</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      When using the @WebListener annotation, the class on which the annotation is applied to must also implement at least one of the following interfaces:
+    </TEXT>
+    <ANSWER ISCORRECT="false">RequestListener</ANSWER>
+    <ANSWER ISCORRECT="false">AttributeListener</ANSWER>
+    <ANSWER ISCORRECT="true">ServletContextListener</ANSWER>
+    <ANSWER ISCORRECT="true">HttpSessionListener</ANSWER>
+    <ANSWER ISCORRECT="false">SessionAttributeListener</ANSWER>
+    <ANSWER ISCORRECT="false">AsyncListener</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      A web application wants to register a new servlet at runtime using one of the ServletContext.addServlet methods.
+      In the implementation of which method is it legal to perform this operation? 
+    </TEXT>
+    <ANSWER ISCORRECT="false">AsyncListener.onComplete</ANSWER>
+    <ANSWER ISCORRECT="false">Servlet.init</ANSWER>
+    <ANSWER ISCORRECT="true">ServletContextListener.contextInitialized</ANSWER>
+    <ANSWER ISCORRECT="false">ServletRequestListener.requestInitialized</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      Which annotation specifies the metadata as a javax.servlet.http.HttpSessionListener?     
+    </TEXT>
+    <ANSWER ISCORRECT="false">@Listener</ANSWER>
+    <ANSWER ISCORRECT="true">@WebListener</ANSWER>
+    <ANSWER ISCORRECT="false">@WebSessionListener</ANSWER>
+    <ANSWER ISCORRECT="false">@HttpSessionListener</ANSWER>
+  </QUESTION>
+
+  <QUESTION>
+    <TEXT>
+      When using a deployment descriptor (web.xml), which directory is that file placed in? 
+    </TEXT>
+    <ANSWER ISCORRECT="true">WEB-INF</ANSWER>
+    <ANSWER ISCORRECT="false">Htdocs</ANSWER>
+    <ANSWER ISCORRECT="false">WEB-INIT</ANSWER>
+    <ANSWER ISCORRECT="false">htdocs/WEB-INIT</ANSWER>
+  </QUESTION>
+  <QUESTION>
+    <TEXT>
+      Which of the following has the highest priority when configuring a servlet? 
+    </TEXT>
+    <ANSWER ISCORRECT="true">web.xml file</ANSWER>
+    <ANSWER ISCORRECT="false">Annotations</ANSWER>
+    <ANSWER ISCORRECT="false">web-fragment.xml file</ANSWER>
+  </QUESTION>
+
+</POLL>

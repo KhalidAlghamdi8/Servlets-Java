@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>customEl.jsp</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../res/styles.css" type="text/css">
+    <style type="text/css">
+      <!--
+      .ST4 {font-weight: bold}
+      .ST8 {color: #009900}
+      .scriptlet-delimiter {background-color: #e3f2e1}
+      .ST3 {color: #ce7b00; background-color: #e9eff8}
+      .ST7 {color: #0000e6}
+      .ST5 {color: #0000e6; font-weight: bold}
+      .attribute-name {color: #009b00}
+      .ST0 {background-color: #e9eff8; font-weight: bold}
+      .ST6 {color: #628fb5}
+      .ST9 {color: #0000ff; background-color: #e3f2e1; font-weight: bold}
+      .ST1 {color: #0000e6; background-color: #e9eff8; font-weight: bold}
+      .attribute-value {color: #ce7b00}
+      .ST2 {color: #009b00; background-color: #e9eff8}
+      -->
+    </style>
+  </head>
+  <body>
+    <script src="../res/jquery.js" type="text/javascript"></script>
+    <script src="../res/jquery.tooltip.js" type="text/javascript"></script>
+    <script src="../res/tooltip.js" type="text/javascript"></script>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+    <table width="100%"><tr><td align="center">D:\labs\examples\lesson08\web\customEl.jsp</td></tr></table>
+    <pre>
+<span class="ST0">&lt;%@</span><span class="ST1">page</span> <span class="ST2">contentType</span><span class="ST0">=</span><span class="ST3">&quot;text/html&quot;</span> <span class="ST2">pageEncoding</span><span class="ST0">=</span><span class="ST3">&quot;UTF-8&quot;</span><span class="ST0">%&gt;</span>
+<span class="ST4">&lt;%@</span><span class="ST5"> taglib</span> <span class="attribute-name">prefix</span><span class="ST4">=</span><span class="attribute-value">&quot;fmt&quot;</span> <span class="attribute-name">uri</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="attribute-value">http://java.sun.com/jsp/jstl/fmt</span><span class="attribute-value">&quot;</span> <span class="ST4">%&gt;</span>
+<span class="info" title="tt-tld"><span class="ST4">&lt;%@</span><span class="ST5"> taglib</span> <span class="attribute-name">prefix</span><span class="ST4">=</span><span class="attribute-value">&quot;elfunctions&quot;</span> <span class="attribute-name">uri</span><span class="ST4">=</span><span class="attribute-value">&quot;examples/lesson08/tlds/elFunctions&quot;</span> <span class="ST4">%&gt;</span></span>
+<span class="ST6">&lt;!DOCTYPE</span> <span class="ST6">html</span><span class="ST6">&gt;</span>
+<span class="ST7">&lt;</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">meta</span> <span class="ST8">http-equiv</span><span class="ST8">=</span><span class="attribute-value">&quot;Content-Type&quot;</span> <span class="ST8">content</span><span class="ST8">=</span><span class="attribute-value">&quot;text/html; charset=UTF-8&quot;</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;</span><span class="ST7">link</span> <span class="ST8">rel</span><span class="ST8">=</span><span class="attribute-value">&quot;stylesheet&quot;</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;res/styles.css&quot;</span> <span class="ST8">type</span><span class="ST8">=</span><span class="attribute-value">&quot;text/css&quot;</span><span class="ST7">&gt;</span> 
+    <span class="ST7">&lt;</span><span class="ST7">title</span><span class="ST7">&gt;</span>EL Functions<span class="ST7">&lt;/</span><span class="ST7">title</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">head</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+<span class="info" title="tt-now1">    current time is: <span class="scriptlet-delimiter">${</span><span class="ST9">elfunctions</span><span class="scriptlet-delimiter">:</span><span class="scriptlet-delimiter">now</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">}</span><span class="ST7">&lt;</span><span class="ST7">br</span><span class="ST7">&gt;</span></span>
+    Formatted nicely:
+<span class="info" title="tt-now2">    <span class="ST4">&lt;</span><span class="ST5">fmt:formatDate</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="ST9">elfunctions</span><span class="scriptlet-delimiter">:</span><span class="scriptlet-delimiter">now</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span></span>
+    <span class="ST7">&lt;</span><span class="ST7">br</span><span class="ST7">&gt;</span>
+    And with a custom time: 
+<span class="info" title="tt-date">    <span class="ST4">&lt;</span><span class="ST5">fmt:formatDate</span> <span class="attribute-name">value</span><span class="ST4">=</span><span class="attribute-value">&quot;</span><span class="scriptlet-delimiter">${</span><span class="ST9">elfunctions</span><span class="scriptlet-delimiter">:</span><span class="scriptlet-delimiter">date</span><span class="scriptlet-delimiter">(</span><span class="scriptlet-delimiter">30</span><span class="scriptlet-delimiter">,</span><span class="scriptlet-delimiter">11</span><span class="scriptlet-delimiter">,</span><span class="scriptlet-delimiter">2012</span><span class="scriptlet-delimiter">)</span><span class="scriptlet-delimiter">}</span><span class="attribute-value">&quot;</span><span class="ST4">/&gt;</span></span>
+    <span class="ST7">&lt;</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+      <span class="ST7">&lt;</span><span class="ST7">a</span> <span class="ST8">href</span><span class="ST8">=</span><span class="attribute-value">&quot;./&quot;</span><span class="ST7">&gt;</span>Go back<span class="ST7">&lt;/</span><span class="ST7">a</span><span class="ST7">&gt;</span>
+    <span class="ST7">&lt;/</span><span class="ST7">p</span><span class="ST7">&gt;</span>
+  <span class="ST7">&lt;/</span><span class="ST7">body</span><span class="ST7">&gt;</span>
+<span class="ST7">&lt;/</span><span class="ST7">html</span><span class="ST7">&gt;</span>
+
+    </pre>
+    <div id="tt-tld">
+      Custom Expression Language functions are part of tag libraries. The taglib JSP directive
+      you refer to must be added to the functions using the prefix just like with custom tags.
+    </div>
+    <div id="tt-now1">
+      The now() function returns a new java.util.Date object.
+    </div>
+    <div id="tt-now2">
+      You may use this Date object in the fmt:formatDate tag to display the date properly formatted.
+    </div>
+    <div id="tt-date">
+      The date (day, month, year) function returns the date using the parameters.
+    </div>
+    <p>
+      <a href="../">Go back</a>
+    </p>
+  </body>
+</html>
